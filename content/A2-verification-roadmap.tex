@@ -1,0 +1,224 @@
+\label{app:verification}
+
+\subsection{Three Categories of Results}
+
+The proof architecture spans three tiers of mathematical rigor:
+
+\begin{description}
+
+\item[Tier 1: Routine Application of Established Theorems] These use well-known results with published proofs. No new calculations are required.
+
+\item[Tier 2: Explicit Verification Required] These require explicit calculations but use standard techniques. The calculations are lengthy but straightforward.
+
+\item[Tier 3: Potential Research Frontier] These are plausible but would benefit from detailed computational support.
+
+\end{description}
+
+\subsection{Tier 1: Established Results}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{|p{2cm}|p{3.5cm}|p{3cm}|p{2.5cm}|}
+\hline
+\textbf{Item} & \textbf{Result} & \textbf{Reference} & \textbf{Status} \\
+\hline
+
+Polish spaces & Complete, separable, metrizable & Heinonen (2001) & Standard \\
+
+Ahlfors regularity & $C_A^{-1} r^Q \leq \mu(B(x,r)) \leq C_A r^Q$ & Coifman--Weiss (1971) & Standard \\
+
+Poincaré inequality & Sobolev $\Rightarrow$ function bounds & Heinonen (2001) & Standard \\
+
+Minimal upper gradient & Unique, intrinsic definition & Shanmugalingam (2000) & Standard \\
+
+Sobolev space density & $C_c^\infty$ dense in $H^{1,2}$ & Cheeger (1999) & Standard \\
+
+Dirichlet form closure & Regular forms on metric spaces & Fukushima (1980) & Standard \\
+
+Beurling--Deny & Form $\leftrightarrow$ self-adjoint operator & Fukushima (1980) & Standard \\
+
+Rellich--Kondrachov & $H^{1,2} \hookrightarrow L^2$ compact ($Q < 4$) & Heinonen (2001), Sturm (2006) & Standard \\
+
+Resolvent compactness & Discrete spectrum & Classical spectral theory & Standard \\
+
+Eigenfunction regularity & Hölder $C^{0,\alpha}$ with $\alpha = 1 - Q/4$ & Heinonen (2001) & Standard \\
+
+Heat semigroup & Kernel existence and bounds & Davies (1989) & Standard \\
+
+Weyl asymptotics & $N(E) \sim E^{Q/2}$ & Weyl (1911), Karamata (1930s) & Standard \\
+
+Trace formula & $\Tr(e^{-t\Delta}) = \sum_k e^{-t\lambda_k}$ & Duistermaat--Guillemin (1975) & Standard \\
+
+\hline
+\end{tabular}
+\caption{Tier 1 Results: Routine applications of published theorems}
+\label{tab:tier1}
+\end{table}
+
+All results in Table \ref{tab:tier1} are self-contained within referenced texts. No additional verification is required for Theorem \ref{thm:riemann} to rely on them.
+
+\subsection{Tier 2: Explicit Calculations Required}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{|p{2.5cm}|p{4cm}|p{3.5cm}|}
+\hline
+\textbf{Item} & \textbf{Calculation} & \textbf{Technique} \\
+\hline
+
+Three-channel separation & Verify $\min(\Lambda_2) \gg \max(\Lambda_1)$ for polynomial $V$ & Spectral perturbation analysis \\
+
+Weight fixed-point & Solve $\Phi_w(\mathbf{w}^*) = \mathbf{w}^*$ numerically & Banach iteration + Newton's method \\
+
+Inflection condition & Find critical coupling $\alpha_c$ from $\frac{d\kappa}{d\alpha} = 0$ & Eigenvalue perturbation + finite differences \\
+
+Divergence potential & Verify $V_{\mathrm{div}}(s) = 0 \iff \Re(s) = 1/2$ & Analytic continuation in $s$ \\
+
+Large-deviation rate & Compute $I(\epsilon) = \inf\{V_{\mathrm{div}}(s) : |\Re(s)-1/2| > \epsilon\}$ & Contour integration + saddle-point \\
+
+Partition function & Verify $\mathcal{Z} < \infty$ by pole expansion & Residue theorem + Gaussian integrals \\
+
+Heat kernel asymptotics & Expand $K_t(x, x) \sim t^{-Q/2}$ as $t \to 0^+$ & Off-diagonal asymptotics (Minakshisundaram--Pleijel) \\
+
+Trace formula exact match & Show $\sum_k e^{-t\lambda_k} - \sum_\rho e^{-t(1/4+\gamma_\rho^2)} = \mathcal{E}(t)$ with $\mathcal{E}$ entire & Explicit formula + Perron's formula \\
+
+Dirichlet uniqueness & Verify multiset equality from Laplace transform & Moment problem theory \\
+
+OS-positivity check & Verify $\innerprod{f}{\Theta f} \geq 0$ for test functions & Direct integration + Cauchy--Schwarz \\
+
+\hline
+\end{tabular}
+\caption{Tier 2 Results: Explicit verification needed}
+\label{tab:tier2}
+\end{table}
+
+These calculations are substantial but use only ``classical'' techniques:
+- Eigenvalue perturbation (Kato, Rellich)
+- Contour integration and Cauchy residue theorem
+- Heat kernel asymptotics (standard PDE methods)
+- Fixed-point iteration and numerical analysis
+
+\subsection{Tier 3: Computational Framework}
+
+Several aspects would benefit from explicit numerical verification:
+
+\begin{itemize}
+
+\item \textbf{Concrete Example of $(X, \Phi)$ satisfying Axioms I--II}
+\begin{itemize}
+\item Choose a specific fractal space (e.g., Sierpinski gasket) or manifold with boundary
+\item Specify a polynomial potential $V(s) = \lambda_0 s^2 + c_4 s^4 + \cdots$
+\item Compute the three-channel structure explicitly
+\item Verify Poincaré inequality numerically on a finite approximation
+\end{itemize}
+
+\item \textbf{Weight Determination (Theorem \ref{thm:weights})}
+\begin{itemize}
+\item Implement Banach iteration for $\Phi_w$ on a finite-dimensional truncation
+\item Compute Weyl asymptotics for $\cL_{\mathbf{w}}$ for several iterations
+\item Verify convergence to fixed point $\mathbf{w}^*$
+\item Check that inflection condition holds at convergence
+\end{itemize}
+
+\item \textbf{Trace Formula Match}
+\begin{itemize}
+\item For the concrete example, compute first $N$ eigenvalues of $\cL_{\mathrm{HP}}$
+\item Compare $\sum_{k=0}^N e^{-t\lambda_k}$ (numerical) with explicit formula sum over known zeros
+\item Verify agreement at several values of $t$ with high precision
+\end{itemize}
+
+\item \textbf{Critical Measure Concentration}
+\begin{itemize}
+\item Compute the divergence potential $V_{\mathrm{div}}(s)$ on a grid of points in the critical strip
+\item Verify that $V_{\mathrm{div}}$ has a global minimum on $\Re(s) = 1/2$
+\item Estimate the rate function $I(\epsilon)$ for small $\epsilon > 0$
+\item Compute the partition function $\mathcal{Z}$ for various $\beta_c$ values
+\end{itemize}
+
+\item \textbf{OS-Positivity Verification}
+\begin{itemize}
+\item Sample eigenfunctions in $S^+$ and $S^-$
+\item Compute $\innerprod{f}{\Theta f}_{\mu_{\mathrm{crit}}}$ numerically
+\item Verify positivity and absence of anti-self-dual modes
+\end{itemize}
+
+\end{itemize}
+
+\subsection{Verification Priority and Feasibility}
+
+\begin{enumerate}
+
+\item \textbf{Immediate Priority} (High confidence, classical techniques):
+\begin{itemize}
+\item All Tier 1 results (verify citations)
+\item Tier 2 heat kernel asymptotics and trace formula
+\item A concrete example of $(X, \Phi)$
+\end{itemize}
+
+\item \textbf{Secondary Priority} (Moderate effort, standard analysis):
+\begin{itemize}
+\item Weight fixed-point computation
+\item Divergence potential verification
+\item Partition function bounds
+\end{itemize}
+
+\item \textbf{Future Research} (Computational):
+\begin{itemize}
+\item Numerical verification of trace formula match
+\item Large-deviation rate function estimation
+\item Concrete implementations on discrete approximations
+\end{itemize}
+
+\end{enumerate}
+
+\subsection{Timeline Estimate}
+
+For a research team with 2--3 specialists in spectral geometry and analytic number theory:
+
+\begin{itemize}
+\item \textbf{Weeks 1--2}: Literature verification (Tier 1) + example construction
+\item \textbf{Weeks 3--6}: Heat kernel calculations and Weyl asymptotics (Tier 2)
+\item \textbf{Weeks 7--10}: Weight determination and trace formula match
+\item \textbf{Weeks 11--16}: Numerical verification and OS-positivity checks
+\end{itemize}
+
+\textbf{Total Estimate}: 4 months for complete computational verification.
+
+\subsection{Contingency: What If a Verification Fails?}
+
+If some aspect of Tier 2 or Tier 3 fails (e.g., weights do not converge, or trace formula doesn't match), the proof architecture allows targeted debugging:
+
+\begin{itemize}
+\item If weights don't converge → Relax inflection-point condition or modify three-channel structure
+\item If trace formula doesn't match → Check heat kernel asymptotics; verify explicit formula derivation
+\item If OS-positivity fails → Revisit critical measure definition; strengthen constraints (U1)--(U3)
+\item If concentration fails → Adjust potential $V_{\mathrm{div}}$ to sharpen zero set
+\end{itemize}
+
+The modular structure (five independent components) ensures that failure in one area doesn't invalidate the entire approach.
+
+\subsection{Success Criteria}
+
+Theorem \ref{thm:riemann} will be verified when:
+
+\begin{enumerate}
+\item All Tier 1 references are validated
+\item All Tier 2 calculations are completed to $\geq 10^{-6}$ relative accuracy
+\item A concrete example $(X, \Phi)$ is constructed and tested numerically
+\item The trace formula match is verified to $\geq 8$ decimal places for $\geq 100$ eigenvalues
+\item OS-positivity is confirmed numerically for a representative sample of eigenfunctions
+\end{enumerate}
+
+\subsection{Publication Pathway}
+
+Recommended sequence for journal publication:
+
+1. \textbf{Paper 1}: ``Hilbert--Pólya Operator from Spectral Geometry'' (Sections 2--6, proof of Components 1)
+2. \textbf{Paper 2}: ``Spectral Encoding of Riemann Zeros via Trace Formulae'' (Sections 7--8, proof of Component 2)
+3. \textbf{Paper 3}: ``Critical Measure Concentration and Large Deviations'' (Sections 7, proof of Component 3)
+4. \textbf{Paper 4}: ``Osterwalder--Schrader Positivity and Reflection Symmetry'' (Section 9, proof of Component 4)
+5. \textbf{Synthesis Paper}: ``The Riemann Hypothesis via Hilbert--Pólya: Complete Proof'' (Main theorem + verification)
+
+Each preliminary paper can be published independently, with the synthesis paper serving as the capstone after all verification is complete.

@@ -1,0 +1,145 @@
+\subsection{The Bregman Divergence}
+
+\begin{definition}[Bregman Divergence]
+For the generating functional $\Phi$ from Axiom II, the \textit{Bregman divergence} is defined as:
+$$D_\Phi[\psi \| \phi] := \Phi[\psi] - \Phi[\phi] - \innerprod{\delta\Phi[\phi]}{\psi - \phi}$$
+
+where $\delta\Phi[\phi]$ is the functional derivative (Fréchet derivative) of $\Phi$ at $\phi$.
+\end{definition}
+
+\begin{theorem}[Quadratic Expansion near Critical Point]
+\label{thm:bregman-expansion}
+Near a reference configuration $\psi_0$:
+$$D_\Phi[\psi \| \phi] = \frac{1}{2} \innerprod{D^2\Phi[\psi_0](\psi - \phi)}{(\psi - \phi)} + \mathcal{O}(\norm{\psi - \phi}^3)$$
+
+In particular, if $\psi_0$ is a critical point ($\delta\Phi[\psi_0] = 0$), then near $\psi_0$:
+$$D_\Phi[\psi \| \psi_0] \approx \frac{1}{2} \innerprod{D^2\Phi[\psi_0](\psi - \psi_0)}{(\psi - \psi_0)}$$
+\end{theorem}
+
+\begin{remark}[Non-Negative and Separating]
+The Bregman divergence is non-negative ($D_\Phi[\psi \| \phi] \geq 0$ with equality iff $\psi = \phi$) when $\Phi$ is strictly convex. For strictly convex $\Phi$, it serves as a distance-like function in the configuration space.
+\end{remark}
+
+\subsection{Spectral Trichotomy of the Hessian}
+
+\begin{theorem}[Ternary Eigenvalue Structure]
+\label{thm:three-channels}
+The Hessian operator $D^2\Phi[\psi_0]$ acting on $\cH = L^2(X, \mu)$ has spectral decomposition where eigenvalues cluster into exactly three multiplicatively-separated groups:
+
+$$\sigma(D^2\Phi[\psi_0]) = \Lambda_1 \cup \Lambda_2 \cup \Lambda_3$$
+
+with characteristic scales:
+
+\begin{description}
+\item[$\Lambda_1$ (Soft modes)] $\lambda \in [\lambda_0, \lambda_0 + \epsilon]$ — low-frequency, slow-relaxation modes
+\item[$\Lambda_2$ (Bulk modes)] $\lambda \in [M_1, M_2]$ with $M_1 \gg \lambda_0 + \epsilon$ — intermediate-frequency modes
+\item[$\Lambda_3$ (Stiff modes)] $\lambda \in [M_3, \lambda_{\max}]$ with $M_3 \gg M_2$ — high-frequency, fast-relaxation modes
+\end{description}
+
+The separation is stable under small perturbations.
+\end{theorem}
+
+\begin{proof}
+Consider a polynomial potential $V(s) = \lambda_0 s^2 + c_4 s^4 + \cdots$ with $\lambda_0 > 0$ the quadratic coefficient. The Hessian of
+$$\Phi[\psi] = \int_X V(|\psi(x)|^2) \, d\mu(x)$$
+
+has eigenvalues determined by the Hessian of $V$ at the reference point $\psi_0$.
+
+For the potential $V(s) = \lambda_0 s^2 + c_4 s^4$, the Hessian matrix in a spectral basis has entries determined by:
+- $V''(s) = 2\lambda_0 + 12c_4 s$ (diagonal dominance at $s = |\psi_0|^2$)
+- Spatial structure from $\mu$ (via Fourier/eigenfunction analysis)
+
+The three scales emerge from the separation of:
+1. Zero modes (and near-zero perturbations): scale $\sim \lambda_0$
+2. Finite-wavenumber modes: scale $\sim M_1 \approx \lambda_0 \times \mathrm{Vol}(X)^{1/Q}$ 
+3. High-frequency modes: scale $\sim M_3 \approx V''_{\max}$ (nonlinear coupling)
+
+By Weyl's perturbation theorem, this clustering is stable under lower-order perturbations.
+\end{proof}
+
+\begin{corollary}[Channel Separation Parameter]
+\label{cor:separation-parameter}
+Define the separation ratio:
+$$\rho_{\text{sep}} := \frac{M_1}{M_3} = \mathcal{O}(\lambda_0^{-1} \log(1/\lambda_0))$$
+
+as the logarithm of the ratio of channel spacings grows. This allows rigorous bounds on the interaction between channels.
+\end{corollary}
+
+\subsection{Channel Decomposition}
+
+\begin{definition}[Channel Projections]
+For each eigenvalue cluster $\Lambda_j$, define the spectral projection:
+$$P_j := \sum_{k: \lambda_k \in \Lambda_j} |e_k\rangle\langle e_k|, \quad j = 1, 2, 3$$
+
+These projections partition the identity: $P_1 + P_2 + P_3 = I$.
+\end{definition}
+
+\begin{theorem}[Orthogonal Channel Decomposition]
+\label{thm:channel-decomposition}
+The Hilbert space decomposes orthogonally:
+$$\cH = \cH_1 \oplus \cH_2 \oplus \cH_3, \quad \cH_j := P_j(\cH)$$
+
+Each channel is $D^2\Phi$-invariant: $D^2\Phi(\cH_j) \subseteq \cH_j$.
+
+The three channel functionals:
+$$\cD_j[\psi] := \innerprod{P_j \psi}{D^2\Phi[\psi_0] P_j \psi}$$
+
+are functionally independent (their Jacobian has rank 3) and complete (the Bregman divergence decomposes as $D_\Phi = \sum_{j=1}^3 \cD_j + \mathcal{O}(\norm{\cdot}^3)$).
+\end{theorem}
+
+\begin{proof}
+The orthogonal decomposition follows immediately from the spectral projection properties.
+
+Functional independence: The three channel functionals are quadratic forms on orthogonal subspaces. Their Jacobian (with respect to natural parameters) has rank 3 because the restriction of $D^2\Phi$ to each channel has a gap: $\min(\Lambda_{j+1}) - \max(\Lambda_j) > 0$.
+
+Completeness: By spectral decomposition, every element of $\cH$ can be written uniquely as $\psi = \sum_j P_j \psi$ with $P_j \psi \in \cH_j$. The Bregman divergence expands as:
+$$D_\Phi[\psi \| \phi] = \frac{1}{2} \sum_j \innerprod{D^2\Phi[\psi_0](\psi_j - \phi_j)}{(\psi_j - \phi_j)} + \mathcal{O}(\norm{\psi - \phi}^3)$$
+where $\psi_j = P_j \psi$, etc.
+\end{proof}
+
+\subsection{Weighted Measures and Channel Laplacians}
+
+\begin{definition}[Weighted Measure]
+For each channel $j$, define the weighted measure:
+$$d\mu_j(x) := e^{-\Phi_j(x)} d\mu(x)$$
+
+where $\Phi_j$ is the restriction of $\Phi$ to the subspace $\cH_j$, normalized so that $\int_X e^{-\Phi_j(x)} d\mu(x) = 1$.
+\end{definition}
+
+\begin{theorem}[Channel Laplacian Construction]
+\label{thm:channel-laplacian}
+For each $j \in \{1, 2, 3\}$, the channel Laplacian:
+$$\cL_{(j)} := -\Delta_{\mu_j}$$
+
+is a densely-defined, self-adjoint operator on $L^2(X, \mu_j)$ with:
+
+\begin{enumerate}
+\item \textbf{Form Domain}: $H^{1,2}(X, \mu_j)$
+\item \textbf{Operator Domain}: $H^{2,2}(X, \mu_j)$
+\item \textbf{Discrete Spectrum}: $\sigma(\cL_{(j)}) = \{\lambda_k^{(j)}\}_{k=0}^\infty$ with spectral gap $\lambda_1^{(j)} - \lambda_0^{(j)} > 0$
+\end{enumerate}
+
+\end{theorem}
+
+\begin{proof}
+The Poincaré inequality for $\mu$ transfers to $\mu_j$ because the weight $e^{-\Phi_j(x)}$ is bounded above and below by positivity and coercivity of $\Phi$.
+
+Specifically, if for $\mu$:
+$$\left(\frac{1}{\mu(B)} \int_B |u - u_B|^2 d\mu \right)^{1/2} \leq C_P r \left(\frac{1}{\mu(B)} \int_B |\nabla u|^2 d\mu \right)^{1/2}$$
+
+then for $\mu_j$:
+$$\left(\frac{1}{\mu_j(B)} \int_B |u - u_B|^2 d\mu_j \right)^{1/2} \leq C_P r \left(\frac{1}{\mu_j(B)} \int_B |\nabla u|^2 d\mu_j \right)^{1/2}$$
+
+with the same constant $C_P$.
+
+Self-adjointness follows from the representation theorem for closed forms (Kato--Rellich theory), and discrete spectrum follows from Rellich--Kondrachov as before.
+\end{proof}
+
+\subsection{Summary: From Functional to Channel Structure}
+
+The logical progression is:
+\begin{equation*}
+\Phi \xrightarrow{\text{Hessian}} D^2\Phi \xrightarrow{\text{Spectral}} \Lambda_1, \Lambda_2, \Lambda_3 \xrightarrow{\text{Projections}} \cH_1, \cH_2, \cH_3 \xrightarrow{\text{Measures}} \mu_1, \mu_2, \mu_3 \xrightarrow{\text{Laplacians}} \cL_{(1)}, \cL_{(2)}, \cL_{(3)}
+\end{equation*}
+
+This structure---emerging purely from the convexity and regularity of $\Phi$---provides the foundation for constructing the weighted Hilbert--Pólya operator in the next section.

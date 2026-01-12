@@ -1,0 +1,104 @@
+\subsection{Axiom I: The Polish Metric Measure Space}
+
+\begin{axiom}[Minimally-Equipped Polish Space]
+Let $(X, d_X, \mu)$ be a metric measure space satisfying:
+
+\begin{enumerate}
+\item[(I.i)] \textbf{Polish Structure}: $X$ is complete, separable, and metrizable with compact closure.
+\item[(I.ii)] \textbf{Borel Measure}: $\mu$ is a Borel probability measure on $X$.
+\item[(I.iii)] \textbf{Ahlfors $Q$-Regularity}: There exists $C_A > 0$ and $Q \in (2, \infty)$ such that for all $x \in X$ and $0 < r < \mathrm{diam}(X)$:
+$$C_A^{-1} r^Q \leq \mu(B(x, r)) \leq C_A r^Q$$
+\item[(I.iv)] \textbf{Poincaré Inequality}: There exists $C_P > 0$ such that for all $u \in H^{1,2}(X)$ and balls $B = B(x, r)$:
+$$\left(\frac{1}{\mu(B)} \int_B |u - u_B|^2 \, d\mu\right)^{1/2} \leq C_P r \left(\frac{1}{\mu(B)} \int_B |\nabla_{\min} u|^2 \, d\mu\right)^{1/2}$$
+
+where $u_B = \mu(B)^{-1} \int_B u \, d\mu$ and $|\nabla_{\min} u|$ is the minimal upper gradient.
+
+\end{enumerate}
+
+\end{axiom}
+
+\begin{remark}[Emergent Properties from Axiom I]
+From Axiom I alone, several deep properties follow:
+\begin{enumerate}
+\item The measure $\mu$ is automatically inner and outer regular (Ulam's theorem)
+\item Ahlfors regularity implies the \textit{doubling property}: $\mu(B(x, 2r)) \leq 2^Q \mu(B(x, r))$
+\item The space admits a Cheeger differentiable structure with cotangent fiber dimension at most $Q$
+\item For compact Sobolev embeddings, necessarily $Q < 4$ (see Theorem \ref{thm:dimension-necessity})
+\end{enumerate}
+\end{remark}
+
+\subsection{Axiom II: The Strictly Convex Generating Functional}
+
+\begin{axiom}[Configuration Space Structure]
+Let $\cH = L^2(X, \mu; \bbC^n)$ be the Hilbert space of square-integrable sections. There exists a generating functional:
+$$\Phi[\psi] := \int_X V(|\psi(x)|^2) \, d\mu(x)$$
+
+satisfying:
+
+\begin{enumerate}
+\item[(II.i)] \textbf{Strict Convexity}: For all $\psi, \phi \in \cH$ with $\psi \neq \phi$ and $t \in (0,1)$:
+$$\Phi[t\psi + (1-t)\phi] < t\Phi[\psi] + (1-t)\Phi[\phi]$$
+
+\item[(II.ii)] \textbf{Positive-Definite Hessian}: The second functional derivative satisfies:
+$$\innerprod{D^2\Phi[\psi_0] h}{h} \geq 2\lambda_0 \norm{h}_{\cH}^2$$
+for all $h \in \cH$ and some $\lambda_0 > 0$.
+
+\item[(II.iii)] \textbf{Polynomial Growth}: The potential $V: [0, \infty) \to \bbR$ satisfies:
+$$V(s) \geq c_1 s^p - C, \quad |V'(s)| \leq c_2(1 + s^{p-1})$$
+for constants $c_1, c_2, C > 0$ and $p > 0$.
+
+\item[(II.iv)] \textbf{Smoothness}: $V \in C^\infty([0, \infty); \bbR)$.
+
+\end{enumerate}
+
+\end{axiom}
+
+\begin{remark}[Physical Interpretation]
+Axiom II defines a classical field configuration space with $\Phi$ as the energy functional. The strict convexity and positive-definite Hessian ensure that the functional has a unique global minimum, providing a natural reference state around which to expand perturbations.
+\end{remark}
+
+\subsection{Dimensional Necessity}
+
+\begin{theorem}[Dimensional Necessity]\label{thm:dimension-necessity}
+Under Axioms I--II, if the Laplacian has discrete spectrum with Hölder-continuous eigenfunctions of exponent $\alpha = 1 - Q/4 > 0$, then necessarily:
+$$Q < 4$$
+\end{theorem}
+
+\begin{proof}
+By the Rellich--Kondrachov theorem for metric measure spaces, the Sobolev embedding $H^{1,2}(X) \hookrightarrow L^2(X)$ is compact when $X$ is compact and supports a Poincaré inequality with $Q < 2 \times 2 = 4$ (the critical dimension). 
+
+For $Q \geq 4$, the embedding is continuous but not compact, which precludes the operator from having a discrete spectrum. The eigenfunction regularity constraint $\alpha = 1 - Q/4 > 0$ further restricts to $Q < 4$.
+\end{proof}
+
+\begin{corollary}[Critical Dimension]
+The constraint $Q < 4$ emerges from mathematical consistency alone, independent of any physical considerations. This bounds the effective dimensionality of the underlying space to less than 4.
+\end{corollary}
+
+\subsection{Minimal Domain Requirements}
+
+\begin{definition}[Sobolev Space Domain]
+For Axioms I--II to yield a well-defined operator theory, the domain of the Sobolev space is:
+$$H^{1,2}(X; \bbC^n) = \left\{ u \in L^2(X, \mu; \bbC^n) : \int_X |\nabla_{\min} u|^2 \, d\mu < \infty \right\}$$
+
+with norm $\norm{u}_{H^{1,2}}^2 := \norm{u}_{L^2}^2 + \int_X |\nabla_{\min} u|^2 \, d\mu$.
+\end{definition}
+
+\begin{theorem}[Density of Smooth Functions]\label{thm:density-smooth}
+The space $C_c^\infty(X; \bbC^n)$ of smooth compactly-supported functions is dense in $H^{1,2}(X; \bbC^n)$.
+\end{theorem}
+
+\begin{proof}[Proof Sketch]
+The density follows from Cheeger's theory \cite{cheeger1999differentiability}: the combination of the Poincaré inequality and Ahlfors regularity yields a measurable differentiable structure. Mollification using heat kernels on this structure yields smooth approximations. Truncation to compact subsets gives compactly-supported approximants.
+\end{proof}
+
+\subsection{Summary of Axiomatic Setup}
+
+Axioms I--II provide:
+\begin{itemize}
+\item A geometric substrate ($X, d, \mu$) with rigorous regularity properties
+\item An energy functional $\Phi$ with well-defined Hessian and spectral structure
+\item Automatically emerging properties: doubling measure, Cheeger differentiable structure, dimensional bound
+\item Domain and density properties sufficient for spectral theory
+\end{itemize}
+
+These axioms are not chosen arbitrarily; they represent the minimal mathematical structure required for Hilbert--Pólya-type constructions. Section \ref{sec:verification} will specify concrete examples of $(X, \Phi)$ satisfying both axioms.

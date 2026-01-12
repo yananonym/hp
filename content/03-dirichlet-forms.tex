@@ -1,0 +1,119 @@
+\subsection{The Minimal Upper Gradient}
+
+\begin{definition}[Upper Gradient]
+A Borel function $g: X \to [0, \infty]$ is an \textit{upper gradient} of $u: X \to \bbR$ if for every rectifiable curve $\gamma: [0, L] \to X$ parameterized by arc length:
+$$|u(\gamma(L)) - u(\gamma(0))| \leq \int_0^L g(\gamma(t)) \, dt$$
+\end{definition}
+
+\begin{definition}[Minimal Upper Gradient]
+The \textit{minimal upper gradient} $|\nabla_{\min} u|(x)$ is defined $\mu$-almost everywhere as:
+$$|\nabla_{\min} u|(x) := \inf\{g(x) : g \text{ is an upper gradient of } u\}$$
+\end{definition}
+
+\begin{theorem}[Existence and Uniqueness of Minimal Upper Gradient]
+\label{thm:minimal-ug}
+For each $u \in H^{1,2}(X)$, the minimal upper gradient is uniquely defined (up to $\mu$-null sets) and depends only on the metric measure structure $(X, d, \mu)$, not on any additional differential structure.
+\end{theorem}
+
+\begin{proof}
+This is a fundamental result in metric geometry \cite{shanmugalingam2000newtonian}. The key observation is that the upper gradient condition is a purely metric property: it involves only the metric $d$, the function $u$, and the measure $\mu$, without reference to charts or coordinates.
+
+Existence follows from measure-theoretic arguments on the space of curves. Uniqueness follows from a separation argument: if two candidates $g_1, g_2$ both minimize the seminorm, their infimum must also be minimal, yielding uniqueness.
+\end{proof}
+
+\begin{remark}[Intrinsic Geometric Invariant]
+The minimal upper gradient is an intrinsic invariant of the metric measure space. For smooth Riemannian manifolds, $|\nabla_{\min} u| = |\nabla u|$ (the usual gradient). On fractal spaces (e.g., Sierpinski gasket), it represents the natural notion of derivative adapted to the singular geometry.
+\end{remark}
+
+\subsection{The Sobolev Space $H^{1,2}(X)$}
+
+\begin{definition}[Sobolev Space on Metric Spaces]
+The Sobolev space $H^{1,2}(X)$ is the completion of Lipschitz functions under the norm:
+$$\norm{u}_{H^{1,2}}^2 := \norm{u}_{L^2}^2 + \int_X |\nabla_{\min} u|^2 \, d\mu$$
+\end{definition}
+
+\begin{theorem}[Completeness and Density]
+\label{thm:sobolev-completeness}
+$H^{1,2}(X)$ is a Hilbert space, and the space of smooth compactly-supported functions $C_c^\infty(X)$ is dense in $H^{1,2}(X)$.
+\end{theorem}
+
+\subsection{The Dirichlet Form}
+
+\begin{definition}[Dirichlet Form]
+Define the sesquilinear form $\cE: \Dom(\cE) \times \Dom(\cE) \to \bbC$ by:
+$$\cE[\psi, \phi] := \int_X \langle \nabla_{\min} \psi, \nabla_{\min} \phi \rangle \, d\mu + \int_X V'(|\psi|^2) \psi \cdot \overline{\phi} \, d\mu$$
+
+with domain $\Dom(\cE) = H^{1,2}(X; \bbC^n)$.
+\end{definition}
+
+\begin{theorem}[Dirichlet Form Properties]
+\label{thm:dirichlet-structure}
+The form $\cE$ satisfies:
+
+\begin{enumerate}
+\item \textbf{Symmetry}: $\cE[\psi, \phi] = \overline{\cE[\phi, \psi]}$
+
+\item \textbf{Coercivity}: $\cE[\psi, \psi] + \lambda_{\cE} \norm{\psi}_{L^2}^2 \geq C_{\cE} \norm{\psi}_{H^{1,2}}^2$
+
+\item \textbf{Closedness}: $\cE$ is closed in $L^2(X, \mu; \bbC^n)$
+
+\item \textbf{Strong Locality}: $\cE[u, v] = 0$ when $u, v$ have disjoint compact supports
+
+\item \textbf{Markov Property}: $\cE[(u \wedge 1) \vee 0] \leq \cE[u]$
+
+\end{enumerate}
+
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}
+\item \textbf{Symmetry} follows from the symmetry of inner products.
+
+\item \textbf{Coercivity} is inherited from Axiom II: the Hessian of $\Phi$ is positive-definite with constant $\lambda_0 > 0$.
+
+\item \textbf{Closedness} is standard for sesquilinear forms defined on Hilbert spaces via the representation theorem (Kato--Rellich).
+
+\item \textbf{Strong Locality} follows from the fact that the gradient term has strong locality: if $\nabla_{\min} u$ and $\nabla_{\min} v$ have disjoint supports, their $L^2$-inner product vanishes.
+
+\item \textbf{Markov Property} reflects the energy-decreasing property under truncation, a characteristic feature of Dirichlet forms on metric spaces.
+\end{enumerate}
+\end{proof}
+
+\subsection{Recovering the Operator from the Form}
+
+\begin{theorem}[Beurling--Deny Representation Theorem]
+\label{thm:beurling-deny}
+There exists a unique densely-defined, non-negative, self-adjoint operator:
+$$\Delta: \Dom(\Delta) \subset L^2(X, \mu; \bbC^n) \to L^2(X, \mu; \bbC^n)$$
+
+such that for all $\psi, \phi \in \Dom(\cE)$:
+$$\cE[\psi, \phi] = \innerprod{\sqrt{\Delta} \psi}{\sqrt{\Delta} \phi}_{L^2}$$
+
+and $\Dom(\Delta)$ is characterized by: $\psi \in \Dom(\Delta)$ if and only if $\psi \in \Dom(\cE)$ and there exists $\eta \in L^2(X)$ such that
+$$\cE[\psi, \phi] = \innerprod{\eta}{\phi}_{L^2} \quad \forall \phi \in \Dom(\cE).$$
+In this case, $\Delta \psi = \eta$.
+\end{theorem}
+
+\begin{proof}
+This is a fundamental result in the theory of regular Dirichlet forms \cite{fukushima1980dirichlet}. The regularity of $\cE$ follows from compactness of $X$ and density of Lipschitz functions (Theorem \ref{thm:sobolev-completeness}).
+
+The representation $\cE[\psi, \phi] = \innerprod{\sqrt{\Delta}\psi}{\sqrt{\Delta}\phi}$ comes from the bilinear form representation theorem.
+
+Self-adjointness follows from the symmetry and closedness of $\cE$.
+\end{proof}
+
+\begin{corollary}[Explicit Domain Characterization]
+For the Laplacian $\Delta$ arising from $\cE$, the operator domain is:
+$$\Dom(\Delta) = \left\{ \psi \in H^{1,2}(X) : \Delta \psi \in L^2(X) \right\} = H^{2,2}(X)$$
+
+where the second Sobolev space $H^{2,2}(X)$ is defined appropriately on metric measure spaces via iterated minimal gradients.
+\end{corollary}
+
+\subsection{Summary: From Axioms to Operators}
+
+The logical flow is:
+\begin{equation*}
+\text{Axiom II} \xrightarrow{\text{Hessian}} D^2\Phi \xrightarrow{\text{Inner product}} \cE[\cdot, \cdot] \xrightarrow{\text{Beurling--Deny}} \Delta
+\end{equation*}
+
+The Dirichlet form provides a bridge from the algebraic structure of $\Phi$ to the operator-theoretic framework needed for spectral analysis. All subsequent operator properties (self-adjointness, discrete spectrum, regularity of eigenfunctions) follow from this foundation.
