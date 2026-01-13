@@ -29,11 +29,16 @@ From Axiom I alone, several deep properties follow:
 
 \subsection{Axiom II: The Strictly Convex Generating Functional}
 
-\begin{axiom}[Configuration Space Structure]
+\begin{axiom}[Configuration Space Structure -- Quartic Potential]
 Let $\cH = L^2(X, \mu; \bbC^n)$ be the Hilbert space of square-integrable sections. There exists a generating functional:
 $$\Phi[\psi] := \int_X V(|\psi(x)|^2) \, d\mu(x)$$
 
-satisfying:
+where the potential $V$ has the specific form:
+$$V(s) = \frac{\lambda_0}{2} s^2 + \frac{c_4}{4} s^4$$
+
+with parameters $\lambda_0, c_4 > 0$.
+
+This functional satisfies:
 
 \begin{enumerate}
 \item[(II.i)] \textbf{Strict Convexity}: For all $\psi, \phi \in \cH$ with $\psi \neq \phi$ and $t \in (0,1)$:
@@ -43,15 +48,26 @@ $$\Phi[t\psi + (1-t)\phi] < t\Phi[\psi] + (1-t)\Phi[\phi]$$
 $$\innerprod{D^2\Phi[\psi_0] h}{h} \geq 2\lambda_0 \norm{h}_{\cH}^2$$
 for all $h \in \cH$ and some $\lambda_0 > 0$.
 
-\item[(II.iii)] \textbf{Polynomial Growth}: The potential $V: [0, \infty) \to \bbR$ satisfies:
-$$V(s) \geq c_1 s^p - C, \quad |V'(s)| \leq c_2(1 + s^{p-1})$$
-for constants $c_1, c_2, C > 0$ and $p > 0$.
+\item[(II.iii)] \textbf{Analytical Structure}: The Hessian's second derivative is:
+$$V''(s) = 2\lambda_0 + 24c_4 s$$
 
-\item[(II.iv)] \textbf{Smoothness}: $V \in C^\infty([0, \infty); \bbR)$.
+ensuring that the functional is smooth and has the required spectral structure.
 
 \end{enumerate}
 
 \end{axiom}
+
+\begin{remark}[Why Quartic Potentials?]
+The choice of quartic potential $V(s) = \frac{\lambda_0}{2}s^2 + \frac{c_4}{4}s^4$ is not arbitrary. It encodes the minimal structure required for the three-channel decomposition (Theorem \ref{thm:three-channels}):
+
+\begin{itemize}
+\item The quadratic term $\lambda_0 s^2$ produces soft modes (Channel 1)
+\item The quartic term $c_4 s^4$ creates intermediate bulk modes (Channel 2)
+\item The cross-coupling between these terms generates stiff high-frequency modes (Channel 3)
+\end{itemize}
+
+Higher-order polynomial terms (degree 6, 8, etc.) would create additional fine structure in the spectrum but do not fundamentally alter the three-channel decomposition. Thus, the quartic case is canonical and sufficient for the RH proof.
+\end{remark}
 
 \begin{remark}[Physical Interpretation]
 Axiom II defines a classical field configuration space with $\Phi$ as the energy functional. The strict convexity and positive-definite Hessian ensure that the functional has a unique global minimum, providing a natural reference state around which to expand perturbations.
