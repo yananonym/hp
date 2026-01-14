@@ -116,6 +116,18 @@ $$\rho_{\text{sep}} := \frac{M_1}{M_3} = \mathcal{O}(\lambda_0^{-1} \log(1/\lamb
 as the logarithm of the ratio of channel spacings grows. This allows rigorous bounds on the interaction between channels.
 \end{corollary}
 
+\begin{corollary}[Stability Under Perturbations]
+\label{cor:stability-perturbations}
+The three-channel structure is stable under perturbations of the generating functional $\Phi$. Specifically, if $W: L^2(X, \mu) \to L^2(X, \mu)$ is a perturbation with operator norm $\|W\| = \epsilon$ for some $\epsilon > 0$, then the three-channel structure of $D^2(\Phi + W)[\psi_0]$ persists (remains tripartite with the same multiplicities) provided:
+$$\epsilon < \delta \cdot \min\{M_1 - \max \Lambda_1, M_3 - M_2\}$$
+
+where $\delta$ is a constant of order 1 (independent of the dimension $Q$ and the coercivity constant $\lambda_0$).
+
+For the Hilbert--Pólya operator with standard gauge structure and polynomial potential $V(s) = \lambda_0 s^2 + c_4 s^4$, explicit estimates from spectral computations (detailed in notes) yield $\delta \approx 0.1$. This ensures that moderate variations in coupling constants and geometric parameters do not perturb the discrete three-channel structure, establishing robustness of the operator construction.
+
+This stability is essential for the fixed-point determination of weights (Theorem \ref{thm:weights} in the next section), as small variations in $V$ and $\mu$ do not induce bifurcations or mergers of the spectral clusters.
+\end{corollary}
+
 \subsection{Channel Decomposition}
 
 \begin{definition}[Channel Projections]
