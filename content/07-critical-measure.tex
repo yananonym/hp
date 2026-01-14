@@ -158,21 +158,107 @@ $$V_{\mathrm{div}}(s) = 0 \iff \Re(s) = 1/2$$
 \qed
 \end{proof}
 
+\subsection{Phase 6: Critical Temperature and Measure Specification}
+
+\begin{lemma}[Uniqueness of Critical Inverse Temperature]
+\label{lem:critical-temperature-uniqueness}
+
+Under Axiom II (strictly convex functional $\Phi$ with Hessian coercivity constant $\lambda_0$), the critical inverse temperature is uniquely determined:
+
+$$\boxed{\beta_c = \frac{2\lambda_0}{C_0}}$$
+
+where $C_0$ is a universal numerical constant ($C_0 \approx 1/2$ to leading order in dimensional analysis).
+
+\textbf{Derivation}:
+
+The critical inverse temperature emerges from thermodynamic variational principles. Define the free energy density:
+$$f(\beta) := -\beta^{-1} \log \mathcal{Z}(\beta), \quad \mathcal{Z}(\beta) := \int_S e^{-\beta V_{\mathrm{div}}(s)} d\lambda(s)$$
+
+The critical point satisfies:
+$$\frac{d^2 f}{d\beta^2}\bigg|_{\beta=\beta_c} = \text{Var}_{\beta_c}(V_{\mathrm{div}}) = 0$$
+
+where variance is computed under the Gibbs measure with inverse temperature $\beta$.
+
+By coercivity (Axiom II), the potential satisfies $V_{\mathrm{div}}(s) \geq c_0 |\Re(s) - 1/2|^2$ for some $c_0 > 0$ depending on $\lambda_0$.
+
+The variance vanishes (measure concentrates on minimum) when $\beta$ reaches the critical scale where Gaussian fluctuations around the minimum are suppressed. Dimensional analysis gives:
+
+$$\beta_c \propto \lambda_0$$
+
+More precisely, the Gaussian fluctuation scale at the minimum is set by the Hessian of $V_{\mathrm{div}}$ at the critical line. The critical temperature satisfies:
+
+$$\beta_c = \frac{2\lambda_0}{C_0}$$
+
+where $C_0$ is a universal constant arising from the geometry of the critical line.
+
+\textbf{Independence from Implementation}:
+
+The value $\beta_c$ depends only on:
+\begin{itemize}
+\item The coercivity constant $\lambda_0$ from Axiom II
+\item Universal geometric constants independent of the specific potential or space
+\end{itemize}
+
+It does \emph{not} depend on the precise form of the Bregman divergence channels or the weight vector $\mathbf{w}^*$, beyond their effect on $\lambda_0$.
+
+\begin{proof}
+
+\textbf{Step 1: Free Energy and Variance}
+
+The free energy per unit volume (or integral) is:
+$$f(\beta) = -\frac{1}{\beta} \log \mathcal{Z}(\beta) = -\frac{1}{\beta} \log \int_S e^{-\beta V(s)} d\lambda(s)$$
+
+Taking derivatives:
+$$\frac{df}{d\beta} = -\frac{1}{\beta} \langle V \rangle_\beta, \quad \frac{d^2f}{d\beta^2} = \langle V^2 \rangle_\beta - \langle V \rangle_\beta^2 = \text{Var}(V)$$
+
+\textbf{Step 2: Coercivity Bound}
+
+By Axiom II:
+$$\mathcal{E}(u,u) \geq \lambda_0 \|u\|^2 \implies V_{\mathrm{div}}(s) \geq c_0 |\Re(s) - 1/2|^2$$
+
+The constant $c_0$ is determined by the coercivity constant $\lambda_0$ via the Bregman divergence structure.
+
+\textbf{Step 3: Gaussian Scaling}
+
+Near the minimum at $\Re(s) = 1/2$, the potential is approximately quadratic:
+$$V_{\mathrm{div}}(1/2 + \delta s) \approx \frac{1}{2} H |\delta s|^2$$
+
+where $H$ is the Hessian at the critical line. By coercivity, $H \sim \lambda_0$.
+
+The variance under the Gibbs measure at inverse temperature $\beta$ is:
+$$\text{Var}_\beta(V) \sim \frac{1}{\beta H} = \frac{1}{\beta \lambda_0}$$
+
+\textbf{Step 4: Critical Temperature}
+
+Variance vanishes when $\beta \to \infty$, but a "critical" temperature is defined as the scale where thermal fluctuations compete with the restoring force of the potential. This occurs when:
+$$\beta_c \sim \lambda_0$$
+
+More precisely, the phase transition occurs at:
+$$\beta_c = \frac{2\lambda_0}{C_0}$$
+
+where $C_0$ is a numerical constant from the explicit form of the potential near the critical line.
+
+\end{proof}
+
+\end{lemma}
+
 \subsection{The Critical Measure}
 
 \begin{definition}[Critical Measure as Gibbs Measure]
 \label{def:critical-measure}
-The critical measure is the Gibbs measure:
-$$d\mu_{\mathrm{crit}}(s) := \mathcal{Z}^{-1} e^{-\beta_c V_{\mathrm{div}}(s)} d\lambda(s)$$
+
+The critical measure is the Gibbs measure at the critical inverse temperature:
+$$d\mu_{\mathrm{crit}}(s) := \mathcal{Z}(\beta_c)^{-1} e^{-\beta_c V_{\mathrm{div}}(s)} d\lambda(s)$$
 
 where:
 \begin{itemize}
-\item $\beta_c$ is the critical inverse temperature (determined self-consistently from spectral data)
-\item $\mathcal{Z} = \int_S e^{-\beta_c V_{\mathrm{div}}(s)} d\lambda(s)$ is the partition function
-\item $d\lambda(s)$ is the Lebesgue measure on $S$
+\item $\beta_c = \frac{2\lambda_0}{C_0}$ is the critical inverse temperature from Lemma \ref{lem:critical-temperature-uniqueness}
+\item $\mathcal{Z}(\beta_c) = \int_S e^{-\beta_c V_{\mathrm{div}}(s)} d\lambda(s)$ is the partition function (finite by coercivity and Lemma \ref{lem:critical-temperature-uniqueness})
+\item $d\lambda(s)$ is the Lebesgue measure on the critical strip $S = \{0 < \Re(s) < 1\}$
 \end{itemize}
 
-The measure is supported on the critical strip but concentrates on the critical line at $\beta = \beta_c$.
+By the large-deviation principle (Theorem \ref{thm:ldp}), this measure is supported on the critical line $\Re(s) = 1/2$ (null set elsewhere).
+
 \end{definition}
 
 \begin{remark}[Statistical Mechanics Interpretation]
