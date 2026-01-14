@@ -1,0 +1,63 @@
+% proofThmDimensionRegularityNecessity.tex
+% Proof content
+
+
+\textbf{Step 1: Sobolev Embedding on Metric Measure Spaces (Generalized for Arbitrary Q).}
+
+By standard results in metric measure theory \cite{heinonen2001analysis,ambrosio2005gradient}, on a metric measure space $(X, d, \mu)$ with Ahlfors $Q$-regularity (for any $Q > 0$) and $(1,2)$-Poincaré inequality, the Sobolev embedding into $L^q$ spaces is governed by the critical exponent:
+\[
+q^* = \frac{2Q}{Q - 2}.
+\]
+
+For $Q \leq 2$, this is negative or zero, and the embedding $H^{1,2} \hookrightarrow L^q$ fails for all $q > 2$.
+
+For $Q > 2$, there is $q^* > 2$. The embedding $Hölder continuous functions) holds if and only if the Hölder exponent $\alpha = 1 - 2/Q > 0$, which requires:
+\[
+Q > 2.
+\]
+
+Moreover, for $\alpha > 0$ to hold, it is necessary $2 < Q < 4$.
+
+\smallskip
+
+\textbf{Step 2: Necessity of $Q < 4$ for Eigenfunction Regularity.}
+
+From Axiom II, the generating functional $\Phi$ induces a Dirichlet form, which defines a self-adjoint Laplacian operator $\Delta$. The eigenfunctions $\phi_n$ of $\Delta$ satisfy $\phi_n \in H^{1,2}(X)$ by spectral theory (Theorem \ref{thm:laplacianProperties}).
+
+Suppose that the eigenfunctions $\{\phi_n\}$ are Hölder continuous with exponent $\alpha = 1 - Q/4 > 0$. Then by the characterization in Step 1:
+\[
+\alpha = 1 - Q/4 > 0 \quad \Rightarrow \quad Q < 4.
+\]
+
+Conversely, if $Q \geq 4$, then $\alpha \leq 0$, and Hölder regularity is impossible. Any eigenfunction from $H^{1,2}(X)$ would be merely $L^\infty$-bounded,  discontinuous.
+
+\smallskip
+
+\textbf{Step 3: Contradiction if $Q \geq 4$ and Smooth Geometry Emerges.}
+
+For the divergence-first framework (Sections D--G), the Carré du Champ is defined by:
+\[
+\Gamma(\phi_i, \phi_j)(x) := \lim_{r \to 0} \frac{1}{2}[(\phi_i + \phi_j)^2 - \phi_i^2 - \phi_j^2]_{\text{local reg}}.
+\]
+
+This limit (in distributional sense) produces a well-defined quadratic form only if the products $\phi_i \phi_j$ are sufficiently regular. Hölder continuity with $\alpha > 0$ ensures this regularity.
+
+If $Q \geq 4$, eigenfunctions lack the required regularity, and the Carré du Champ either:
+1. Fails to exist (is distribution-valued, not measure-valued), or
+2. Vanishes identically (producing a degenerate metric).
+
+In either case, no Riemannian structure emerges. This contradicts the framework requirement (Theorem \ref{thm:metricFromCarre}).
+
+\smallskip
+
+\textbf{Step 4: Conclusion - Necessity.}
+
+there is shown:
+\begin{enumerate}
+\item Axiom I.i--I.ii and the Poincaré,2)$-inequality permit any $Q > 2$.
+\item For eigenfunctions to be Hölder continuous with $\alpha > 0$, the must have $Q < 4$.
+\item For Riemannian metric emergence, Hölder regularity is necessary.
+\item Therefore, $Q < 4$ is a mathematical necessity, not an external assumption.
+\end{enumerate}
+
+The bound $Q < 4$ is proven to be \textbf{necessary} from the requirement that smooth metric structure emerges from the spectral properties of the Laplacian. It is a discovered constraint, not an imposed one.

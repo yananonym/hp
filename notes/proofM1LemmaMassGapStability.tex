@@ -1,0 +1,20 @@
+% proofLemMassGapStability.tex
+% Proof content
+
+By \cite{kato1995perturbation} perturbation theory (\cite{kato1995perturbation}, Theorem V.4.10), eigenvalue perturbations of self-adjoint operators satisfy:
+\begin{equation}
+|E_1(H_{\text{int}}) - E_1(-\Delta_\mu + \lambda_0)| \leq \|\delta V\|_\infty.
+\end{equation}
+
+Similarly for the ground state:
+\begin{equation}
+|E_0(H_{\text{int}}) - E_0(-\Delta_\mu + \lambda_0)| \leq \|\delta V\|_\infty.
+\end{equation}
+
+Thus the gap $m_{\text{gap}}(H_{\text{int}}) = E_1 - E_0$ for the interacting theory satisfies:
+\begin{align}
+m_{\text{gap}}(H_{\text{int}}) &= [E_1(H_{\text{int}}) - E_1(-\Delta_\mu + \lambda_0)] + m_{\text{gap}}(-\Delta_\mu + \lambda_0) - [E_0(H_{\text{int}}) - E_0(-\Delta_\mu + \lambda_0)] \\
+&\geq m_{\text{gap}}(-\Delta_\mu + \lambda_0) - 2\|\delta V\|_\infty \\
+&\geq \frac{1}{2} m_{\text{gap}}(-\Delta_\mu + \lambda_0)
+\end{align}
+under the assumed bound $\|\delta V\|_\infty \leq \frac{1}{2} m_{\text{gap}}(-\Delta_\mu + \lambda_0)$.

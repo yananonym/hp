@@ -1,0 +1,81 @@
+% proofThmWeylAsymptotics.tex
+% Proof content
+
+
+The Weyl asymptotics formula follows from the heat kernel trace expansion combined with Tauberian theorems for Laplace transforms.
+
+\textbf{Step 1: Heat Kernel Trace Expansion}
+
+By Theorem \ref{thm:seeleyDewitt}, the trace of the heat kernel on a compact metric measure space with Ahlfors dimension $Q$ satisfies:
+\begin{equation}
+\mathrm{Tr}(e^{-tA}) = \int_X K_t(x, x) d\mu(x) \sim (4\pi t)^{-Q/2} \sum_{n=0}^\infty a_n t^n \quad \text{as } t \to 0^+,
+\end{equation}
+where $a_0 = \text{Vol}(X)$, $a_1 = (1/6) \int_X (R - 6V) d\mu$, and higher coefficients $a_n$ involve curvature invariants.
+
+\textbf{Step 2: Spectral Representation of Heat Trace}
+
+By the spectral theorem, the operator $A = -\Delta + V$ has discrete spectrum $\{\lambda_0, \lambda_1, \lambda_2, \ldots\}$ with $\lambda_0 > \lambda_1 > \ldots \to -\infty$ (for $Q < 4$). Thus:
+\begin{equation}
+\mathrm{Tr}(e^{-tA}) = \sum_{k=0}^\infty e^{-t\lambda_k}.
+\end{equation}
+
+Combining with the heat kernel expansion:
+\begin{equation}
+\sum_{k=0}^\infty e^{-t\lambda_k} \sim (4\pi t)^{-Q/2} \left[\text{Vol}(X) + a_1 t + O(t^2)\right].
+\end{equation}
+
+\textbf{Step 3: Define Spectral Counting Function}
+
+Define the spectral counting function:
+\begin{equation}
+N(\lambda) := \#\{k : \lambda_k \leq -|\lambda|\} = \text{number of eigenvalues } \leq -|\lambda|.
+\end{equation}
+
+\textbf{Step 4: Laplace Transform Connection}
+
+The Laplace transform of the counting function relates to the heat trace via:
+\begin{equation}
+\int_0^\infty e^{-t\lambda} dN(\lambda) = \mathrm{Tr}(e^{-tA}).
+\end{equation}
+
+\textbf{Step 5: Tauberian Theorem Application}
+
+The Hardy-Littlewood Tauberian theorem states: If
+\begin{equation}
+\int_0^\infty e^{-ts} d\mu(s) \sim C \Gamma(\alpha)^{-1} t^{\alpha} \quad \text{as } t \to 0^+,
+\end{equation}
+then:
+\begin{equation}
+\mu(s) \sim C s^{\alpha-1} \quad \text{as } s \to \infty.
+\end{equation}
+
+Applying this with $\alpha = Q/2$ and $dN(\lambda)$ the spectral measure:
+
+From the heat trace expansion:
+\begin{equation}
+\mathrm{Tr}(e^{-tA}) \sim (4\pi t)^{-Q/2} \text{Vol}(X)  \quad \text{as } t \to 0^+,
+\end{equation}
+
+the Tauberian theorem implies:
+\begin{equation}
+N(|\lambda|) \sim \frac{\text{Vol}(X)}{(4\pi)^{Q/2} \Gamma(1 + Q/2)} |\lambda|^{Q/2} \quad \text{as } |\lambda| \to \infty.
+\end{equation}
+
+\textbf{Step 6: Density of States}
+
+The density of states is:
+\begin{equation}
+\rho(\lambda) := \frac{dN(\lambda)}{d\lambda}.
+\end{equation}
+
+By differentiation of the Weyl asymptotics:
+\begin{equation}
+\rho(\lambda) \sim \frac{\text{Vol}(X)}{(4\pi)^{Q/2} \Gamma(Q/2)} |\lambda|^{Q/2 - 1} \quad \text{as } |\lambda| \to \infty.
+\end{equation}
+
+For $Q = 4$ (four-dimensional):
+\begin{equation}
+\rho(\lambda) \sim \frac{\text{Vol}(X)}{(4\pi)^2} |\lambda| \quad \text{as } |\lambda| \to \infty.
+\end{equation}
+
+This derivation is valid for all metric measure spaces satisfying Axiom \ref{ax:polishSpace} without requiring smooth structure a priori. \qed

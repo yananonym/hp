@@ -1,0 +1,23 @@
+% proofLemCheegerSpectralGap.tex
+% Proof content
+
+By Cheeger's inequality on metric measure spaces \cite{cheeger1999differentiability,sturm2006geometry}, for any finite measure set $E \subseteq X$:
+\[
+h_E := \frac{\mu(\partial E \cap B_r(E))}{\min(\mu(E), \mu(X \setminus E))}
+\]
+satisfies the Cheeger constant $h(X) := \inf_E h_E$, and this directly controls the spectral gap via:
+\[
+\lambda_{\mathrm{gap}} \geq \frac{h(X)^2}{4}.
+\]
+
+For Ahlfors $Q$-regular spaces with Poincaré inequality, the Cheeger constant is related to the Poincaré constant by:
+\[
+h(X) \geq \frac{1}{C_P \mathrm{diam}(X)}.
+\]
+
+Therefore:
+\[
+\lambda_{\mathrm{gap}} \geq \frac{1}{4} \left(\frac{1}{C_P \mathrm{diam}(X)}\right)^2 = \frac{1}{4 C_P^2 \mathrm{diam}(X)^2}.
+\]
+
+The additive potential term $V''(|\psi_0|^2)$ only increases the spectral gap, maintaining the bound. \qedhere

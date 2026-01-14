@@ -1,0 +1,16 @@
+% proofLemFerniqueIntegrability.tex
+% Proof content
+
+By Fernique's theorem (Fernique 1970), any centered Gaussian measure $\nu$ on a separable Banach space $B$ satisfies exponential integrability: there exists $\gamma > 0$ depending only on the covariance structure such that $\int_B e^{\gamma\|x\|^2} d\nu(x) < \infty$.
+
+For $\nu_{\mathcal{E}}$ with covariance $C = (-A)^{-1}$, the critical constant is:
+\[
+\gamma = \frac{1}{2\|C\|_{\mathrm{op}}} = \frac{|\lambda_0|}{2},
+\]
+where $\lambda_0 < 0$ is the largest eigenvalue of $A$ (ground state energy). Since $|\lambda_0| > 0$ by spectral gap (Lemma \ref{lem:spectralGapComplete}), there is $\gamma > 0$.
+
+The polynomial-times-exponential integrability follows from:
+\[
+P(\|\psi\|) e^{-c\|\psi\|^{2\alpha}} \leq C_P e^{-c'\|\psi\|^2}
+\]
+for suitable $C_P, c' > 0$, combined with the Fernique bound.

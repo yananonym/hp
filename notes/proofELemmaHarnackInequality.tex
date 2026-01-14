@@ -1,0 +1,44 @@
+% proofLemHarnackInequality.tex
+% Proof content
+
+\textbf{Proof of Parabolic Harnack Inequality:}
+
+The verify the hypotheses for Grigor'yan-Sturm Harnack inequality on metric measure spaces \cite{grigoryan2009heat,sturm2006geometry}.
+
+\textbf{Required Hypotheses:}
+\begin{enumerate}
+\item[(H1)] $(X, d, \mu)$ is a locally compact, complete metric measure space.
+\item[(H2)] Volume doubling: $\mu(B_{2r}(x)) \leq C_D \mu(B_r(x))$ for all $x, r > 0$.
+\item[(H3)] Two-sided Gaussian heat kernel bounds.
+\end{enumerate}
+
+\textbf{Verification of (H1):} 
+By Axiom~\ref{ax:polishSpace}(a), $X$ is compact, hence locally compact and complete.
+
+\textbf{Verification of (H2):} 
+By Remark~\ref{rem:emergentRadon}(3) derived from Axiom~\ref{ax:polishSpace}(c), 
+Ahlfors $Q$-regularity implies:
+\[
+\mu(B(x,2r)) \leq C_A (2r)^Q = 2^Q C_A r^Q \leq 2^Q C_A^2 \mu(B(x,r)) =: C_D \mu(B(x,r))
+\]
+with doubling constant $C_D = 2^Q \cdot C_A^2$.
+
+\textbf{Verification of (H3):} 
+By Theorem~\ref{thm:heatKernelBounds}, the heat kernel for the self-adjoint 
+operator $A$ satisfies two-sided Gaussian bounds: for $t \in (0, T]$,
+\[
+\frac{C_1}{\mu(B_{\sqrt{t}}(x))} \exp\left(-\frac{d(x,y)^2}{c_1 t}\right) 
+\leq p_t(x,y) \leq \frac{C_2}{\mu(B_{\sqrt{t}}(x))} \exp\left(-\frac{d(x,y)^2}{c_2 t}\right)
+\]
+where $C_1, C_2, c_1, c_2$ are constants depending only on $Q, C_A, C_P, \lambda_0$.
+
+\textbf{Parabolic Harnack Inequality:}
+For any non-negative solution $u$ of the parabolic equation $\partial_t u = Au$ 
+on the parabolic cylinder $Q_R := B_R(x_0) \times (0, R^2]$:
+\[
+\sup_{B_{R/2}(x_0) \times \{R^2/4\}} u \leq C_H \inf_{B_{R/2}(x_0) \times \{3R^2/4\}} u
+\]
+where $C_H = C_H(Q, C_D, c_1, c_2)$ is a constant depending on dimension and heat kernel bounds.
+
+By Grigor'yan (2009, Theorem 5.4.7), all three hypotheses (H1)-(H3) being satisfied 
+guarantees the parabolic Harnack inequality holds. \qed

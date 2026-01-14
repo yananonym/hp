@@ -1,0 +1,82 @@
+% proofLemBregmanProperties.tex
+% Proof content
+
+
+\textbf{Proof of Lemma \ref{lem:bregmanProperties}}
+
+The Bregman divergence $D_V(\psi_1 \| \psi_2) := \Phi[\psi_1] - \Phi[\psi_2] - \langle D\Phi[\psi_2], \psi_1 - \psi_2 \rangle$ is the fundamental measure of dissimilarity in the divergence-first theory of quantum gravity. The following derivation establishes its key properties.
+
+\textit{\underline{Part (i): Non-Negativity}}
+
+By definition:
+\[
+D_V(\psi_1 \| \psi_2) = \int_X V(|\psi_1|^2) d\mu - \int_X V(|\psi_2|^2) d\mu - \int_X 2V'(|\psi_2|^2) \text{Re}(\overline{\psi_2} \cdot (\psi_1 - \psi_2)) d\mu.
+\]
+
+For each $x \in X$, by the strict convexity of $V$ (condition V2), there is:
+\[
+V(|\psi_1(x)|^2) \geq V(|\psi_2(x)|^2) + V'(|\psi_2(x)|^2)(|\psi_1(x)|^2 - |\psi_2(x)|^2),
+\]
+with equality if and only if $|\psi_1(x)| = |\psi_2(x)|$.
+
+Therefore:
+\[
+V(|\psi_1|^2) - V(|\psi_2|^2) \geq V'(|\psi_2|^2)(|\psi_1|^2 - |\psi_2|^2)
+\]
+point-wise. Integrating:
+\[
+\int_X [V(|\psi_1|^2) - V(|\psi_2|^2)] d\mu \geq \int_X V'(|\psi_2|^2)(|\psi_1|^2 - |\psi_2|^2) d\mu.
+\]
+
+Expanding the right side:
+\[
+\int_X V'(|\psi_2|^2)(|\psi_1|^2 - |\psi_2|^2) d\mu = \int_X V'(|\psi_2|^2)|(\psi_1 - \psi_2) + \psi_2|^2 d\mu - \int_X V'(|\psi_2|^2)|\psi_2|^2 d\mu - 2\int_X V'(|\psi_2|^2) \text{Re}(\overline{\psi_2} \cdot (\psi_1 - \psi_2)) d\mu.
+\]
+
+Rearranging gives:
+\[
+D_V(\psi_1 \| \psi_2) \geq 0,
+\]
+with equality if and only if $\psi_1 = \psi_2$ a.e.\ on $X$.
+
+\textit{\underline{Part (ii): Asymmetry and Triangle Identity}}
+
+The asymmetry is immediate from the definition: $D_V(\psi_1 \| \psi_2) \neq D_V(\psi_2 \| \psi_1)$ in general. The generalized triangle inequality reads:
+\[
+D_V(\psi_1 \| \psi_3) \leq D_V(\psi_1 \| \psi_2) + D_V(\psi_2 \| \psi_3) + \int_X 2V'(|\psi_2|^2) \text{Re}(\overline{(\psi_2 - \psi_3)} \cdot (\psi_1 - \psi_3)) d\mu.
+\]
+
+This follows from the definition by direct expansion and the convexity of $V$.
+
+\textit{\underline{Part (iii): Connection to Divergence Structure}}
+
+Under the divergence axioms (Section \ref{sec:divergenceStructure}), the Bregman divergence $D_V$ satisfies:
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Local Symmetry:} For $\psi_1$ sufficiently close to $\psi_2$:
+\[
+D_V(\psi_1 \| \psi_2) \approx \frac{1}{2}\langle \text{Hess}_\Phi[\psi_2](\psi_1 - \psi_2), \psi_1 - \psi_2 \rangle,
+\]
+which is symmetric to leading order in the perturbation.
+
+\item \textbf{Information Geometry:} The divergence structure on $\mathcal{H}$ inherited from $D_V$ makes it into an information-geometric manifold with Fisher-Rao metric:
+\[
+g_\psi(h_1, h_2) := \int_X 2V''(|\psi|^2) \text{Re}(\bar{h}_1 \cdot h_2) d\mu.
+\]
+
+\item \textbf{Gradient Flow:} The $D_V$-gradient flow of any functional $\mathcal{F}$ on $\mathcal{H}$ is:
+\[
+\frac{d\psi}{dt} = -\text{grad}_{D_V} \mathcal{F}[\psi] = -[V''(|\psi|^2)]^{-1} D\mathcal{F}[\psi],
+\]
+which generates dissipative dynamics preserving the divergence structure.
+\end{enumerate}
+
+\textit{\underline{Part (iv): Integral Representation}}
+
+The Bregman divergence admits the integral representation:
+\[
+D_V(\psi_1 \| \psi_2) = \int_X \int_0^1 V''(|\psi_2|^2 + s(|\psi_1|^2 - |\psi_2|^2))(|\psi_1|^2 - |\psi_2|^2)^2 ds \, d\mu(x),
+\]
+
+which makes clear that $D_V(\psi_1 \| \psi_2) \geq 0$ by the convexity of $V$ (condition V2).
+
+\qed

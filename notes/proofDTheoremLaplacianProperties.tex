@@ -1,0 +1,157 @@
+% proofThmLaplacianProperties.tex
+% Proof content
+
+
+\begin{lemma}[Coercivity of the Dirichlet Form]
+\label{lem:coercivityDirichletForm}
+
+The Dirichlet form $\mathcal{E}$ defined in Definition \ref{def:dirichletFormTwoStage} is coercive with explicit coercivity constant $\lambda_0 > 0$:
+
+\begin{equation}
+\mathcal{E}(\psi, \psi) + \lambda_0 \|\psi\|_{L^2}^2 \geq c_E \|\psi\|_{H^{1,2}}^2
+\end{equation}
+
+where $c_E > 0$ depends only on the Poincaré constant $C_P$ of the measure space $X$ and the coefficients in Axiom II.
+
+\begin{proof}
+
+By Theorem \ref{thm:quadraticFormProperties}, the quadratic form $\mathcal{Q}(\psi) = \int_X |\nabla \psi|_{\min}^2 d\mu$ satisfies:
+
+\begin{equation}
+\mathcal{Q}(\psi) \geq \frac{1}{C_P^2} \|\psi - \bar{\psi}\|_{L^2}^2
+\end{equation}
+
+where $C_P$ is the Poincaré constant and $\bar{\psi} := \frac{1}{\mu(X)} \int_X \psi d\mu$ (provided $\mu(X) < \infty$ or the measure has controlled growth). By Axiom I, the polynomial growth of $\mu$ ensures that on compact exhaustions or with appropriate boundary normalization:
+
+\begin{equation}
+\|\psi - \bar{\psi}\|_{L^2}^2 \geq \frac{1}{2}\|\psi\|_{L^2}^2 - C_0 |\bar{\psi}|^2
+\end{equation}
+
+for suitable functions. More precisely, by Theorem \ref{thm:perturbationStability}, functions in $\mathcal{D}(\mathcal{E}) = H^{1,2}(X)$ with $\|D\Phi[\psi]\| < \infty$ (bounded functional derivative) satisfy:
+
+\begin{equation}
+\mathcal{Q}(\psi) \geq \frac{c_1}{C_P^2} \|\psi\|_{H^{1,2}}^2 - c_2 \|\Phi\|_{\infty}^2
+\end{equation}
+
+where $c_1, c_2 > 0$ depend on the axiom constants. Setting $\lambda_0 := c_2$, there is:
+
+\begin{equation}
+\mathcal{E}(\psi, \psi) + \lambda_0 \|\psi\|_{L^2}^2 \geq \frac{c_1}{C_P^2} \|\psi\|_{H^{1,2}}^2.
+\end{equation}
+
+Thus $c_E := \frac{c_1}{C_P^2} > 0$ is the coercivity constant.
+
+\end{proof}
+
+\end{lemma}
+
+\begin{lemma}[Boundedness of the Dirichlet Form]
+\label{lem:boundednessDirichletForm}
+
+The Dirichlet form $\mathcal{E}$ is bounded with explicit constant $\Lambda_0 < \infty$:
+
+\begin{equation}
+|\mathcal{E}(\psi, \phi)| \leq \Lambda_0 \|\psi\|_{H^{1,2}} \|\phi\|_{H^{1,2}}
+\end{equation}
+
+for all $\psi, \phi \in \mathcal{D}(\mathcal{E}) = H^{1,2}(X)$.
+
+\begin{proof}
+
+By Cauchy-Schwarz inequality applied to the quadratic form:
+
+\begin{equation}
+|\mathcal{E}(\psi, \phi)| = \left| \int_X \nabla \psi \cdot \nabla \phi \, d\mu \right| \leq \left(\int_X |\nabla \psi|^2 d\mu\right)^{1/2} \left(\int_X |\nabla \phi|^2 d\mu\right)^{1/2}.
+\end{equation}
+
+Now, by the definition of the $H^{1,2}$ norm (Theorem \ref{thm:eigenfunctionRegularity}):
+
+\begin{equation}
+\|\psi\|_{H^{1,2}}^2 := \|\psi\|_{L^2}^2 + \mathcal{Q}(\psi)
+\end{equation}
+
+there is $\mathcal{Q}(\psi) \leq \|\psi\|_{H^{1,2}}^2$ and $\mathcal{Q}(\phi) \leq \|\phi\|_{H^{1,2}}^2$. Therefore:
+
+\begin{equation}
+|\mathcal{E}(\psi, \phi)| \leq \|\psi\|_{H^{1,2}} \|\phi\|_{H^{1,2}}.
+\end{equation}
+
+Setting $\Lambda_0 := 1$, the form is bounded.
+
+\end{proof}
+
+\end{lemma}
+
+\begin{theorem}[Self-Adjoint Laplacian from Coercive Dirichlet Form]
+\label{thm:laplacianPropertiesComplete}
+
+The coercive Dirichlet form $\mathcal{E}$ (Definition \ref{def:dirichletFormTwoStage}), satisfying:
+\begin{enumerate}
+\item Coercivity: $\mathcal{E}(\psi, \psi) + \lambda_0 \|\psi\|_{L^2}^2 \geq c_E \|\psi\|_{H^{1,2}}^2$ (Lemma \ref{lem:coercivityDirichletForm})
+\item Boundedness: $|\mathcal{E}(\psi, \phi)| \leq \Lambda_0 \|\psi\|_{H^{1,2}} \|\phi\|_{H^{1,2}}$ (Lemma \ref{lem:boundednessDirichletForm})
+\item Domain density: $\mathcal{D}(\mathcal{E}) = H^{1,2}(X)$ is dense in $L^2(X, \mu; \mathbb{C}^n)$ (Theorem \ref{lem:domainDensity})
+\end{enumerate}
+
+induces a unique self-adjoint operator $A: \mathrm{Dom}(A) \subseteq L^2(X, \mu; \mathbb{C}^n) \to L^2(X, \mu; \mathbb{C}^n)$ via the Lax-Milgram theorem:
+
+\begin{equation}
+\langle A\psi, \phi \rangle_{L^2} = \mathcal{E}(\psi, \phi) \quad \text{for all } \psi \in \mathrm{Dom}(A), \, \phi \in \mathcal{D}(\mathcal{E}).
+\end{equation}
+
+Moreover:
+\begin{enumerate}
+\item \textbf{Spectral properties:} The operator $A$ has discrete spectrum $0 = \lambda_0 < \lambda_1 < \lambda_2 < \cdots$ with corresponding orthonormal eigenfunctions $\{e_0, e_1, e_2, \ldots\}$.
+
+\item \textbf{Sobolev regularity:} All eigenfunctions satisfy $e_k \in Hölder exponent $\alpha = 1 - Q/4 > 0$ (Theorem \ref{thm:eigenfunctionRegularity}).
+
+\item \textbf{Spectral gap:} The gap between ground state and first excited state is:
+\begin{equation}
+\lambda_1 - \lambda_0 = \lambda_1 > 0.
+\end{equation}
+
+\item \textbf{Weyl asymptotics:} The eigenvalue counting function satisfies:
+\begin{equation}
+N(\lambda) := \#\{k : \lambda_k \leq \lambda\} \sim C_W \lambda^{Q/2} \quad \text{as } \lambda \to \infty
+\end{equation}
+where $C_W > 0$ depends only on the measure $\mu$ and its Ahlfors regularity exponent $Q$.
+\end{enumerate}
+
+\begin{proof}
+
+\textbf{Step 1: Application of Lax-Milgram Theorem}
+
+The Lax-Milgram theorem (standard in functional analysis; see Lax-Milgram 1954, \cite{kato1995perturbation}) states: if $\mathcal{E}$ is a bounded, coercive sesquilinear form on a Hilbert space $H$ with domain $\mathcal{D}(\mathcal{E})$ dense in $H$, then there exists a unique self-adjoint operator $A$ such that:
+
+\begin{equation}
+\mathcal{E}(\psi, \phi) = \langle (A + \lambda_0 I) \psi, \phi \rangle_H
+\end{equation}
+
+for all $\psi \in \mathrm{Dom}(A)$, $\phi \in \mathcal{D}(\mathcal{E})$.
+
+In the case, $H = L^2(X, \mu; \mathbb{C}^n)$, and by Lemmas \ref{lem:coercivityDirichletForm} and \ref{lem:boundednessDirichletForm}, the form $\mathcal{E}$ is coercive and bounded. By Theorem \ref{lem:domainDensity}, the domain $\mathcal{D}(\mathcal{E}) = H^{1,2}(X)$ is dense in $L^2$. Thus, Lax-Milgram applies, yielding a self-adjoint operator $A$.
+
+\textbf{Step 2: Spectrum is Discrete}
+
+By the compactness hypothesis (Axiom II, part (ii)-the resolvent of $A$ is compact on appropriate subsets), the spectrum of $A$ is discrete. Combined with the spectral theorem for self-adjoint operators, this yields a complete orthonormal basis of $L^2(X, \mu)$ consisting of eigenfunctions $\{e_k\}_{k=0}^{\infty}$ with eigenvalues $0 = \lambda_0 < \lambda_1 < \lambda_2 < \cdots \to \infty$.
+
+\textbf{Step 3: Regularity of Eigenfunctions}
+
+Each eigenfunction $e_k$ satisfies the spectral equation $A e_k = \lambda_k e_k$, which by elliptic regularity theory (Theorem \ref{thm:eigenfunctionRegularity}) implies $e_k \in C^{0,\alpha}(X)$ with $\alpha = 1 - Q/4 > 0$ (which requires $Q < 4$-guaranteed by dimensional selection in Section L).
+
+\textbf{Step 4: Spectral Gap}
+
+Since $\lambda_0 = 0$ corresponds to constant functions (ground state of the divergence-first formulation) and $\lambda_1 > 0$ is the first eigenvalue of the non-constant part of the spectrum (Theorem \ref{thm:spectralEmbedding}), the gap $\lambda_1 - \lambda_0 = \lambda_1 > 0$ is strictly positive and provides the mass scale of the theory.
+
+\textbf{Step 5: Weyl Asymptotics}
+
+By the Weyl law for metric measure spaces (Theorem \ref{thm:WeylAsymptotics}), the eigenvalue counting function satisfies:
+
+\begin{equation}
+N(\lambda) \sim C_W \lambda^{Q/2} \quad \text{as } \lambda \to \infty.
+\end{equation}
+
+The constant $C_W$ depends on the Ahlfors dimension $Q$ and the measure of $X$.
+
+\end{proof}
+
+\end{theorem}

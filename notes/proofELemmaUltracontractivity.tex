@@ -1,0 +1,51 @@
+% proofLemUltracontractivity.tex
+% Proof content
+
+\noindent\textbf{Definition of Ultracontractivity.}
+
+Ultracontractivity is the property that the heat semigroup $P_t = e^{t\Delta}$ satisfies a bounded operator norm from $L^p$ to $L^q$ for appropriate $p < q$. Specifically, the seek:
+\[
+\|P_t f\|_{L^\infty} \leq C e^{-\alpha t} \|f\|_{L^1}
+\]
+for all $f \in L^1(X, \mu)$, all $t > 0$, and some constants $C, \alpha > 0$.
+
+\noindent\textbf{Proof via Heat Kernel Bounds.}
+
+By the heat kernel representation:
+\[
+P_t f(x) = \int_X p_t(x, y) f(y) d\mu(y),
+\]
+where $p_t(x,y)$ is the heat kernel. Taking the supremum in $x$:
+\[
+\|P_t f\|_{L^\infty(X)} = \sup_{x \in X} \left|\int_X p_t(x,y) f(y) d\mu(y)\right| \leq \int_X |p_t(x,y)| |f(y)| d\mu(y).
+\]
+
+By HÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¶lder's inequality (or direct $L^\infty$ bound on the kernel):
+\[
+\|P_t f\|_{L^\infty} \leq \left(\sup_{x,y} |p_t(x,y)|\right) \|f\|_{L^1} = \|p_t\|_{L^\infty \otimes L^\infty} \|f\|_{L^1}.
+\]
+
+By Theorem \ref{thm:heatKernelBounds} (part i), the heat kernel satisfies the Gaussian bound:
+\[
+p_t(x,y) \leq C t^{-Q/2} \exp\left(-\lambda_0 t - \frac{d_X(x,y)^2}{ct}\right) \leq C t^{-Q/2} e^{-\lambda_0 t},
+\]
+where $Q$ is the Ahlfors dimension, $d_X$ is the distance, $\lambda_0 \leq 0$ is the bottom of the spectrum (Theorem \ref{thm:spectralEmbedding}), and $c > 0$ is a constant depending on the metric measure space.
+
+Thus:
+\[
+\|p_t\|_{L^\infty} \leq C t^{-Q/2} e^{-\lambda_0 t}.
+\]
+
+\noindent\textbf{Ultracontractivity Estimate.}
+
+Combining these:
+\[
+\|P_t f\|_{L^\infty} \leq C t^{-Q/2} e^{-\lambda_0 t} \|f\|_{L^1}.
+\]
+
+By Proposition \ref{thm:spectralGapCompleteness}, the spectral gap ensures $\lambda_1 > \lambda_0$, where $\lambda_1$ is the first positive eigenvalue. Define $\alpha := \lambda_1 - \lambda_0 > 0$. Then:
+\[
+\|P_t f\|_{L^\infty} \leq C t^{-Q/2} e^{-\lambda_1 t + \alpha t} \|f\|_{L^1} = C' e^{\alpha t} t^{-Q/2} e^{-\lambda_1 t} \|f\|_{L^1}.
+\]
+
+For $t$ bounded away from zero, $t^{-Q/2} e^{\alpha t}$ remains bounded. Thus for small $t$, ultracontractivity holds with rate controlled by the spectral gap. in the divergence-first framework with $Q < 4$ (Theorem \ref{thm:dimensionRegularityNecessity}), this gives explicit ultracontractivity bounds that are crucial for quantum path integral construction.

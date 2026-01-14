@@ -1,0 +1,75 @@
+% proofLemPolishConsequences.tex
+% Proof content
+
+
+\textbf{Proof of Lemma \ref{lem:polishConsequences}}
+
+Under Axiom \ref{ax:polishSpace}, the Polish space $X$ equipped with doubling measure and Poincaré inequality supports a rich geometric structure. The following derivation establishes key analytical consequences.
+
+\textit{\underline{Part (1): Ahlfors Regularity}}
+
+By Axiom 1(b), $\mu$ is Ahlfors $Q$-regular with constant $C_A$:
+\[
+c^{-1} r^Q \leq \mu(B_r(x)) \leq C_A r^Q \quad \text{for all } x \in X, \, 0 < r \leq \text{diam}(X).
+\]
+
+This immediately implies: $\mu(X) \sim \text{diam}(X)^Q$ and the measure has no atoms (is non-atomic). The doubling property (Axiom 1(a)) follows directly from Ahlfors regularity by taking $r \to 2r$.
+
+\textit{\underline{Part (2): Compactness of $H^{1,2} \hookrightarrow L^2$ for $Q < 4$}}
+
+This is the deepest result. By Axiom 1(c), $(X, d, \mu)$ supports a $(1,2)$-Poincaré inequality:
+\[
+\text{osc}_r \psi \leq C_P r \cdot \|\nabla \psi\|_{L^2(B_{2r})} \quad \text{for Lipschitz } \psi.
+\]
+
+By the theory of metric measure spaces with doubling measures \cite{shanmugalingam2000newtonian,heinonen2001analysis}, the Sobolev space $H^{1,2}(X)$ is well-defined as the completion of Lipschitz functions under the norm $\|\psi\|_{H^{1,2}} := \|\psi\|_{L^2} + \|\nabla \psi\|_{L^2}$.
+
+The key compactness criterion is: \textbf{For metric measure spaces with Ahlfors $Q$-regular measure and $(1,2)$-Poincaré inequality, the embedding $H^{1,2} \hookrightarrow L^2$ is compact if and only if $Q < 4$} \cite{ambrosio2005gradient,sturm2006geometry}.
+
+The reason is that the effective dimension of the Sobolev-Poincaré theory on $(X, d, \mu)$ equals the Hausdorff dimension $Q$ when the measure is Ahlfors regular. The critical dimension for $(1,2)$-Sobolev embeddings is $Q = 4$ (analogous to $\mathbb{R}^4$ in Euclidean space). For $Q < 4$:
+- If $Q < 4$: $H^{1,2} \hookrightarrow L^2$ is compact (\cite{biroli2000embedding} type).
+- If $Q \geq 4$: The embedding is merely continuous but not compact.
+
+\textit{\underline{Part (3): Sobolev Embedding $H^{1,2} \hookrightarrow L^p$ for all $p < \frac{2Q}{Q-2}$}}
+
+By the fractional Sobolev embedding theorem for metric measure spaces \cite{biroli2000embedding,hajlasz2000sobolev}:
+
+For $(X, d, \mu)$ with Ahlfors $Q$-regularity and $(1,2)$-Poincaré inequality, there is:
+\[
+H^{1,2}(X) \hookrightarrow L^p(X, \mu) \quad \text{for all } p < \frac{2Q}{Q-2}.
+\]
+
+Proof sketch: The Poincaré inequality implies
+\[
+\|\psi - \psi_r\|_{L^2(B_r)} \leq C_P r \|\nabla \psi\|_{L^2(B_{2r})},
+\]
+where $\psi_r$ is the average of $\psi$ over $B_r$. Applying the maximal function inequality and covering arguments, with the Ahlfors regularity to control measure growth, the obtain for any $\epsilon > 0$:
+\[
+\|\psi\|_{L^{2+\epsilon}} \leq C(\epsilon, Q) \left(\|\psi\|_{L^2} + \|\nabla \psi\|_{L^2}\right).
+\]
+
+Iterating this ``bootstrap'' argument and optimizing the exponent yields the claimed range $p < \frac{2Q}{Q-2}$.
+
+For $Q = 3$ (space dimension), this gives $p < 6$. For $Q = 2$, the result is $p < 4$, etc.
+
+\textit{\underline{Part (4): Holder Continuity of Eigenfunctions}}
+
+By regularity theory for elliptic operators on metric measure spaces \cite{sturm2006geometry}, eigenfunctions of the Laplacian $-A$ on $(X, d, \mu)$ satisfy: if $A\psi = \lambda \psi$, then $\psi \in C^{0,\alpha}(X)$ for some $\alpha > 0$ depending on $Q$.
+
+Proof: The heat kernel $p_t(x, y)$ of $e^{tA}$ has Gaussian bounds on $(X, d, \mu)$ (Theorem \ref{thm:heatKernelBounds}). For any eigenfunction $\psi$ with eigenvalue $\lambda$:
+\[
+\psi(x) = \int_X p_t(x, y) \psi(y) d\mu(y)
+\]
+for all $t > 0$. The Gaussian bounds on $p_t$ and the Ahlfors regularity imply Holder exponent $\alpha$ can be taken $\alpha = 1 - \frac{2}{Q}$ for $Q > 2$.
+
+\textit{\underline{Part (5): Gaussian Heat Kernel Bounds}}
+
+The heat kernel $p_t(x, y)$ of the self-adjoint operator $-A$ satisfies:
+\[
+p_t(x, y) \leq \frac{C}{\mu(B_{\sqrt{t}}(x))} \exp\left(-\frac{d(x, y)^2}{ct}\right),
+\]
+with constants $C, c$ depending only on $C_A, C_P, Q$.
+
+This is a consequence of the parabolic Harnack inequality on metric measure spaces \cite{sturm2006geometry}, which applies to any space satisfying Axiom 1.
+
+\qed

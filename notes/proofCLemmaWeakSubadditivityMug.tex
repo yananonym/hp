@@ -1,0 +1,23 @@
+% proofLemWeakSubadditivityMug.tex
+% Proof content
+
+Let $g_u, g_v$ be upper gradients for $u, v$ respectively. For any rectifiable curve $\gamma: [0,L] \to X$ parameterized by arc length:
+\begin{equation}
+|(u+v)(\gamma(L)) - (u+v)(\gamma(0))| \leq |u(\gamma(L)) - u(\gamma(0))| + |v(\gamma(L)) - v(\gamma(0))|
+\end{equation}
+by the triangle inequality. Integrating along the curve:
+\begin{equation}
+|u(\gamma(L)) - u(\gamma(0))| \leq \int_0^L g_u(\gamma(t)) \, dt, \quad |v(\gamma(L)) - v(\gamma(0))| \leq \int_0^L g_v(\gamma(t)) \, dt.
+\end{equation}
+
+Therefore:
+\begin{equation}
+|(u+v)(\gamma(L)) - (u+v)(\gamma(0))| \leq \int_0^L [g_u(\gamma(t)) + g_v(\gamma(t))] \, dt.
+\end{equation}
+
+This shows that $g_u + g_v$ is an upper gradient for $u + v$. Taking the infimum over all upper gradient pairs:
+\begin{equation}
+|\nabla_{\min}(u+v)| \leq \inf\{g_u + g_v : g_u, g_v \text{ are upper gradients for } u, v\}.
+\end{equation}
+
+By definition of minimal upper gradient, this infimum is dominated by $|\nabla_{\min} u| + |\nabla_{\min} v|$, completing the proof.

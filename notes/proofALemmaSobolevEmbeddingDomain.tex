@@ -1,0 +1,43 @@
+% proofLemSobolevEmbeddingDomain.tex
+% Proof of Sobolev Embedding Lemma: Domain Completeness
+
+By Sobolev embedding on metric measure spaces with Ahlfors regularity (Ambrosio et al. 2004, Theorem 4.13), the following cases hold:
+
+\textit{Case (i): $p \leq 1$.}
+
+When $p \leq 1$, for all $\psi \in L^2(X, \mu)$:
+\begin{equation}
+\int_X |\psi(x)|^{2p} d\mu(x) \leq \left(\int_X |\psi(x)|^2 d\mu(x)\right)^p \leq \infty.
+\end{equation}
+Therefore, $L^2(X, \mu) \subset L^{2p}(X, \mu)$ automatically, and $\text{Dom}(\Phi) = L^2(X, \mu; \mathbb{C}^n)$ is complete by the completeness of $L^2$.
+
+\textit{Case (ii): $p > 1$ and $2p > Q$.}
+
+By the Sobolev embedding theorem on Ahlfors-regular metric measure spaces, if $2p > Q$, then:
+\begin{equation}
+L^{2p}(X, \mu) \subset L^2(X, \mu)
+\end{equation}
+with continuous embedding (in the sense that there exists $C_{\text{emb}} > 0$ such that $\|u\|_{L^2} \leq C_{\text{emb}} \|u\|_{L^{2p}}$ for all $u \in L^{2p}(X, \mu)$).
+
+Therefore, $L^2(X, \mu) \cap L^{2p}(X, \mu) = L^{2p}(X, \mu)$, which is complete. Hence, $\text{Dom}(\Phi) = L^2(X, \mu; \mathbb{C}^n)$ is complete.
+
+\textit{Case (iii): $p > 1$ and $2p \leq Q$.}
+
+When $2p \leq Q$, the intersection $L^2(X, \mu) \cap L^{2p}(X, \mu)$ may not be complete as a normed vector space under the $L^2$ norm alone. However, the closure of $L^2 \cap L^{2p}$ in the $L^2$ topology is:
+
+\begin{equation}
+\overline{L^2 \cap L^{2p}}^{L^2} = L^2(X, \mu),
+\end{equation}
+
+which is complete. This follows from the density argument: for any $u \in L^2(X, \mu)$, define the truncated sequence:
+\begin{equation}
+u_N := u \cdot \mathbf{1}_{|u| \leq N}.
+\end{equation}
+
+Then $u_N \in L^2 \cap L^{2p}$ (by boundedness and Holder's inequality), and $u_N \to u$ in $L^2$ as $N \to \infty$ (by the dominated convergence theorem applied to $|u_N - u|^2 \leq |u|^2 \in L^1$).
+
+Therefore, $L^2 \cap L^{2p}$ is dense in $L^2(X, \mu)$, and its completion equals $L^2(X, \mu)$.
+
+\textbf{Conclusion for all cases:}
+
+In all three cases, $\text{Dom}(\Phi)$ is (or completes to) the Hilbert space $L^2(X, \mu; \mathbb{C}^n)$, which is suitable for Dirichlet form theory and variational calculus.

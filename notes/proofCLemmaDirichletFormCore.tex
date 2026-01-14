@@ -1,0 +1,38 @@
+% proofLemDirichletFormCore.tex
+% Proof content
+
+The verify that $\mathcal{C} := \mathrm{Dom}(D\Phi) \cap H^{1,2}(X) \otimes \mathbb{C}^n$ is a core for $(\mathcal{E}, \mathcal{D}(\mathcal{E}))$.
+
+\textit{Step 1: $\mathcal{C}$ is dense in $\mathcal{D}(\mathcal{E})$ with graph norm.}
+
+The graph norm on $\mathcal{D}(\mathcal{E})$ is:
+\[
+\|\psi\|_{\mathcal{E}}^2 := \|\psi\|_{L^2}^2 + \mathcal{E}(\psi,\psi).
+\]
+
+For any $\psi \in \mathcal{D}(\mathcal{E}) = H^{1,2}(X) \otimes \mathbb{C}^n$, construct approximants via mollification: define $\psi_\epsilon := J_\epsilon \psi$ where $J_\epsilon = (I - \epsilon A)^{-1}$ is the resolvent of $A$ at $\lambda = -1/\epsilon$.
+
+By resolvent properties (Theorem \ref{thm:laplacianProperties}):
+\begin{enumerate}[label=(\roman*)]
+\item $J_\epsilon: L^2 \to \mathrm{Dom}(A) \subset H^{1,2}(X)$ is bounded.
+\item $J_\epsilon \psi \to \psi$ in $L^2$ as $\epsilon \to 0$.
+\item $\mathcal{E}(J_\epsilon \psi - \psi, J_\epsilon \psi - \psi) \to 0$ as $\epsilon \to 0$.
+\end{enumerate}
+
+\textit{Step 2: $J_\epsilon \psi \in \mathcal{C}$ for $\epsilon > 0$.}
+
+Since $J_\epsilon \psi \in \mathrm{Dom}(A)$, by elliptic regularity (Lemma \ref{thm:eigenfunctionRegularity}) and ultracontractivity (Grigor'yan 1999):
+\[
+\|J_\epsilon \psi\|_{L^\infty} \leq C_\epsilon \|\psi\|_{L^2}.
+\]
+
+For $L^\infty$ functions, the polynomial growth condition (V3) ensures:
+\[
+\|V'(|J_\epsilon\psi|^2) J_\epsilon\psi\|_{L^2}^2 \leq C(1 + \|J_\epsilon\psi\|_{L^\infty}^{2+\epsilon}) < \infty.
+\]
+
+Thus $J_\epsilon \psi \in \mathrm{Dom}(D\Phi)$, proving $J_\epsilon \psi \in \mathcal{C}$.
+
+\textit{Step 3: Conclusion.}
+
+Since $\{J_\epsilon \psi\}_{\epsilon > 0} \subset \mathcal{C}$ and $J_\epsilon \psi \to \psi$ in graph norm, $\mathcal{C}$ is dense in $\mathcal{D}(\mathcal{E})$. By definition, a dense subspace on which the form is closable is a core. Closability was established in Theorem \ref{thm:dirichletCoercivity}(3).

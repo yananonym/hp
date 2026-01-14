@@ -1,0 +1,43 @@
+% proofLemUniformMetricNondegeneracy.tex
+% Proof content
+
+The following derivation establishes linear independence of eigenfunction gradients and derive the uniform lower bound.
+
+\textit{Step 1: Linear Independence of $\{\nabla_{\min} e_k\}_{k=1}^N$.}
+
+Suppose for contradiction that at some point $x_0 \in X$, the gradients $\{\nabla_{\min} e_k(x_0)\}_{k=1}^{N-1}$ are linearly dependent. Then there exist constants $\{c_k\}$ not all zero with:
+\[
+\sum_{k=1}^{N-1} c_k \nabla_{\min} e_k(x_0) = 0.
+\]
+
+Define $f := \sum_{k=1}^{N-1} c_k e_k$. Then $\nabla_{\min} f(x_0) = 0$, but $f$ is not constant (since $e_k \perp e_0 = 1$ for $k \geq 1$).
+
+By the Cheeger differentiable structure (Lemma \ref{lem:cheegerStructure}), the minimal upper gradient equals the norm of the Cheeger differential. For a non-constant $f \in H^{1,2}(X)$, the set $\{x : |\nabla_{\min} f|(x) = 0\}$ has measure zero by the unique continuation property for eigenfunctions of elliptic operators on metric measure spaces (Garofalo-Lin 1986, extended by Cheeger 1999).
+
+Thus linear dependence can occur only on a $\mu$-null set.
+
+\textit{Step 2: Gram Determinant Lower Bound.}
+
+The metric tensor $g_{\mu\nu}(x) = \nabla_{\min} e_\mu(x) \cdot \nabla_{\min} e_\nu(x)$ is the Gram matrix of the vectors $\{v_k := \nabla_{\min} e_k(x)\}_{k=1}^{N-1}$.
+
+For linearly independent vectors, the Gram determinant satisfies:
+\[
+\det(g_{\mu\nu}(x)) = \mathrm{Vol}^2(\mathrm{span}\{v_1, \ldots, v_{N-1}\}) > 0.
+\]
+
+By Hölder continuity of eigenfunctions (Theorem \ref{thm:eigenfunctionRegularity}) and their gradients, the map $x \mapsto \det(g_{\mu\nu}(x))$ is continuous on the compact space $X$. Since it is strictly positive $\mu$-a.e.\ and continuous, it achieves a positive minimum:
+\[
+\det(g_{\mu\nu}(x)) \geq c_{\det} > 0 \quad \forall x \in X.
+\]
+
+\textit{Step 3: Minimum Eigenvalue Bound.}
+
+For a positive definite $n \times n$ matrix $G$, the minimum eigenvalue satisfies:
+\[
+\lambda_{\min}(G) \geq \frac{\det(G)}{\|G\|_{\mathrm{op}}^{n-1}}.
+\]
+
+By Hölder continuity, $\|g_{\mu\nu}\|_{\mathrm{op}} \leq C_g$ uniformly. Therefore:
+\[
+\lambda_{\min}(g_{\mu\nu}(x)) \geq \frac{c_{\det}}{C_g^{Q-2}} =: c_0 > 0. \qedhere
+\]

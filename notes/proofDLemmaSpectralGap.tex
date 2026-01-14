@@ -1,0 +1,43 @@
+% proofLemSpectralGap.tex
+% Proof content
+
+By the Rayleigh-Ritz variational principle, the first excited state eigenvalue $\lambda_1$ satisfies:
+\begin{equation}
+\lambda_1 = \min_{\psi \perp e_0, \|\psi\|_{L^2}=1} \mathcal{E}(\psi, \psi) = \min_{\psi \perp e_0} \left[\int |\nabla_{\min} \psi|^2 d\mu + \int V''(|\psi_0|^2) |\psi|^2 d\mu\right].
+\end{equation}
+
+For any $\psi$ orthogonal to $e_0$ (the constant function):
+\begin{equation}
+\int_X \psi d\mu = 0.
+\end{equation}
+
+Applying the Poincaré inequality with $\psi_X = 0$:
+\begin{equation}
+\int_X |\psi|^2 d\mu \leq C_P^2 \diam(X)^2 \int_X |\nabla_{\min} \psi|^2 d\mu.
+\end{equation}
+
+Therefore:
+\begin{equation}
+\int |\nabla_{\min} \psi|^2 d\mu \geq \frac{1}{C_P^2 \diam(X)^2} \int |\psi|^2 d\mu.
+\end{equation}
+
+This immediately gives:
+\begin{equation}
+\mathcal{E}(\psi, \psi) \geq \frac{1}{C_P^2 \diam(X)^2} \int |\psi|^2 d\mu + \lambda_0 \int |\psi|^2 d\mu = \left[\frac{1}{C_P^2 \diam(X)^2} + \lambda_0\right],
+\end{equation}
+for $\|\psi\|_{L^2} = 1$.
+
+Thus:
+\begin{equation}
+\lambda_1 \geq \frac{1}{C_P^2 \diam(X)^2} + \lambda_0,
+\end{equation}
+implying:
+\begin{equation}
+|\lambda_1| - |\lambda_0| \geq \frac{1}{C_P^2 \diam(X)^2}.
+\end{equation}
+
+For a more refined bound accounting for potential variation, one uses the fact that the potential term $\int V''(|\psi_0|^2) |\psi|^2 d\mu$ can contribute additional separation between $\lambda_0$ and $\lambda_1$ if $V''$ varies spatially. The potential contribution is bounded by $\Lambda_0 - \lambda_0$, so:
+\begin{equation}
+|\lambda_1| - |\lambda_0| \geq \min\left(\frac{1}{C_P^2 \diam(X)^2}, \, c_0(\Lambda_0 - \lambda_0)\right),
+\end{equation}
+where $c_0$ is determined by spectral theory of potential perturbations.

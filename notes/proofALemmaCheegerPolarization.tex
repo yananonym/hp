@@ -1,0 +1,48 @@
+% proofLemCheegerPolarization.tex
+% Proof content
+
+\begin{proof}
+Cheeger's theorem (1999, Theorem 4.38) requires three hypotheses:
+\begin{enumerate}[label=(H\arabic*)]
+\item $(X, d_X, \mu)$ is a complete, doubling metric measure space.
+\item $(X, d_X, \mu)$ admits a $(1,p)$-Poincaré inequality for some $p \geq 1$.
+\item The measure $\mu$ is locally doubling with uniform constants on balls.
+\end{enumerate}
+
+\textbf{Verification of (H1):} By Axiom~\ref{ax:polishSpace}(a), $X$ is compact 
+and path-metric, hence complete. By Remark~\ref{rem:emergentRadon}(3), Ahlfors 
+$Q$-regularity implies doubling: $\mu(B(x,2r)) \leq 2^Q \mu(B(x,r))$.
+
+\textbf{Verification of (H2):} By Axiom~\ref{ax:polishSpace}(c), $(X, d_X, \mu)$ 
+admits a $(1,2)$-Poincaré inequality with constant $C_P$.
+
+\textbf{Verification of (H3):} Compactness of $X$ and Ahlfors regularity ensure 
+uniform local doubling constants. Specifically, for any $x \in X$ and $r > 0$:
+\[
+\frac{\mu(B(x,2r))}{\mu(B(x,r))} \leq 2^Q =: C_d,
+\]
+with the same constant $C_d$ for all $x$ and $r$.
+
+All hypotheses are satisfied. By \cite{cheeger1999differentiation}), for any $u \in H^{1,2}(X)$, 
+there exists a measurable cotangent bundle $T^*X$ of finite rank $N \leq N(Q, C_P)$ 
+and a measurable differential $du \in L^2(X; T^*X)$ such that:
+\[
+|\nabla_{\min} u|^2(x) = |du|^2_x \quad \mu\text{-a.e.}
+\]
+
+For $u, v \in H^{1,2}(X)$, the polarization formula:
+\[
+\langle du, dv \rangle_x := \lim_{t \to 0^+} \frac{|\nabla_{\min}(u + tv)|^2(x) - |\nabla_{\min} u|^2(x)}{2t}
+\]
+exists $\mu$-almost everywhere by the parallelogram law applied to the Cheeger differential:
+\[
+2(|du|^2 + |dv|^2) - |d(u+v)|^2 = 4|\langle du, dv \rangle|.
+\]
+This defines a measurable inner product on the cotangent fibers. The resulting 
+Sobolev inner product
+\[
+\langle u, v \rangle_{H^{1,2}} := \int_X \left( u \overline{v} + \langle du, dv \rangle \right) d\mu
+\]
+is independent of the choice of upper gradients and is consistent with the minimal 
+upper gradient structure throughout this theory. \qed
+\end{proof}

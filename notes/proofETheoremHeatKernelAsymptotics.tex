@@ -1,0 +1,49 @@
+% proofThmHeatKernelAsymptotics.tex
+% Proof content
+
+The proof uses Ahlfors regularity, Poincaré inequality, and maximum principles for parabolic equations on metric measure spaces. the sketch the main steps:
+
+\noindent\textit{Step 1: Upper Bound on Heat Kernel.}
+
+By the maximum principle for heat equations on metric measure spaces \cite{sturm2006geometry}, the heat kernel satisfies:
+\begin{equation}
+p_t^{A_0}(x, y) \leq \frac{1}{\mu(B(x, \sqrt{t}))}
+\end{equation}
+for all $x, y \in X$ and $t \in (0, T_0)$.
+
+By Ahlfors regularity, $\mu(B(x, \sqrt{t})) \geq C_A^{-1} t^{Q/2}$, so:
+\begin{equation}
+p_t^{A_0}(x, y) \leq C t^{-Q/2}.
+\end{equation}
+
+\noindent\textit{Step 2: Gaussian Decay.}
+
+The exponential decay in distance follows from Li-Yau gradient estimates (Grigor'yan 1994) on doubling spaces with Poincaré inequality:
+\begin{equation}
+|\nabla_x \log p_t^{A_0}(x, y)|^2 \leq \frac{C d_X(x,y)^2}{t^2},
+\end{equation}
+
+which integrating gives:
+\begin{equation}
+p_t^{A_0}(x, y) \leq p_t^{A_0}(x, x) \exp\left(-\frac{d_X(x,y)^2}{Ct}\right) \leq C t^{-Q/2} \exp\left(-\frac{d_X(x,y)^2}{Ct}\right).
+\end{equation}
+
+\noindent\textit{Step 3: Lower Bound.}
+
+By spectral theory and the eigenfunction expansion:
+\begin{equation}
+p_t^{A_0}(x, y) = \sum_{k=0}^\infty e^{t\lambda_k} e_k(x) e_k(y),
+\end{equation}
+
+the leading term $e^{t\lambda_0} e_0(x) e_0(y) = e^{t\lambda_0}$ (since $e_0 = 1$) dominates for small scales. The first excited state contributes $e^{t\lambda_1} e_1(x) e_1(y)$ with $\lambda_1 < \lambda_0$, giving exponentially suppressed corrections.
+
+For the on-diagonal bound at small distance $d_X(x,y) \lesssim \sqrt{t}$, the lower bound follows from positivity and spectral decay.
+
+\noindent\textit{Step 4: Long-Time Asymptotics.}
+
+As $t \to \infty$, $e^{t\lambda_k} \to 0$ for all $k \geq 1$ (since $\lambda_k < \lambda_0 < 0$), so:
+\begin{equation}
+p_t^{A_0}(x, y) \to e^{t\lambda_0} \cdot 1 \cdot 1 = e^{t\lambda_0}.
+\end{equation}
+
+The convergence is exponential in the gap $\lambda_1 - \lambda_0$.

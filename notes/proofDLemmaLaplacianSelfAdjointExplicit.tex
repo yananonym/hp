@@ -1,0 +1,15 @@
+% proofLemLaplacianSelfAdjointExplicit.tex
+% Proof content
+
+
+By Theorem \ref{thm:dirichletCoercivity}, $\mathcal{E}$ is a coercive, closed, densely-defined sesquilinear form. By the Lax-Milgram theorem applied to Dirichlet forms (Fukushima 1980, Theorem 1.2.1), there exists a unique self-adjoint operator $A$ associated with $\mathcal{E}$ such that:
+$$\mathcal{E}(u, v) = \langle A u, v \rangle_{L^2} + C_{\mathcal{E}} \langle u, v \rangle_{L^2}$$
+for all $u, v \in \Dom(\mathcal{E})$. Thus $A$ is self-adjoint on its domain $\Dom(A) = \{u \in \mathcal{D}(\mathcal{E}) : A u \in L^2(X, \mu)\}$.
+
+Since $A$ is self-adjoint and coercive (bounded below by Theorem \ref{thm:dirichletCoercivity}), by the Stone spectral theorem, $-A$ generates a unique strongly continuous contraction semigroup $\{e^{tA}\}_{t \geq 0}$ on $L^2(X, \mu)$. The spectral measure for $A$ is supported on $(-\infty, M_{\mathcal{E}}]$ where $M_{\mathcal{E}} < 0$ (by coercivity).
+
+The semigroup $e^{tA}$ has integral representation with kernel $p_t(x, y)$ defined by:
+$$e^{tA} f(x) = \int_X p_t(x, y) f(y) d\mu(y).$$
+The kernel $p_t(x, y)$ is given by the spectral decomposition. By the spectral theorem and dominated convergence, $p_t(x, y)$ is Borel measurable in $(t, x, y)$, symmetric, and satisfies the Chapman-Kolmogorov equation.
+
+These properties ensure that the Harnack inequality (Lemma \ref{lem:harnackInequality}) applies to $e^{tA}$ without hidden smoothness assumptions. The Harnack inequality uses only the semigroup structure, metric measure space properties (Ahlfors regularity, Poincaré inequality), and doubling, all of which are verified in Axiom \ref{ax:polishSpace} and Lemma \ref{lem:polishConsequences}. \qed

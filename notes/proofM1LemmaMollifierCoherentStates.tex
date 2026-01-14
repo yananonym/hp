@@ -1,0 +1,48 @@
+% proofLemMollifierCoherentStates.tex
+% Proof content
+
+
+For each eigenfunction $e_\mu$ from Theorem \ref{thm:laplacianProperties}, define the mollified version using a standard convolution mollifier. For smooth manifold regions, the mollifier is the standard Euclidean mollifier. On the general metric measure space $(X, d_X, \mu)$, Use the Riemannian convolution structure arising from the heat semigroup.
+
+Define the mollified eigenfunctions:
+$$e_\mu^{(\epsilon)}(x) := (T_\epsilon e_\mu)(x) := \int_X K_\epsilon(x, y) e_\mu(y) d\mu(y),$$
+where $K_\epsilon(x, y) := p_{\epsilon}(x, y)$ is the heat kernel from Theorem \ref{thm:heatKernelExistence} at time $t = \epsilon$.
+
+By Theorem \ref{thm:heatKernelAsymptotics}, the heat kernel satisfies uniform bounds:
+$$p_\epsilon(x, y) \leq C \epsilon^{-Q/2} \exp\left(-c \frac{d_X(x,y)^2}{\epsilon}\right),$$
+where $Q$ is the Ahlfors regularity dimension.
+
+\textbf{Convergence of Mollified Eigenfunctions.}
+
+For $e_\mu \in \Dom(A) \subset C^{0,\alpha}(X)$ (by Lemma \ref{lem:domainDensity}), the mollified version satisfies:
+\begin{enumerate}
+\item $e_\mu^{(\epsilon)} \in C^\infty(X \times X)$ in the second argument (the heat kernel smoothness).
+\item $\|e_\mu^{(\epsilon)} - e_\mu\|_{L^2(X, \mu)} \to 0$ as $\epsilon \to 0^+$.
+\item $\|\nabla_{\min} e_\mu^{(\epsilon)} - \nabla_{\min} e_\mu\|_{L^2(X, \mu)} \to 0$ as $\epsilon \to 0^+$.
+\end{enumerate}
+
+These follow from the regularity of the heat kernel and standard semigroup theory (Pazy 1983, Section 1.2).
+
+\textbf{Convergence of Mollified Coherent States.}
+
+Replace the eigenfunctions in Definition \ref{def:coherentStates} with mollified versions:
+$$|x, N, \epsilon\rangle := \exp\left(-\sum_{\mu=0}^{N-1} \sqrt{|\lambda_\mu|} e_\mu^{(\epsilon)}(x) \hat{a}_\mu^\dagger\right) |0\rangle.$$
+
+As $\epsilon \to 0^+$:
+$$\||x, N, \epsilon\rangle - |x, N\rangle\| \leq \sum_{\mu=0}^{N-1} \sqrt{|\lambda_\mu|} \|e_\mu^{(\epsilon)} - e_\mu\|_\infty.$$
+
+By Theorem \ref{thm:eigenfunctionRegularity} and heat kernel bounds:
+$$\|e_\mu^{(\epsilon)} - e_\mu\|_\infty \leq C_\mu \epsilon^{\min(\alpha, 1)},$$
+where $\alpha = 1 - Q/4$ is the Holder exponent.
+
+Therefore:
+$$\||x, N, \epsilon\rangle - |x, N\rangle\| \leq C_N \epsilon^{\min(\alpha, 1)} \to 0 \quad \text{as } \epsilon \to 0^+.$$
+
+\textbf{Resolution of Identity Convergence.}
+
+The mollified coherent states satisfy a regularized resolution of identity:
+$$\int_X |x, N, \epsilon\rangle \langle x, N, \epsilon| d\mu(x) = \mathbb{I}_N^{(\epsilon)}$$
+where $\mathbb{I}_N^{(\epsilon)}$ is a regularized projector onto the $N$-mode subspace. In the limit $\epsilon \to 0^+$:
+$$\mathbb{I}_N^{(\epsilon)} \to \mathbb{I}_N \quad \text{strongly in } \mathcal{L}(\mathcal{H}_N).$$
+
+This allows the path integral to be defined rigorously via a limit of finite-dimensional approximations using mollified coherent states. \qed

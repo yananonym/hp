@@ -1,0 +1,53 @@
+% proofLemRegularizedGaussianMeasure.tex
+% Proof content
+
+\textit{(i) Trace-class property.} By Weyl asymptotics, $|\lambda_k| \sim C_W k^{2/Q}$. Thus:
+\[
+\sum_{k=0}^\infty (|\lambda_k| + \epsilon)^{-1} \leq 
+\sum_{k=0}^{N_\epsilon} \epsilon^{-1} + 
+\sum_{k > N_\epsilon} C_W^{-1} k^{-2/Q}
+\]
+where $N_\epsilon := \lceil (C_W/\epsilon)^{Q/2} \rceil$. 
+The second sum converges for $Q > 2$, so $\Tr(C_\epsilon) < \infty$.
+
+\textit{(ii) Gaussian measure construction.} By standard theory (Bogachev, \emph{Gaussian Measures on Banach Spaces}, 1998), any trace-class operator defines a centered Gaussian measure via its covariance.
+
+\textit{(iii) Prokhorov Tightness for Regularized Family.} Define the Sobolev ball:
+\[
+K_\delta := \left\{\psi \in \mathcal{H} : \sum_{k=0}^\infty |\lambda_k|^{1+\eta} |\langle \psi, e_k \rangle|^2 \leq R(\delta)\right\}
+\]
+for fixed $\eta \in (0, 2/Q - 1)$ and $R(\delta) := C/\delta$ for appropriate constant $C$.
+
+For the regularized measure:
+\[
+\int_{\mathcal{H}} \sum_{k=0}^\infty |\lambda_k|^{1+\eta} |\langle \psi, e_k \rangle|^2 \, d\nu_\epsilon = \sum_{k=0}^\infty \frac{|\lambda_k|^{1+\eta}}{|\lambda_k| + \epsilon}
+\]
+Since $|\lambda_k|^{1+\eta}/(|\lambda_k| + \epsilon) \leq |\lambda_k|^\eta$ and $\sum_k |\lambda_k|^\eta \sim \sum_k k^{2\eta/Q}$ converges for $2\eta/Q < 1$ (satisfied by the choice of $\eta$), the integral is uniformly bounded in $\epsilon$.
+
+By Markov's inequality:
+\[
+\nu_\epsilon(\mathcal{H} \setminus K_\delta) \leq \frac{C}{R(\delta)} = \delta.
+\]
+
+Compactness of $K_\delta$ follows from the \cite{biroli2000embedding} theorem: the embedding $H^{1+\eta/2,2}(X) \hookrightarrow L^2(X)$ is compact for $Q < 4$. Thus $\{\nu_\epsilon\}_{\epsilon > 0}$ is tight by Prokhorov's criterion.
+
+\textit{(iv) Borel Extension via Bochner-Minlos Theorem.} By Prokhorov's theorem, tightness implies relative compactness in the weak topology. Let $\nu_{\mathcal{E}} := \lim_{\epsilon_n \to 0} \nu_{\epsilon_n}$ for a convergent subsequence.
+
+\textbf{Claim:} $\nu_{\mathcal{E}}$ extends uniquely to a $\sigma$-additive measure on $\mathcal{B}(\mathcal{H})$.
+
+\textbf{Proof:} By the Bochner-Minlos theorem (extended to nuclear spaces), a cylindrical measure on $\mathcal{H}$ extends to a Borel measure if and only if its characteristic functional $\hat{\nu}(\xi) = \int e^{i\langle \xi, \psi \rangle} d\nu(\psi)$ is continuous at $\xi = 0$ in the norm topology.
+
+For Gaussian measures with covariance $C_\epsilon$:
+\[
+\hat{\nu}_\epsilon(\xi) = \exp\left(-\frac{1}{2}\langle C_\epsilon \xi, \xi \rangle\right).
+\]
+
+Continuity at $\xi = 0$ follows from:
+\[
+|\hat{\nu}_\epsilon(\xi) - 1| \leq \frac{1}{2}|\langle C_\epsilon \xi, \xi \rangle| \leq \frac{1}{2} \|C_\epsilon\|_{\mathrm{op}} \|\xi\|^2 \leq \frac{\|\xi\|^2}{2\epsilon}
+\]
+which, for the limit $\epsilon \to 0$, requires working in the $H^{-s}$ dual space for appropriate $s > 0$. The extended measure lives on $H^{-s}(X) \supset \mathcal{H}$, with $\mathcal{H}$-valued samples occurring with probability zero.
+
+The physical interpretation is that quantum fields are distributions, not (functions, consistent) with axiomatic QFT. \qed
+
+\textbf{Physical interpretation:} The regularization $C_\epsilon$ avoids the non-trace-class issue for $Q \in [2,4)$ by adding the regularization parameter $\epsilon$. The physical path integral measure $\nu_{\mathcal{E}}$ is the weak limit as the regulator is removed ($\epsilon \to 0^+$), yielding a well-defined cylindrical measure that properly encodes quantum fluctuations.

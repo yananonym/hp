@@ -1,0 +1,19 @@
+% proofLemFerniquePotential.tex
+% Proof content
+
+By Fernique's theorem (Fernique 1970), Gaussian measures satisfy exponential 
+moment bounds. For $\nu_\epsilon$ with covariance $C_\epsilon$:
+\[
+\int_{\mathcal{H}} \exp(t\|\psi\|^2) \, d\nu_\epsilon < \infty 
+\quad \text{for } t < (2\|C_\epsilon\|_{\mathrm{op}})^{-1}.
+\]
+
+Since $\|C_\epsilon\|_{\mathrm{op}} = (|\lambda_0| + \epsilon)^{-1} 
+\leq |\lambda_0|^{-1}$ uniformly in $\epsilon$, the bound is uniform.
+
+For $p < 2$, use Hölder: $\exp(c\|\psi\|^p) \leq C_p + \exp(c'\|\psi\|^2)$.
+
+For $2 \leq p < \alpha$, use the interpolation 
+$\|\psi\|^p \leq \delta\|\psi\|^\alpha + C_\delta$ 
+and coercivity of $V$ to absorb higher powers into the 
+potential bound.

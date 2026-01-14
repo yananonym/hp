@@ -1,0 +1,37 @@
+% proofLemSmallHolderSuffices.tex
+% Proof content
+
+\noindent\textbf{Measurability and Pointwise Regularity.}
+
+All three key constructions in the divergence-first framework require only that eigenfunctions be continuous and measurable. Hölder continuity $C^{0,\alpha}$ is a strengthening of pointwise continuity $C^0$. By Theorem \ref{thm:eigenfunctionRegularity}, eigenfunctions satisfy $e_k \in C^{0,\alpha}(X)$ with exponent $\alpha = 1 - Q/4 > 0$ when $Q < 4$.
+
+Even if $\alpha$ is arbitrarily small (approaching $\alpha \to 0^+$ as $Q \to 4^-$), the fact that $\alpha > 0$ strictly ensures that eigenfunctions remain continuous. This is sufficient for all subsequent structures.
+
+\noindent\textbf{Application (1): Pointwise Multiplication.}
+
+The product of two continuous functions is continuous and hence measurable. Specifically, if $e_k, e_\ell \in C^0(X)$, then:
+\[
+e_k \cdot e_\ell: X \to \mathbb{C}, \quad (e_k \cdot e_\ell)(x) := e_k(x) e_\ell(x)
+\]
+is continuous on $X$ and therefore measurable with respect to the Borel $\sigma$-algebra $\mathcal{B}(X)$.
+
+\noindent\textbf{Application (2): Minimal Upper Gradient.}
+
+By Cheeger's theory (Cheeger 1999), the existence and uniqueness of minimal upper gradients is guaranteed by measurability and measurable differentiability. The minimal upper gradient $g_u$ of $u \in Hölder continuity assumption.
+
+For eigenfunctions $e_k \in H^{1,2}(X) \cap C^0(X)$, the minimal upper gradient $g_{e_k}$ exists and is well-defined, and satisfies:
+\[
+\int |g_{e_k}|^2 d\mu = \mathcal{E}(e_k, e_k) = \lambda_k \|e_k\|_{L^2}^2.
+\]
+
+\noindent\textbf{Application (3): Riemannian Metric Tensor.}
+
+The Carre du Champ operator $\Gamma(u,v)$ (Definition \ref{def:carreDuChamp}) is defined via polarization of upper gradients:
+\[
+\Gamma(u,v) = \frac{1}{2}[|g_u|^2 + |g_v|^2 - |g_{u-v}|^2].
+\]
+This is well-defined and measurable as long as the upper gradients exist and are measurable. The requirement that $\Gamma$ be a positive definite tensor (to define $g$) requires only that the eigenfunction basis be continuous, not that any particular Hölder exponent be large.
+
+\noindent\textbf{Conclusion.}
+
+All three constructions (pointwise products, minimal upper gradients, Riemannian metric tensor) require only that eigenfunctions be continuous: $e_k \in C^0(X)$. Since Theorem \ref{thm:eigenfunctionRegularity} establishes $e_k \in C^{0,\alpha}$ with $\alpha > 0$ (no matter how small $\alpha > 0$ is, as long as $Q < 4$), all these applications are valid. Even as $Q \to 4^-$ and $\alpha \to 0^+$, continuity is maintained, ensuring the entire theory works.

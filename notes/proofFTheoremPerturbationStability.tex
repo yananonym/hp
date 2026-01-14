@@ -1,0 +1,70 @@
+% proofThmPerturbationStability.tex
+% Proof content
+
+The proof uses \cite{kato1995perturbation} perturbation theory for self-adjoint operators and resolvent estimates.
+
+\noindent\textit{Step 1: Perturbation of the Dirichlet Form.}
+
+For $\mu_\epsilon = (1 + \epsilon w) \mu$, the Dirichlet form becomes:
+\begin{equation}
+\mathcal{E}_\epsilon(\psi, \phi) := \int_X \sum_i |\nabla_{\min} \psi_i|^2 d\mu_\epsilon + \mathcal{Q}_\epsilon(\psi, \phi),
+\end{equation}
+where $\mathcal{Q}_\epsilon$ similarly changes. Writing $\mathcal{E}_\epsilon = \mathcal{E}_0 + \delta\mathcal{E}$ with perturbation $\delta\mathcal{E}$:
+\begin{equation}
+\delta\mathcal{E}(\psi, \phi) := \int_X \sum_i |\nabla_{\min} \psi_i|^2 \epsilon w(x) \, d\mu + \text{(perturbation to } \mathcal{Q}).
+\end{equation}
+
+By boundedness of $w$:
+\begin{equation}
+|\delta\mathcal{E}(\psi, \phi)| \leq \epsilon \|w\|_\infty \|\psi\|_{H^{1,2}} \|\phi\|_{H^{1,2}} + O(\epsilon).
+\end{equation}
+
+\noindent\textit{Step 2: \cite{kato1995perturbation} Perturbation Theory.}
+
+Since the perturbation $\delta\mathcal{E}$ is bounded relative to the unperturbed form $\mathcal{E}_0$ with relative bound less than 1 (for sufficiently small $\epsilon$), \cite{kato1995perturbation} theorem applies. This gives:
+
+For each eigenvalue $\lambda_k(0)$ of multiplicity 1, there exists a unique eigenvalue $\lambda_k(\epsilon)$ of $A_\epsilon$ such that:
+\begin{equation}
+\lambda_k(\epsilon) = \lambda_k(0) + \langle e_k(0), \delta\mathcal{E}(e_k(0), \cdot) / \|e_k(0)\|_{L^2} \rangle + O(\epsilon^2).
+\end{equation}
+
+By the bound on $\delta\mathcal{E}$:
+\begin{equation}
+|\lambda_k(\epsilon) - \lambda_k(0)| \leq C \epsilon \|w\|_\infty + O(\epsilon^2) \leq C_k \epsilon \|w\|_\infty
+\end{equation}
+for small enough $\epsilon$.
+
+\noindent\textit{Step 3: Eigenfunction Continuity.}
+
+Similarly, for the perturbed eigenfunction $e_k(\epsilon)$, normalized as $\|e_k(\epsilon)\|_{L^2} = 1$, the \cite{kato1995perturbation} theory establishes:
+\begin{equation}
+\|e_k(\epsilon) - e_k(0)\|_{L^2} \leq C_k' \epsilon \|w\|_\infty.
+\end{equation}
+
+Since eigenfunctions are in $H^{1,2}(X)$ and by Theorem \ref{thm:eigenfunctionRegularity} also in $C^{0,\alpha}(X)$, the continuity carries over to the Ho norm of the difference is bounded by:
+\begin{equation}
+\|e_k(\epsilon) - e_k(0)\|_{C^{0,\alpha}} \leq C(\alpha) \|e_k(\epsilon) - e_k(0)\|_{H^{1,2}} \leq C_k' \epsilon \|w\|_\infty
+\end{equation}
+by continuous embedding $H^{1,2} \hookrightarrow C^{0,\alpha}$.
+
+\noindent\textit{Step 4: Metric Tensor Stability.}
+
+The metric tensor is $g_{\mu\nu} = \Gamma(e_\mu, e_\nu) = \nabla_{\min} e_\mu \cdot \nabla_{\min} e_\nu$. Under perturbation:
+\begin{align}
+g_{\mu\nu}(\epsilon; x) - g_{\mu\nu}(0; x) &= \nabla_{\min} e_\mu(\epsilon) \cdot \nabla_{\min} e_\nu(\epsilon) - \nabla_{\min} e_\mu(0) \cdot \nabla_{\min} e_\nu(0) \\
+&= \nabla_{\min}[e_\mu(\epsilon) - e_\mu(0)] \cdot \nabla_{\min} e_\nu(0) + \nabla_{\min} e_\mu(\epsilon) \cdot \nabla_{\min}[e_\nu(\epsilon) - e_\nu(0)].
+\end{align}
+
+By Holder continuity and the gradient bounds:
+\begin{equation}
+|g_{\mu\nu}(\epsilon; x) - g_{\mu\nu}(0; x)| \leq C \left(\|e_\mu(\epsilon) - e_\mu(0)\|_{C^{0,\alpha}} + \|e_\nu(\epsilon) - e_\nu(0)\|_{C^{0,\alpha}}\right) \leq C_g \epsilon \|w\|_\infty.
+\end{equation}
+
+\noindent\textit{Step 5: Spectral Projector Stability.}
+
+The spectral projector $P_k = |e_k\rangle \langle e_k|$ depends continuously on $e_k$ in operator norm. Since $\|e_k(\epsilon) - e_k(0)\|_{L^2} \leq C_k' \epsilon \|w\|_\infty$:
+\begin{equation}
+\|P_k(\epsilon) - P_k(0)\|_{\text{op}} = \||e_k(\epsilon)\rangle \langle e_k(\epsilon)| - |e_k(0)\rangle \langle e_k(0)|\|_{\text{op}} \leq C_k'' \epsilon \|w\|_\infty.
+\end{equation}
+
+See Kato (1995, Chapter 2) for the complete \cite{kato1995perturbation} perturbation theory and its application.

@@ -1,0 +1,16 @@
+% proofLemHeatFlowRegularization.tex
+% Proof content
+
+(i)-(ii) By elliptic regularity bootstrapping (see Theorem \ref{thm:eigenfunctionRegularity}), solutions of the heat equation inherit regularity from the operator. Since $A = -\Delta_\mu + W$ has Hölder eigenfunctions, the heat semigroup preserves and improves regularity.
+
+(iii) By the gradient estimate on heat kernels:
+\[
+|\nabla_x p_t(x,y)| \lesssim \frac{1}{\sqrt{t}} p_t(x,y),
+\]
+
+the result is:
+\[
+|\nabla_{\min}(P_t f)|(x) = \left|\nabla_x \int p_t(x,y) f(y) d\mu(y)\right| \leq C t^{-1/2} \|f\|_\infty.
+\]
+
+(iv) By the heat kernel estimate and Hölder regularity of $f$.

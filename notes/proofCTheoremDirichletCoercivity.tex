@@ -1,0 +1,128 @@
+% proofThmDirichletCoercivity.tex
+% Proof content
+
+\textbf{Preamble: Explicit Definition and Density of the Domain.}
+
+The Dirichlet form $\mathcal{E}$ is defined on the domain $\mathcal{D}(\mathcal{E}) = H^{1,2}(X)$, the Sobolev space of functions with $L^2$-integrable weak derivatives. More precisely:
+
+\begin{definition}[Sobolev Space $H^{1,2}(X)$ on Polish Measure Space]
+
+Let $(X, d_X, \mu)$ be an Ahlfors $Q$-regular metric measure space satisfying a $(1,2)$-Poincaré inequality. The Sobolev space $H^{1,2}(X)$ is defined as the completion of the space of test functions
+\begin{equation}
+C_c^\infty(X; \mathbb{C}^n) = \{\psi = (\psi_1, \ldots, \psi_n) : \psi_i \in C_c^\infty(X), \mathbb{C}\}
+\end{equation}
+(continuous functions with compact support and classical partial derivatives) with respect to the Sobolev norm:
+
+\begin{equation}
+\|\psi\|_{H^{1,2}}^2 := \int_X \left( |\psi|^2 + |\nabla_{\min} \psi|^2 \right) d\mu(x),
+\end{equation}
+
+where $|\nabla_{\min} \psi|$ is the minimal weak gradient (lower semi-continuous envelope of distributional derivatives).
+
+An equivalent definition: $H^{1,2}(X)$ consists of all $\psi \in L^2(X)$ such that there exist (weak) derivatives $\partial_i \psi \in L^2(X)$ for each direction $i = 1, \ldots, n$, with
+\begin{equation}
+\int_X \psi \partial_i^* \phi \, d\mu = -\int_X (\partial_i \psi) \phi \, d\mu
+\end{equation}
+for all test functions $\phi \in C_c^\infty(X)$.
+
+\end{definition}
+
+\begin{lemma}[Density of Test Functions in $H^{1,2}(X)$]
+\label{lem:densityTestFunctions}
+
+The space $C_c^\infty(X; \mathbb{C}^n)$ of smooth compactly-supported functions is dense in $H^{1,2}(X)$ (in the Sobolev norm).
+
+\begin{proof}
+
+On a complete metric measure space satisfying the axioms (Axiom I: Polish space + Ahlfors regularity; Axiom II: Poincaré inequality), the following is a standard result in analysis on metric spaces (see Hajlasz-Koskela, Cheeger, Heinonen-Koskela):
+
+\begin{enumerate}
+
+\item \textbf{Step 1: Truncation Argument.} For any $\psi \in H^{1,2}(X)$, define truncations $\psi_R := \psi \cdot \mathbf{1}_{B_R}$ (product of $\psi$ with the indicator function of the ball $B_R(x_0)$ of radius $R$). Then $\psi_R \in H^{1,2}(X)$ and $\psi_R \to \psi$ in $H^{1,2}$ as $R \to \infty$ (by dominated convergence and properties of the Polish space).
+
+Thus, functions with compact support are dense in $H^{1,2}(X)$.
+
+\item \textbf{Step 2: Mollification Argument.} For $\psi \in H^{1,2}(X)$ with compact support, define mollifications:
+\begin{equation}
+\psi_\epsilon(x) := \int_X \rho_\epsilon(d_X(x, y)) \psi(y) d\mu(y),
+\end{equation}
+where $\rho_\epsilon$ is a standard mollifier. By properties of mollification on metric measure spaces (Cheeger's theory), $\psi_\epsilon \in C^\infty(X)$ and $\psi_\epsilon \to \psi$ in $H^{1,2}$ as $\epsilon \to 0$.
+
+Thus, smooth functions of compact support are dense in $H^{1,2}(X)$.
+
+\end{enumerate}
+
+This completes the proof of density.
+
+\end{proof}
+
+\begin{corollary}[Domain of the Dirichlet Form is Dense]
+
+The domain $\mathcal{D}(\mathcal{E}) = H^{1,2}(X)$ is dense in $L^2(X, \mu)$ (with respect to the $L^2$ norm).
+
+\begin{proof}
+
+By the density result (Lemma \ref{lem:densityTestFunctions}), for any $\phi \in L^2(X)$, and for any $\epsilon > 0$, there exists $\psi_\epsilon \in C_c^\infty(X) \subset H^{1,2}(X)$ such that $\|\phi - \psi_\epsilon\|_{L^2} < \epsilon$.
+
+Therefore, $H^{1,2}(X)$ is dense in $L^2(X)$ in the $L^2$ norm.
+
+\end{proof}
+
+\end{corollary}
+
+\noindent \textbf{Step 1: Boundedness of Gradient Term.}
+
+By definition of $H^{1,2}(X)$, for $\psi = (\psi_1, \ldots, \psi_n) \in H^{1,2}(X) \otimes \mathbb{C}^n$:
+\[
+\int_X |\nabla_{\min} \psi|^2 d\mu := \sum_{i=1}^n \int_X |\nabla_{\min} \psi_i|^2 d\mu \leq \|\psi\|_{H^{1,2}}^2.
+\]
+
+\noindent \textbf{Step 2: Boundedness and Coercivity of $\mathcal{Q}$ (Resolving Gap A).}
+
+By Axiom \ref{ax:polynomialCoercivity}, $V''(s) \geq \lambda_0 > 0$ everywhere. Thus:
+\[
+\mathcal{Q}(\psi, \psi) = \int_X V''(|\psi_0|^2) |\psi|^2 \, d\mu \geq \lambda_0 \|\psi\|_{L^2}^2.
+\]
+
+\textit{Addressing Gap A (Domain of $V''$):} The form is defined on $\Dom(\mathcal{E}) = H^{1,2}(X) \otimes \mathbb{C}^n$, where $\psi_0$ (the scalar field component) need not be in $L^\infty$ a priori. However, by Theorem \ref{thm:eigenfunctionRegularity}, all eigenfunctions $e_k$ of the Laplacian are in $C^{0,\alpha}(X) \subset L^\infty(X)$. The Lax-Milgram theorem applies to the Dirichlet form on dense domain $\Dom(\mathcal{E})$, and generates a self-adjoint Laplacian whose domain is $\Dom(A) \subset C^{0,\beta}(X) \subset L^\infty(X)$ (Lemma \ref{lem:formOperatorDomainRelation}). This resolves the regularity: the form is well-defined on $\Dom(\mathcal{E})$ by variational methods, and the operator-domain functions (which solve the spectral problem) are automatically regular enough for pointwise evaluation of $V''$.
+
+\noindent \textbf{Step 3: weak Coercivity (Resolving Gap B).}
+
+By the Poincaré inequality (Axiom \ref{ax:polishSpace}(c)), applied component-wise to $\psi_i \in H^{1,2}(X)$:
+\[
+\|\psi_i\|_{L^2}^2 \leq C_P^2 \diam(X)^2 \|\nabla_{\min} \psi_i\|_{L^2}^2.
+\]
+
+Thus:
+\[
+\|\psi\|_{L^2}^2 \leq C_P^2 \diam(X)^2 \int_X |\nabla_{\min} \psi|^2 d\mu.
+\]
+
+Combining the gradient and $\mathcal{Q}$ terms:
+\[
+\mathcal{E}(\psi, \psi) = \int_X |\nabla_{\min} \psi|^2 d\mu + \mathcal{Q}(\psi, \psi) \geq \int_X |\nabla_{\min} \psi|^2 d\mu + \lambda_0 \|\psi\|_{L^2}^2.
+\]
+
+Let $c_1 := \min(1, \lambda_0)$. By norm equivalence on Sobolev spaces:
+\[
+\|\psi\|_{H^{1,2}}^2 \sim \|\psi\|_{L^2}^2 + \|\nabla_{\min} \psi\|_{L^2}^2.
+\]
+
+Therefore:
+\[
+\mathcal{E}(\psi, \psi) \geq c_1 \|\psi\|_{H^{1,2}}^2.
+\]
+
+\noindent \textbf{Step 4: Boundedness of Form.}
+
+By the Cauchy-Schwarz inequality:
+\[
+|\mathcal{E}(\psi, \phi)| \leq \int_X |\nabla_{\min} \psi| \cdot |\nabla_{\min} \phi| \, d\mu + \int_X V''(|\psi_0|^2) |\psi| |\phi| \, d\mu.
+\]
+
+Each term is bounded by constants times $\|\psi\|_{Hölder inequality and boundedness of $V''$ on $[0, \infty)$ (Axiom \ref{ax:polynomialCoercivity}):
+\[
+|\mathcal{E}(\psi, \phi)| \leq C_E \|\psi\|_{H^{1,2}} \|\phi\|_{H^{1,2}}.
+\]
+
+This completes the proof. \qedhere

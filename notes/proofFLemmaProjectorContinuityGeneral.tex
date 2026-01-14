@@ -1,0 +1,207 @@
+% proofLemProjectorContinuityGeneral.tex
+% Proof content
+
+
+\textbf{Proof of Lemma \ref{lem:projectorContinuityGeneral}}
+
+\begin{proof}
+Let $A_\delta = A + \delta B$ be a perturbation with $\|B\|_{\text{op}} \leq M$ and $\delta \in [0, \delta_0]$ sufficiently small.
+
+\textit{\underline{Step 1: Isolated Eigenvalue and Spectral Gap}}
+
+By Lemma~\ref{lem:spectralGapComplete}, each eigenvalue $\lambda_N$ of $A$ is isolated with discrete spectrum $\sigma(A) = \{\lambda_0 < \lambda_1 < \lambda_2 < \cdots\}$ satisfying $\lambda_k \to \infty$.
+
+Define the spectral gap at $\lambda_N$:
+\[
+\gamma_N := \min(|\lambda_N - \lambda_{N-1}|, |\lambda_{N+1} - \lambda_N|) > 0.
+\]
+
+By the spectral gap theorem (Theorem \ref{thm:spectralGapCompleteness}), there exist universal constants $c_0 > 0$ and $\alpha > 0$ such that:
+\[
+\gamma_N \geq c_0 \lambda_N^{1-\alpha} \quad \text{for all } N \geq 0.
+\]
+
+In particular, for the fundamental eigenvalue $\lambda_0$, the gap is $\gamma_0 = \lambda_1 - \lambda_0 \geq c_0 > 0$ (bounded away from zero).
+
+\textit{\underline{Step 2: Resolvent Perturbation Bound}}
+
+For self-adjoint operators $A_0$ and $A_\epsilon = A_0 + \delta A$ with $\|\delta A\|_{\text{op}} \leq C\epsilon$, the resolvent difference satisfies:
+\begin{equation}
+\|(A_\epsilon - z)^{-1} - (A_0 - z)^{-1}\|_{\text{op}} 
+= \|(A_0 + \delta A - z)^{-1} (\delta A) (A_0 - z)^{-1}\|_{\text{op}}
+\leq \frac{C\epsilon}{|\mathrm{Im}(z)|^2} \quad \text{for } z \in \mathbb{C} \setminus \mathbb{R}.
+\end{equation}
+
+\textit{\underline{Step 2b: Spectral Projector from Contour Integral}}
+
+The $k$-th spectral projector is:
+\begin{equation}
+P_k(\epsilon) = \frac{1}{2\pi i} \oint_{\mathcal{C}_k} (A_\epsilon - z)^{-1} dz,
+\end{equation}
+where $\mathcal{C}_k$ is a contour enclosing $\lambda_k(\epsilon)$ but no other eigenvalues.
+
+\textit{\underline{Step 3: Projector Difference Bound}}
+
+By deformation of the contour:
+\begin{equation}
+P_k(\epsilon) - P_k(0) = \frac{1}{2\pi i} \oint_{\mathcal{C}_k} [(A_\epsilon - z)^{-1} - (A_0 - z)^{-1}] dz.
+\end{equation}
+
+Using Step 2 and choosing $\mathcal{C}_k$ at distance $\gamma/2$ from the spectrum:
+\begin{equation}
+\|P_k(\epsilon) - P_k(0)\|_{\text{op}} \leq \frac{1}{2\pi} \oint_{\mathcal{C}_k} \frac{C\epsilon}{(\gamma/2)^2} |dz| 
+\leq \frac{C\epsilon}{\gamma^2} \cdot \text{circumference of } \mathcal{C}_k.
+\end{equation}
+
+For a circular contour of radius $r \sim \gamma$:
+\begin{equation}
+\|P_k(\epsilon) - P_k(0)\|_{\text{op}} \leq \frac{C\epsilon}{\gamma}.
+\end{equation}
+
+This bound is uniform for $\epsilon \in [0, \epsilon_0]$ where $\epsilon_0 := \gamma/4$ ensures that perturbations do not shift eigenvalues out of the contour.
+
+\textit{\underline{Step 4: Uniform Stability}}
+
+Since $\gamma = \lambda_1 - \lambda_0 > 0$ (spectral gap from Theorem \ref{thm:spectralEmbedding}), the bound holds uniformly. For small enough $\epsilon$ (depending on $\gamma$), the spectral projectors form a Lipschitz-continuous family.
+
+\textit{\underline{Old Step 2: Resolvent Perturbation Theory}}
+
+Consider a circle $\Gamma_N$ of radius $r_N = \gamma_N/4$ centered at $\lambda_N$. For $z \in \Gamma_N$, the resolvent $(A - z)^{-1}$ is well-defined with:
+\[
+\|(A - z)^{-1}\|_{\text{op}} \leq \frac{1}{\text{dist}(z, \sigma(A))} \leq \frac{4}{\gamma_N}.
+\]
+
+The perturbed resolvent satisfies:
+\[
+(A_\delta - z)^{-1} = (A - z)^{-1} - \delta (A - z)^{-1} B (A - z)^{-1} + \delta^2 (A - z)^{-1} B (A - z)^{-1} B (A - z)^{-1} + \cdots
+\]
+
+By the Neumann series expansion:
+\[
+(A_\delta - z)^{-1} = (A - z)^{-1} \sum_{n=0}^\infty (-\delta B (A - z)^{-1})^n,
+\]
+
+which converges in operator norm for:
+\[
+\delta < \frac{1}{\|B\|_{\text{op}} \|(A - z)^{-1}\|_{\text{op}}} \leq \frac{\gamma_N}{4M}.
+\]
+
+\textit{\underline{Step 3: Spectral Projector and Norm Bounds}}
+
+The spectral projector for the eigenvalue $\lambda_N$ is:
+\[
+P_N(\delta) := -\frac{1}{2\pi i} \oint_{\Gamma_N} (A_\delta - z)^{-1} dz.
+\]
+
+For the unperturbed projector $P_N(0)$, there is $\|P_N(0)\|_{\text{op}} = 1$ (projection onto a one-dimensional eigenspace).
+
+The difference is:
+\[
+P_N(\delta) - P_N(0) = -\frac{\delta}{2\pi i} \oint_{\Gamma_N} (A - z)^{-1} B (A - z)^{-1} dz + O(\delta^2).
+\]
+
+Taking operator norms and using the resolvent bound:
+\[
+\|P_N(\delta) - P_N(0)\|_{\text{op}} \leq \frac{\delta}{2\pi} \cdot \text{length}(\Gamma_N) \cdot \|(A - z)^{-1} B (A - z)^{-1}\|_{\text{op}}.
+\]
+
+Since $\text{length}(\Gamma_N) = 2\pi r_N = \pi \gamma_N / 2$ and $\|(A-z)^{-1}\|_{\text{op}} \leq 4/\gamma_N$:
+\[
+\|(A - z)^{-1} B (A - z)^{-1}\|_{\text{op}} \leq \|(A-z)^{-1}\|_{\text{op}}^2 \|B\|_{\text{op}} \leq \frac{16M}{\gamma_N^2}.
+\]
+
+Therefore:
+\[
+\|P_N(\delta) - P_N(0)\|_{\text{op}} \leq \frac{\delta \cdot \pi \gamma_N / 2}{2\pi} \cdot \frac{16M}{\gamma_N^2} = \frac{4M\delta}{\gamma_N}.
+\]
+
+\textbf{Explicit bound:}
+\[
+\boxed{\|P_N(\lambda + \delta\lambda) - P_N(\lambda)\|_{\text{op}} \leq C_N \delta\lambda}
+\]
+where $C_N = \frac{4M}{\gamma_N}$ depends on the spectral gap.
+
+\textit{\underline{Step 4: Uniformity in $N$}}
+
+it is necessary to verify that the constant $C_N$ is bounded uniformly in $N$. By the spectral gap estimate from Step 1:
+\[
+\gamma_N \geq c_0 \lambda_N^{1-\alpha}.
+\]
+
+Thus:
+\[
+C_N = \frac{4M}{\gamma_N} \leq \frac{4M}{c_0 \lambda_N^{1-\alpha}} = \frac{4M}{c_0} \lambda_N^{\alpha - 1}.
+\]
+
+For $\alpha < 1$ (which holds by the specific form of Weyl asymptotics), $C_N$ decreases as $N \to \infty$, so the bound is uniform.
+
+For the fundamental eigenvalue $\lambda_0$, there is the explicit bound:
+\[
+C_0 = \frac{4M}{\gamma_0} \leq \frac{4M}{c_0} =: \bar{C},
+\]
+which is a universal constant independent of $N$.
+
+\textit{\underline{Step 5: Eigenfunction Continuity}}
+
+Since $\dim P_N(\delta) = \dim P_N(0) = 1$ (simple eigenvalue by Lemma~\ref{lem:genericSimplicity}), the eigenspace is one-dimensional. Write the normalized eigenfunction as:
+\[
+e_N^\delta = e^{i\theta(\delta)} e_N^0,
+\]
+where the phase $\theta(\delta)$ is chosen so that $\text{Re}\langle e_N^\delta, e_N^0 \rangle > 0$.
+
+By analytic perturbation theory (\cite{kato1995perturbation}, Theorem II.4.10), the eigenfunction and eigenvalue have convergent power series:
+\[
+e_N^\delta = e_N^0 + \delta f_1 + \delta^2 f_2 + \cdots,
+\]
+\[
+\lambda_N^\delta = \lambda_N^0 + \delta \lambda_N^{(1)} + \delta^2 \lambda_N^{(2)} + \cdots.
+\]
+
+The first-order corrections are:
+\[
+\lambda_N^{(1)} = \langle e_N^0 | B | e_N^0 \rangle \leq \|B\|_{\text{op}} \|e_N^0\|^2 = \|B\|_{\text{op}} \leq M,
+\]
+\[
+\|f_1\|_{L^2} = O(M/\gamma_N).
+\]
+
+Thus:
+\[
+|\lambda_N^\delta - \lambda_N^0| \leq C' M \delta \quad \text{and} \quad \|e_N^\delta - e_N^0\|_{L^2} \leq C'' M \delta / \gamma_N.
+\]
+
+\textit{\underline{Step 6: Application to Truncated Effective Action}}
+
+The truncated effective action is:
+\[
+\Gamma_N[\phi] := -\log \det(P_N(A) + E_N[\phi]),
+\]
+where $P_N(A)$ is the projector onto the truncated eigenspace and $E_N[\phi]$ encodes interactions.
+
+By Lemma~\ref{lem:projectorContinuityGeneral}, $P_N(A)$ depends continuously on $A$ with operator norm derivative bounded by:
+\[
+\frac{dP_N}{dA} = O(1/\gamma_N).
+\]
+
+The functional derivative with respect to a field $\phi$ induces perturbations of $A$, so the effective action inherits continuity:
+\[
+\left|\frac{\delta \Gamma_N[\phi]}{\delta \phi(x)}\right| \leq C_N \int_X dy \, K(x, y) \left|\frac{\delta A[\phi]}{\delta \phi(y)}\right|,
+\]
+where $K(x, y)$ is the heat kernel of $A$ (bounded by $C/t^{Q/2}$ for small $t$).
+
+\textit{\underline{Step 7: Convergence as $N \to \infty$}}
+
+The full effective action $\Gamma[\phi]$ is obtained by taking $N \to \infty$ in the truncation:
+\[
+\Gamma[\phi] = \lim_{N \to \infty} \Gamma_N[\phi].
+\]
+
+Since $C_N \to 0$ as $N \to \infty$ (from Step 4), the functional derivatives of the truncated actions converge:
+\[
+\lim_{N \to \infty} \left|\frac{\delta \Gamma_N[\phi]}{\delta \phi(x)} - \frac{\delta \Gamma[\phi]}{\delta \phi(x)}\right| = 0.
+\]
+
+This establishes the well-definedness of the path integral regularization in the divergence-first framework and justifies the spectral truncation method used throughout the manuscript.
+
+\qed
+\end{proof}

@@ -1,0 +1,19 @@
+% proofLemUniformCoercivity.tex
+% Proof content
+
+By condition (V4) of Axiom 2, $V(s) \geq \lambda_0 s^\alpha - C_V$ for some $\alpha > 2$. Thus:
+\begin{align}
+S_E[\psi_N] &\geq \int_0^\beta \frac{1}{2}|\partial_\tau \psi_N|^2 d\tau + \int_0^\beta \mathcal{E}(\psi_N, \psi_N) d\tau + \int_X \left(\lambda_0 |\psi_N|^{2\alpha} - C_V\right) d\mu \\
+&\geq C_1 \|\partial_\tau \psi_N\|_{L^2}^2 + C_2 \|\psi_N\|_{H^{1,2}}^2 + \lambda_0 \|\psi_N\|_{L^{2\alpha}}^\alpha - D'.
+\end{align}
+
+By Sobolev embedding $H^{1,2}([0,\beta] \times X) \hookrightarrow L^q$ for all $q \in [2, \infty)$ when $Q < 4$, there is for some $p > 2$:
+\begin{equation}
+\|\psi_N\|_{L^p}^p \leq C_S \|\psi_N\|_{H^{1,2}}^p.
+\end{equation}
+
+Thus:
+\begin{equation}
+S_E[\psi_N] \geq C_{\min} \|\psi_N\|_{H^{1,2}}^\alpha - D
+\end{equation}
+uniformly in $N$. The key point is that the Sobolev embedding constants do not depend on $N$ (they depend only on the underlying space and dimension), ensuring uniformity in the mode truncation.

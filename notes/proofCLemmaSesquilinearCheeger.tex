@@ -1,0 +1,47 @@
+% proofLemSesquilinearCheeger.tex
+% Proof content
+
+By Definition \ref{def:cheegerStructure}, the Cheeger differential structure on a metric measure space provides a decomposition $H^{1,2}(X)$ with an associated minimal upper gradient. The sesquilinear form $\mathcal{E}_{\mathrm{grad}}$ is defined via the Cheeger differential:
+
+\noindent\textbf{Sesquilinear Definition.}
+
+For any $\psi, \phi \in H^{1,2}(X; \mathbb{C}^n)$, the sesquilinear form is:
+\[
+\mathcal{E}_{\mathrm{grad}}(\psi, \phi) := \int_X g^\mu_{\psi,\phi}(x) d\mu(x),
+\]
+where $g^\mu_{\psi,\phi}$ is the Cheeger co-differential metric on cotangent spaces (Cheeger 1999, Definition 1.1). This is related to upper gradients $g_\psi, g_\phi$ of $\psi, \phi$ respectively by:
+\[
+g^\mu_{\psi,\phi}(x) := \left\langle g_\psi(x), g_\phi(x) \right\rangle_{\mathrm{cot}}
+\]
+where the inner product is taken in the cotangent fiber at $x$.
+
+\noindent\textbf{Polarization Formula.}
+
+For a sesquilinear form to be well-defined from a quadratic form $\mathcal{E}_{\mathrm{grad}}(\psi) = \mathcal{E}_{\mathrm{grad}}(\psi, \psi)$, the polarization formula must hold. For vector-valued functions $\psi, \phi: X \to \mathbb{C}^n$, the polarization is:
+\[
+\mathcal{E}_{\mathrm{grad}}(\psi, \phi) = \frac{1}{4}\left[\mathcal{E}_{\mathrm{grad}}(\psi+\phi) - \mathcal{E}_{\mathrm{grad}}(\psi-\phi) - i\mathcal{E}_{\mathrm{grad}}(\psi+i\phi) + i\mathcal{E}_{\mathrm{grad}}(\psi-i\phi)\right].
+\]
+By the linearity and homogeneity properties of upper gradients (Ambrosio-Gigli-Savaré, Theorem 2.2.1), this polarization formula yields a sesquilinear form that is independent of the decomposition of the upper gradient.
+
+\noindent\textbf{Boundedness.}
+
+By Cauchy-Schwarz applied to the cotangent fiber metric:
+\[
+|g^\mu_{\psi,\phi}(x)| \leq |g_\psi(x)| \cdot |g_\phi(x)| \quad \text{a.e. in } x.
+\]
+Integration gives:
+\[
+|\mathcal{E}_{\mathrm{grad}}(\psi, \phi)| \leq \left(\int |g_\psi|^2 d\mu\right)^{1/2} \left(\int |g_\phi|^2 d\mu\right)^{1/2} = \mathcal{E}_{\mathrm{grad}}(\psi)^{1/2} \mathcal{E}_{\mathrm{grad}}(\phi)^{1/2}.
+\]
+This is the Cauchy-Schwarz inequality for the sesquilinear form.
+
+\noindent\textbf{Consistency.}
+
+The sesquilinear form $\mathcal{E}_{\mathrm{grad}}$ is consistent in the sense that:
+\begin{enumerate}
+\item It is independent of the choice of minimal upper gradient (Cheeger 1999, Theorem 4.1).
+\item For functions on Euclidean space $X = \mathbb{R}^n$, it reduces to $\mathcal{E}_{\mathrm{grad}}(\psi, \phi) = \int \langle \nabla \psi, \nabla \phi \rangle dx$ (standard gradient inner product).
+\item For functions on a Riemannian manifold, it coincides with the Riemannian Dirichlet form: $\mathcal{E}_{\mathrm{grad}}(\psi, \phi) = \int_X g(\nabla \psi, \nabla \phi) \mathrm{vol}_g$.
+\end{enumerate}
+
+Thus the sesquilinear form $\mathcal{E}_{\mathrm{grad}}$ is well-posed, bounded, and gives the correct generalization of the Dirichlet form to metric measure spaces without smooth structure.

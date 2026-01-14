@@ -1,0 +1,49 @@
+% proofLemVariationalBootstrap.tex
+% Proof content
+
+\noindent\textbf{Truncated Functional Approximation.}
+
+By Axiom A1d, the generating functional $\Phi[\psi]$ has coercivity: $\Phi[\psi] \geq C_V \|\psi\|^{2\alpha} - C_V'$ with $\alpha > 2$. Define the truncated functional:
+\begin{equation}
+\Phi_\epsilon[\psi] := \int_X V_\epsilon(|\psi|^2) d\mu, \quad V_\epsilon(s) := V(\min(s, 1/\epsilon)).
+\end{equation}
+The truncated potential $V_\epsilon$ is bounded and Lipschitz:
+\[
+0 \leq V_\epsilon(s) \leq \max_{0 \leq u \leq 1/\epsilon} V(u) < \infty, \quad |V_\epsilon(s)| \leq M_\epsilon.
+\]
+Thus $\Phi_\epsilon$ has bounded derivatives: $|\nabla \Phi_\epsilon| \leq C_\epsilon$.
+
+\noindent\textbf{Existence of Minimizers for Truncated Functional.}
+
+For each $\epsilon > 0$, by the direct method of calculus of variations (Evans 1998, Chapter 8):
+\begin{enumerate}
+\item The functional $\Phi_\epsilon: H^{1,2}(X) \to \mathbb{R}$ is weakly lower semicontinuous.
+\item The sublevel set $\{\psi : \Phi_\epsilon[\psi] \leq c\}$ is weakly compact for any $c \in \mathbb{R}$.
+\item Therefore, $\Phi_\epsilon$ attains its minimum at some $\psi_{0,\epsilon} \in H^{1,2}(X)$.
+\end{enumerate}
+
+\noindent\textbf{Uniform Bounds and Subsequence Convergence.}
+
+By the uniform coercivity bound (V4) for the original $\Phi$:
+\[
+\Phi_\epsilon[\psi] \geq \Phi[\psi] - C'' \geq C_V \|\psi\|^{2\alpha} - C_V' - C''.
+\]
+Since $\Phi_\epsilon[\psi_{0,\epsilon}] \leq \Phi_\epsilon[0] = V_\epsilon(0) < \infty$, the sequence $\{\psi_{0,\epsilon}\}$ satisfies:
+\[
+C_V \|\psi_{0,\epsilon}\|^{2\alpha} \leq \Phi_\epsilon[\psi_{0,\epsilon}] + C_V' + C'' \leq C_0,
+\]
+for some constant $C_0 independent of $\epsilon$. Thus $\|\psi_{0,\epsilon}\|_{H^{1,2}} \leq M$ uniformly.
+
+By the Banach-Alaoglu theorem, the sequence $\{\psi_{0,\epsilon}\}$ is relatively weakly compact in $H^{1,2}(X)$. Extract a weakly convergent subsequence: $\psi_{0,\epsilon_k} \rightharpoonup \psi_0$ in $H^{1,2}$.
+
+\noindent\textbf{Limit is the Original Minimizer.}
+
+By the strict convexity of $\Phi$ (Lemma \ref{lem:functionalConvexity}), the minimizer of $\Phi$ is unique. By weak lower semicontinuity:
+\[
+\Phi[\psi_0] \leq \liminf_{k \to \infty} \Phi[\psi_{0,\epsilon_k}] = \liminf_{k \to \infty} \Phi_{\epsilon_k}[\psi_{0,\epsilon_k}] \leq \inf_{\psi} \Phi_\epsilon[\psi] + o(1).
+\]
+Since $\inf_\psi \Phi_\epsilon[\psi] \to \inf_\psi \Phi[\psi]$ as $\epsilon \to 0$ (monotone convergence), there is $\psi_0 = \arg\min \Phi$.
+
+\noindent\textbf{Regularity of the Minimizer.}
+
+Since $\psi_{0,\epsilon_k} \rightharpoonup \psi_0$ weakly in $H^{1,2}(X)$, and the embedding $H^{1,2}(X) \hookrightarrow L^2(X)$ is compact (Lemma \ref{lem:polishConsequences}), there is $\psi_{0,\epsilon_k} \to \psi_0$ strongly in $L^2$. By regularity theory (Theorem \ref{thm:eigenfunctionRegularity}), $\psi_0 \in C^{0,\alpha}(X)$ for $\alpha = 1 - Q/4$ when $Q < 4$.

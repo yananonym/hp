@@ -1,0 +1,30 @@
+% proofThmResolventCompactness.tex
+% Proof content
+
+\textbf{Step 1: Coercivity Bound.}
+
+By coercivity of $\mathcal{E}$, for $\lambda > \Lambda_0$ (the upper bound on $W$):
+\begin{equation}
+\|(A + \lambda I)^{-1}f\|_{H^{1,2}} \leq C_\lambda \|f\|_{L^2}
+\end{equation}
+
+This follows from the variational characterization: for $\psi = (A + \lambda I)^{-1}f$, there is
+\begin{equation}
+\mathcal{E}(\psi, \psi) + \lambda \|\psi\|_{L^2}^2 = \langle f, \psi \rangle_{L^2} \leq \|f\|_{L^2} \|\psi\|_{L^2}
+\end{equation}
+
+Thus:
+\begin{equation}
+\|\psi\|_{H^{1,2}}^2 \leq C(\mathcal{E}(\psi, \psi) + \|\psi\|_{L^2}^2) \leq C' \|f\|_{L^2}^2
+\end{equation}
+
+\textbf{Step 2: Factorization Through Compact Embedding.}
+
+Factor the resolvent: $(A + \lambda I)^{-1} = \iota \circ (A + \lambda I)^{-1}|_{H^{1,2}}$
+where $\iota: H^{1,2} \hookrightarrow L^2$ is the compact embedding (for $Q < 4$ by Lemma \ref{lem:polishConsequences}).
+
+\textbf{Step 3: Compactness by Composition.}
+
+The composition of a bounded operator $(A + \lambda I)^{-1}|_{H^{1,2}}: L^2 \to H^{1,2}$ and a compact operator $\iota: H^{1,2} \to L^2$ is compact.
+
+Therefore, $(A + \lambda I)^{-1}: L^2 \to L^2$ is compact.

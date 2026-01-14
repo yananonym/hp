@@ -1,0 +1,29 @@
+% proofLemCheegerStructure.tex
+% Proof content
+
+
+\textbf{Proof of Lemma \ref{lem:cheegerStructure}}
+
+By Axiom \ref{ax:polishSpace}, $(X, d, \mu)$ is a Polish space with Ahlfors $Q$-regularity and $(1,2)$-Poincaré inequality. These axioms imply the existence of a Cheeger (structure, a) decomposition of $X$ into rectifiable sets with lower-dimensional boundary.
+
+\textit{\underline{Part (i): Existence of Cheeger Structure}}
+
+By \cite{cheeger1999differentiation}, Theorem 4.38), any metric space satisfying:
+\begin{enumerate}
+\item Doubling property (Axiom 1(a)), and
+\item Poincaré inequality (Axiom 1(c))
+\end{enumerate}
+admits a Cheeger structure: a countable decomposition $X = \bigcup_{i=1}^\infty X_i \cup N$ where:
+- Each $X_i$ is a Lipschitz submanifold of dimension $\leq Q$ with $C^\infty$ boundary.
+- The set $N$ has Hausdorff dimension $< Q$ (hence $\mu(N) = 0$).
+- The manifold structure is intrinsic to $(X_i, d|_{X_i}, \mu|_{X_i})$.
+
+\textit{\underline{Part (ii): Fiber Dimension is $Q$}}
+
+The Ahlfors $Q$-regularity (Axiom 1(b)) implies that the Hausdorff dimension of $X$ equals $Q$. The Cheeger structure respects this dimension: each $X_i$ has Hausdorff dimension at most $Q$, and the union has dimension exactly $Q$ (since the null set $N$ has dimension $< Q$).
+
+By the volume growth characterization, any ball $B_r(x)$ satisfies $\mu(B_r(x)) \sim r^Q$ for $x \in X_i$. Thus the effective fiber dimension is $Q$.
+
+\textit{\underline{Part (iii): Compatibility with Poincaré inequality is a local property in metric measure space theory (\cite{heinonen1998quasiconformal}), and restriction to a Cheeger piece preserves it.
+
+\qed

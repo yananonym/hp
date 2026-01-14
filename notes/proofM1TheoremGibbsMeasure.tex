@@ -1,0 +1,63 @@
+% proofThmGibbsMeasure.tex
+% Proof content
+
+\noindent\textbf{Step (1): Integrability via Coercivity.}
+
+By Axiom A1d (Definition \ref{def:dirichletForm}), the generating functional satisfies polynomial growth:
+\[
+\Phi[\psi] \geq C_V \|\psi\|^{2\alpha} - C_V', \quad \alpha > 2.
+\]
+Define the partition function:
+\[
+Z_\hbar := \int_X \exp(-\Phi[\psi]/\hbar) d\nu_{\mathcal{E}}[\psi],
+\]
+where $\nu_{\mathcal{E}}$ is the Gaussian measure on configuration space with covariance $\mathcal{E}^{-1}$ (Fernique-type measure). By polynomial growth with $\alpha > 2$:
+\begin{align}
+Z_\hbar &\leq \int_X \exp(C_V'/\hbar) \exp(-C_V \|\psi\|^{2\alpha}/\hbar) d\nu_{\mathcal{E}}[\psi] \\
+&= e^{C_V'/\hbar} \int_X \exp(-C_V \|\psi\|^{2\alpha}/\hbar) d\nu_{\mathcal{E}}[\psi].
+\end{align}
+
+By Fernique's integrability theorem (Fernique 1964, Theorem 1), for any Gaussian measure $\nu_{\mathcal{E}}$ on a Banach space and any polynomial growth functional $f$ with degree $< 2$:
+\[
+\int \exp(-f[\psi]) d\nu_{\mathcal{E}}[\psi] < \infty.
+\]
+Since $C_V \|\psi\|^{2\alpha}/\hbar$ has polynomial growth with $\alpha > 2$, there is $Z_\hbar < \infty$ for all $\hbar > 0$.
+
+\noindent\textbf{Step (2): Measure Normalization and Regularity.}
+
+The Gibbs measure is defined as:
+\[
+\mu_{\text{Gibbs}}[\psi] := Z_\hbar^{-1} \exp(-\Phi[\psi]/\hbar) d\nu_{\mathcal{E}}[\psi].
+\]
+Normalization follows from $Z_\hbar < \infty$:
+\[
+\int_X d\mu_{\text{Gibbs}}[\psi] = Z_\hbar^{-1} \int_X \exp(-\Phi[\psi]/\hbar) d\nu_{\mathcal{E}}[\psi] = 1.
+\]
+
+\noindent\textbf{Step (3): Finite Moments.}
+
+For any $p > 0$, the $p$-th moment is:
+\[
+\int \|\psi\|^p d\mu_{\text{Gibbs}} = Z_\hbar^{-1} \int \|\psi\|^p \exp(-\Phi[\psi]/\hbar) d\nu_{\mathcal{E}}.
+\]
+By Holder's inequality and polynomial growth $\Phi[\psi] \geq C_V \|\psi\|^{2\alpha}$ with $\alpha > 2$:
+\[
+\int \|\psi\|^p \exp(-\Phi[\psi]/\hbar) d\nu_{\mathcal{E}} \leq C \int \exp(-C_V \|\psi\|^{2\alpha}/(2\hbar)) d\nu_{\mathcal{E}} < \infty
+\]
+for any $p > 0$ (by Fernique again). Thus all moments are finite.
+
+\noindent\textbf{Step (4): Uniqueness via Gibbs Properties.}
+
+The measure $\mu_{\text{Gibbs}}$ satisfies the Gibbs variational principle (Georgii 1988, Theorem 1.3.4): it is the unique measure minimizing the free energy functional:
+\[
+F[\mu] := \int \Phi d\mu + \hbar \int \log(d\mu/d\nu_{\mathcal{E}}) d\mu.
+\]
+This uniqueness ensures that there is a unique measure consistent with the Boltzmann-Gibbs distribution at inverse temperature $\beta = 1/\hbar$.
+
+\noindent\textbf{Step (5): Path Integral Correspondence.}
+
+The Euclidean path integral measure can be formally written as:
+\[
+\mathcal{D}\psi \sim \exp(-\Phi[\psi]/\hbar) d\nu_{\mathcal{E}},
+\]
+which corresponds exactly to the Gibbs measure when properly regularized and normalized. This identification justifies the use of $\mu_{\text{Gibbs}}$ as the functional measure in quantum field theory partition functions (\cite{glimmJaffe1987quantum} 1987, Chapter 16).

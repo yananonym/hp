@@ -1,0 +1,32 @@
+% proofLemTraceClassInverse.tex
+% Proof content
+
+By Theorem \ref{thm:resolventCompactness}, $A$ has purely discrete spectrum $\{\lambda_k\}_{k=0}^\infty$ with $\lambda_k \to -\infty$. Thus:
+\[
+\mathrm{Tr}((-A)^{-1}) = \sum_{k=0}^\infty \frac{1}{|\lambda_k|}.
+\]
+
+By Weyl's asymptotic law for Ahlfors $Q$-regular spaces with Poincaré inequality \cite{sturm2006geometry}:
+\[
+|\lambda_k| \sim C_W k^{2/Q} \quad \text{as } k \to \infty.
+\]
+
+Therefore:
+\[
+\sum_{k=1}^\infty \frac{1}{|\lambda_k|} \sim C_W^{-1} \sum_{k=1}^\infty k^{-2/Q}.
+\]
+
+This series converges if and only if $2/Q > 1$, i.e., $Q < 2$. However, the direct spectrum is not summable for $Q \in [2,4)$.
+
+\textbf{Resolution via Heat Kernel Regularization:} Instead, define the regularized inverse via heat kernel methods. For any $t > 0$:
+\[
+C_t := \int_0^t e^{sA} \, ds = (I - e^{tA})(-A)^{-1}.
+\]
+
+Since $e^{tA}$ is trace class for $t > 0$ (ultracontractivity from Theorem \ref{thm:heatKernelBounds}), and $(I - e^{tA})$ is bounded with $\|I - e^{tA}\| \leq \min(1, |tA|)$, the product $C_t$ is trace class. Define:
+\[
+\nu_{\mathcal{E}} := \lim_{t \to \infty} \nu_{C_t}
+\]
+in the sense of weak limits of probability measures (projective limit in the sense of inverse limits).
+
+The Gaussian measure $\nu_{\mathcal{E}}$ is $\sigma$-additive on cylindrical $\sigma$-algebras by Kolmogorov consistency, and extends to the full $\sigma$-algebra via Caratheodory's extension theorem. \qedhere

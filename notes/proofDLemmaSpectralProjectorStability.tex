@@ -1,0 +1,72 @@
+% proofLemSpectralProjectorStability.tex
+% Proof content
+
+
+Consider a small perturbation $\delta V$ of the potential: $V_\epsilon = V + \delta V$ with $\|\delta V\|_\infty \leq \epsilon$. The perturbed operator is:
+$$A_\epsilon := -\Delta_\mu + V_\epsilon(|\psi|^2) = A + \delta V.$$
+
+The perturbed eigenfunctions and eigenvalues are denoted $\{e_k^\epsilon\}$ and $\{\lambda_k^\epsilon\}$.
+
+\textbf{Step 1: Resolvent Estimates}
+
+The resolvents satisfy:
+$$R_\epsilon(z) := (z - A_\epsilon)^{-1} = (z - A - \delta V)^{-1},$$
+with the resolvent identity:
+$$R_\epsilon(z) = R(z) - R(z) \delta V R_\epsilon(z).$$
+
+By Neumann series expansion (for $\|\delta V R(z)\| < 1$):
+$$R_\epsilon(z) = \sum_{n=0}^\infty (-1)^n [R(z) \delta V]^n R(z).$$
+
+For $z$ outside the spectrum of $A_\epsilon$ and $A$, with $|\delta V| \leq \epsilon$:
+$$\|R_\epsilon(z) - R(z)\| \leq \frac{\|R(z)\|^2 \epsilon}{1 - \|R(z) \delta V\|} \leq C \|R(z)\|^2 \epsilon.$$
+
+\textbf{Step 2: Spectral Projector Perturbation}
+
+The spectral projector onto the eigenspace of $\lambda_k$ is:
+$$P_k = \frac{1}{2\pi i} \oint_{\Gamma_k} R(z) dz,$$
+where $\Gamma_k$ is a contour surrounding $\lambda_k$ in the complex plane, enclosing only $\lambda_k$ among all eigenvalues.
+
+The perturbed projector is:
+$$P_k^\epsilon = \frac{1}{2\pi i} \oint_{\Gamma_k} R_\epsilon(z) dz.$$
+
+By contour integration and resolvent bounds:
+$$\|P_k^\epsilon - P_k\| \leq C \epsilon \max_{z \in \Gamma_k} \|R(z)\|^2 \leq C \epsilon \delta_k^{-2},$$
+where $\delta_k$ is the spectral gap around $\lambda_k$ (distance to nearest other eigenvalue).
+
+\textbf{Step 3: Eigenvalue Perturbation}
+
+The first-order eigenvalue perturbation is:
+$$\lambda_k^\epsilon = \lambda_k + \langle e_k | \delta V | e_k \rangle + O(\epsilon^2).$$
+
+By Holder regularity of eigenfunctions (Theorem \ref{thm:eigenfunctionRegularity}), if $\delta V \in L^\infty$:
+$$|\lambda_k^\epsilon - \lambda_k| \leq \|\delta V\|_\infty \leq \epsilon.$$
+
+\textbf{Step 4: Eigenfunction Perturbation}
+
+The first-order eigenfunction perturbation uses the resolvent:
+$$e_k^\epsilon = e_k + \sum_{j \neq k} \frac{\langle e_j | \delta V | e_k \rangle}{\lambda_k - \lambda_j} e_j + O(\epsilon^2).$$
+
+By spectral gap bounds: if $\min_{j \neq k} |\lambda_k - \lambda_j| \geq \delta_k > 0$, then:
+$$\|e_k^\epsilon - e_k\|_{L^2} \leq C \epsilon / \delta_k.$$
+
+Furthermore, by Holder regularity, eigenfunctions satisfy $e_k^\epsilon \in C^{0,\alpha}(X)$ uniformly for small $\epsilon$:
+$$\|e_k^\epsilon\|_{C^{0,\alpha}} \leq C(k) \quad \text{(uniform in } \epsilon \text{ for } \epsilon \leq \epsilon_0(k)).$$
+
+\textbf{Step 5: Quantitative Stability Bounds}
+
+For observables depending on spectral data (heat semigroup, spectral embedding, Green's functions):
+
+\begin{enumerate}
+\item \textbf{Heat Semigroup Stability:}
+$$\|e^{-tA_\epsilon} - e^{-tA}\|_{L^2 \to L^2} \leq C(t) \epsilon.$$
+
+\item \textbf{Spectral Embedding Stability:}
+$$\|\Psi_N^\epsilon - \Psi_N\|_\infty \leq C(N) \epsilon,$$
+where $\Psi_N(x) = (\sqrt{|\lambda_0|} e_0(x), \ldots, \sqrt{|\lambda_{N-1}|} e_{N-1}(x))$.
+
+\item \textbf{Green's Function Stability:}
+$$\|(A_\epsilon + I)^{-1} - (A + I)^{-1}\|_{L^2 \to L^2} \leq C \epsilon.$$
+
+\end{enumerate}
+
+These bounds show that the spectral structure (projectors, eigenvalues, eigenfunctions) depends continuously on perturbations to the potential, with explicit quantitative control. This is essential for establishing that small variations in $V$ do not destabilize the emergent manifold structure or metric. \qed

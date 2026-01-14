@@ -1,0 +1,76 @@
+% proofCorVolumeForm.tex
+% Proof content
+
+
+\textbf{Proof of Corollary \ref{cor:volumeForm}}
+
+The metric tensor $g_{\mu\nu}$ derived from the CarrÃƒÆ’Ã‚© Champ determines a unique volume form $\text{vol}_g$, which is related to the original measure $\mu$ by a continuous, bounded density function.
+
+\textit{\underline{Step 1: Volume Form Definition}}
+
+On a Riemannian manifold $(X, g)$, the volume form is:
+\[
+\text{vol}_g := \sqrt{|\det(g_{\mu\nu})|} \, dx^1 \edge \cdots \edge dx^Q,
+\]
+where $x^1, \ldots, x^Q$ are local coordinates compatible with the metric structure.
+
+By Theorem \ref{thm:metricFromCarre}, the metric is uniquely determined from the CarrÃƒÆ’Ã‚© Champ:
+\[
+g_{\mu\nu} = \text{CarrÃƒÆ’Ã‚©, x^\nu)|_{\Phi[\psi] = E_0},
+\]
+and $\det(g_{\mu\nu}) > 0$ is strictly positive (non-degenerate metric). Thus $\text{vol}_g$ is well-defined and non-singular.
+
+\textit{\underline{Step 2: Radon-Nikodym Derivative}}
+
+Both $\mu$ and $\text{vol}_g$ are Radon measures on the compact Polish space $X$. By the Radon-Nikodym theorem, there exists a unique non-negative function $\rho: X \to \mathbb{R}_{\geq 0}$ such that:
+\[
+\mu(A) = \int_A \rho(x) \, \text{vol}_g(x) \quad \text{for all measurable } A \subseteq X.
+\]
+
+The density $\rho$ is called the Radon-Nikodym derivative: $\rho = \frac{d\mu}{d\text{vol}_g}$.
+
+\textit{\underline{Step 3: Boundedness of the Density}}
+
+The Ahlfors $Q$-regularity of $\mu$ (Axiom 1(b)) gives:
+\[
+\mu(B_r(x)) \sim r^Q \quad \text{for all } x \in X, \, 0 < r \leq \text{diam}(X).
+\]
+
+Since $\text{vol}_g$ is induced by the metric, it is also Ahlfors $Q$-regular with the same constant (by the theory of metric measure spaces). Thus:
+\[
+\text{vol}_g(B_r(x)) \sim r^Q \quad \text{for all } x \in X.
+\]
+
+Taking the ratio:
+\[
+\rho(x) := \lim_{r \to 0} \frac{\mu(B_r(x))}{\text{vol}_g(B_r(x))}
+\]
+exists and satisfies:
+\[
+c_1 \leq \rho(x) \leq c_2 \quad \text{for constants } c_1, c_2 > 0.
+\]
+
+Thus $\rho \in L^\infty(X, \text{vol}_g)$ and is bounded away from 0 and $\infty$.
+
+\textit{\underline{Step 4: Continuity of the Density}}
+
+By the metric compatibility of both $\mu$ and $\text{vol}_g$, and the Lipschitz continuity of the metric tensor (from Theorem \ref{thm:metricFromCarre}), the density $\rho$ inherits Holder continuity:
+\[
+|\rho(x) - \rho(y)| \leq C \, d(x, y)^\alpha
+\]
+for some $\alpha > 0$ and constant $C > 0$.
+
+This follows from the Holder continuity of the metric components $g_{\mu\nu}(x)$ (proven via Holder regularity of eigenfunctions in Lemma \ref{lem:polishConsequences}(4)) and the continuous dependence of volume forms on metric components.
+
+\textit{\underline{Step 5: Normalization}}
+
+Since $X$ is compact:
+\[
+\mu(X) = \int_X \rho(x) \, \text{vol}_g(x) = \rho_{\text{avg}} \cdot \text{vol}_g(X),
+\]
+where $\rho_{\text{avg}} := \frac{\mu(X)}{\text{vol}_g(X)}$ is the average density. Defining $\tilde{\rho}(x) := \frac{\rho(x)}{\rho_{\text{avg}}}$ gives a normalized density with:
+\[
+\int_X \tilde{\rho}(x) \, \text{vol}_g(x) = 1.
+\]
+
+\qed

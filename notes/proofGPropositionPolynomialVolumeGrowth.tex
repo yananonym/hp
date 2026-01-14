@@ -1,0 +1,20 @@
+% proofPropPolynomialVolumeGrowth.tex
+% Proof content
+
+By Corollary \ref{cor:volumeForm}, the Riemannian volume form relates to the measure:
+\begin{equation}
+\text{Vol}_g(B_r(p)) = \int_{B_r(p)} \sqrt{\det g(x)} \, d^Q x = \int_{B_r(p)} \rho(x) d\mu(x),
+\end{equation}
+where $\rho$ is the Radon-Nikodym derivative with $c_1 \leq \rho(x) \leq c_2$.
+
+By Ahlfors regularity of $\mu$ from Axiom \ref{ax:polishSpace}(c):
+\begin{equation}
+c_1 \mu(B_r(p)) \leq \text{Vol}_g(B_r(p)) \leq c_2 \mu(B_r(p)).
+\end{equation}
+
+Since $\mu(B_r(p)) \sim r^Q$ by Axiom \ref{ax:polishSpace}(c), the conclude:
+\begin{equation}
+\text{Vol}_g(B_r(p)) \sim r^Q.
+\end{equation}
+
+This establishes the polynomial volume growth with geometric dimension equal to the regularity dimension $Q$.

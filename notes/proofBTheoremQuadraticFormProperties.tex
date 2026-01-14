@@ -1,0 +1,26 @@
+% proofThmQuadraticFormProperties.tex
+% Proof content
+
+\textit{Sesquilinearity and Hermiticity:} From the definition $\mathcal{Q}(f, g) := \int_X V''(|\psi_0|^2) \overline{f(x)} \cdot g(x) \, d\mu(x)$:
+\begin{equation}
+\mathcal{Q}(\alpha f, g) = \int_X V''(|\psi_0|^2) \overline{\alpha f}(x) \cdot g(x) \, d\mu(x) = \overline{\alpha} \int_X V''(|\psi_0|^2) \overline{f}(x) \cdot g(x) \, d\mu(x) = \overline{\alpha} \mathcal{Q}(f, g).
+\end{equation}
+And:
+\begin{equation}
+\mathcal{Q}(g, f) = \int_X V''(|\psi_0|^2) \overline{g}(x) \cdot f(x) \, d\mu(x) = \int_X V''(|\psi_0|^2) \overline{\overline{f}(x) \cdot g(x)} \, d\mu(x) = \overline{\mathcal{Q}(f, g)}.
+\end{equation}
+
+\textit{Positive definiteness:} By Axiom \ref{ax:configSpace} condition (V2), $V''(s) \geq \lambda_0 > 0$ for all $s \geq 0$. Thus:
+\begin{equation}
+\mathcal{Q}(f, f) = \int_X V''(|\psi_0|^2) |f|^2 d\mu \geq \lambda_0 \int_X |f|^2 d\mu = \lambda_0 \|f\|_{\mathcal{H}}^2.
+\end{equation}
+
+For the upper bound, by polynomial growth (V3), $V''(s) \leq C_2(1 + s^{\max(0, \alpha - 2)})$ for some constant $C_2$. Since $\psi_0 \in L^\infty(X)$ by Lemma \ref{lem:vacuumProperties}(4), there exists $M > 0$ with $|\psi_0(x)|^2 \leq M$ for all $x \in X$. Thus:
+\begin{equation}
+V''(|\psi_0|^2) \leq C_2(1 + M^{\max(0, \alpha - 2)}) =: \Lambda_0 < \infty.
+\end{equation}
+
+Therefore:
+\begin{equation}
+\mathcal{Q}(f, f) = \int_X V''(|\psi_0|^2) |f|^2 d\mu \leq \Lambda_0 \|f\|_{\mathcal{H}}^2.
+\end{equation}

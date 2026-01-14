@@ -1,0 +1,51 @@
+% proofLemDomainDensity.tex
+% Proof content
+
+\noindent\textbf{Part (i): Domain Density in $H^{1,2}(X)$.}
+
+By definition (Definition \ref{def:operatorHierarchy}), $\Dom(A)$ is the domain of the weak Laplacian associated to the Dirichlet form $\mathcal{E}$ via the Lax-Milgram representation:
+\[
+\Dom(A) = \{\psi \in H^{1,2}(X) : \exists f \in L^2(X) \text{ such that } \mathcal{E}(\psi, \phi) = \langle f, \phi \rangle_{L^2} \text{ for all } \phi \in H^{1,2}(X)\}.
+\]
+
+The domain $\Dom(A)$ contains the core $C^\infty_c(X; \mathbb{C}^n)$ (smooth compactly supported vector-valued functions). By standard approximation theory in metric measure spaces (\cite{heinonen1998quasiconformal}, Proposition 2.1.11):
+\begin{equation}
+C^\infty_c(X; \mathbb{C}^n) \text{ is dense in } H^{1,2}(X; \mathbb{C}^n).
+\end{equation}
+
+Since $\Dom(A) \supset C^\infty_c(X; \mathbb{C}^n)$ and the latter is dense in $H^{1,2}(X)$, by standard functional analysis (Rudin 1973, Lemma 4.4), $\Dom(A)$ is dense in $H^{1,2}(X)$ with respect to the graph norm:
+\[
+\|\psi\|_A := (\|\psi\|_{L^2}^2 + \|A\psi\|_{L^2}^2)^{1/2}.
+\]
+
+\noindent\textbf{Part (ii): Closedness and Self-Adjointness.}
+
+The domain $\Dom(A)$ is defined as the set of $\psi \in H^{1,2}(X)$ such that $\mathcal{E}(\psi, \phi) = \langle A\psi, \phi \rangle_{L^2}$ for a unique $A\psi \in L^2(X)$. By the Riesz representation theorem (applied to the Dirichlet form), this operator $A$ is well-defined and uniquely determined.
+
+The graph norm $\|\psi\|_A := (\|\psi\|_{L^2}^2 + \|A\psi\|_{L^2}^2)^{1/2}$ defines a Banach space structure on $\Dom(A)$. The operator $A$ is closed in the sense that if $\psi_n \in \Dom(A)$ with $\psi_n \to \psi$ in $L^2$ and $A\psi_n \to f$ in $L^2$, then $\psi \in \Dom(A)$ and $A\psi = f$ (Reed-Simon 1975, Vol. I, Theorem VIII.3).
+
+For self-adjointness: the Dirichlet form $\mathcal{E}$ is symmetric and closed (by Axiom A1d, Section \ref{sec:axioms}). By the Friedrichs extension theorem (Reed-Simon 1975, Vol. II, Theorem X.25), the symmetric operator $(A, \Dom(A))$ extends uniquely to a self-adjoint operator. This is the unique self-adjoint extension of $A$, and Denote it by the same symbol. Thus:
+\[
+A^* = A, \quad \overline{\Dom(A)} = H^{1,2}(X) \text{ (in graph norm)}.
+\]
+
+\noindent\textbf{Part (iii): Hölder Regularity for $Q < 4$.}
+
+By Theorem \ref{thm:eigenfunctionRegularity}, the eigenfunctions $\{e_k\}$ of $A$ satisfy $e_k \in C^{0,\alpha}(X)$ with Hölder exponent:
+\[
+\alpha = \begin{cases}
+1 - Q/4 & \text{if } Q < 4, \\
+\text{undefined} & \text{if } Q \geq 4.
+\end{cases}
+\]
+
+Any $\psi \in \Dom(A)$ can be expanded in the eigenfunction basis (by completeness of eigenfunctions in $L^2$):
+\[
+\psi = \sum_{k=1}^\infty c_k e_k, \quad \text{with } \sum_{k=1}^\infty |c_k|^2 \lambda_k^2 < \infty
+\]
+(since $A\psi \in L^2$). The Hölder norm satisfies:
+\[
+\|\psi\|_{C^{0,\alpha}} \leq C \sum_{k=1}^\infty |c_k| \|e_k\|_{C^{0,\alpha}} \leq C' \left(\sum_{k=1}^\infty |c_k|^2\right)^{1/2} < \infty.
+\]
+
+Thus $\Dom(A) \subset C^{0,\beta}(X)$ for any $\beta < \alpha = 1 - Q/4$ when $Q < 4$. This Hölder embedding is continuous, establishing the claimed regularity.

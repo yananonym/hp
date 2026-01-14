@@ -1,0 +1,30 @@
+% proofLemVacuumProperties.tex
+% Proof content
+
+(1) The constraint set $\mathcal{S} := \{\psi \in \mathcal{H} : \|\psi\|_{\mathcal{H}}^2 = 1\}$ is weakly compact in $\mathcal{H} = L^2(X, \mu; \mathbb{C}^n)$ by the Banach-Alaoglu theorem. The functional $\Phi[\psi] = \int_X V(|\psi|^2) d\mu$ is weakly lower semicontinuous because:
+\begin{itemize}
+\item The map $\psi \mapsto |\psi|^2$ is continuous in the norm topology of $\mathcal{H}$.
+\item The superposition $V \circ |\cdot|^2$ inherits weak lower semicontinuity from the lower semicontinuity of $V$ (which follows from polynomial growth and continuity).
+\end{itemize}
+
+By the direct method in calculus of variations, $\Phi$ attains its minimum on $\mathcal{S}$. Uniqueness up to phase: suppose $\psi_0$ and $\tilde{\psi}_0 = e^{i\theta}\psi_0$ both minimize $\Phi$. Then for any $\psi \in \mathcal{S}$:
+\begin{equation}
+\Phi[\psi_0] = \Phi[e^{i\theta}\psi_0] = \Phi[\psi]
+\end{equation}
+by the magnitude-only dependence of $\Phi$. Strict convexity of $V$ (condition V2 in Axiom \ref{ax:configSpace}) implies the minimizer is unique modulo phase.
+
+(2) Established by Lemma \ref{lem:variationalBootstrap}.
+
+(3) Standard Lagrange multiplier method: minimize $\Phi[\psi]$ subject to $g(\psi) := \|\psi\|_{\mathcal{H}}^2 - 1 = 0$. The first-order condition is:
+\begin{equation}
+D\Phi[\psi_0] = 2\lambda_0 \psi_0,
+\end{equation}
+where the factor $2\lambda_0$ arises from $Dg[\psi] \cdot h = 2\langle \psi, h \rangle_{\mathcal{H}}$. Substituting the formula for $D\Phi$ from Lemma \ref{lem:phiProperties}:
+\begin{equation}
+2\int_X V'(|\psi_0|^2) \text{Re}(\overline{\psi_0(x)} \cdot h(x)) d\mu(x) = 2\lambda_0 \int_X \text{Re}(\overline{\psi_0(x)} \cdot h(x)) d\mu(x),
+\end{equation}
+giving $\lambda_0 = \int_X V'(|\psi_0|^2)|\psi_0|^2 d\mu$.
+
+(4) Once $\psi_0 \in H^{1,2}(X)$ is established, the Sobolev embedding $H^{1,2}(X) \hookrightarrow L^\infty(X)$ for $Q < 4$ (Lemma \ref{lem:polishConsequences}) immediately gives $\psi_0 \in L^\infty(X)$.
+
+(5) Since $V(|\psi|^2)$ depends only on magnitude $|\psi|^2$, there is $V(|e^{i\theta}\psi|^2) = V(|\psi|^2)$. Thus $\Phi[e^{i\theta}\psi] = \Phi[\psi]$ for all $\theta$. The constraint $\|e^{i\theta}\psi\|_{\mathcal{H}} = \|\psi\|_{\mathcal{H}}$ also holds. Therefore all phase rotations of a minimizer are minimizers.

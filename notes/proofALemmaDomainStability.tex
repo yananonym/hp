@@ -1,0 +1,21 @@
+% proofLemDomainStability.tex
+% Proof content
+
+(i) The core property follows from density of $H^{1,2}(X)$ in the domain of $\mathcal{E}$ with respect to the graph norm. By polynomial growth (V3), there is for $\psi \in H^{1,2}(X)$ that:
+\begin{align}
+\|V'(|\psi|^2)\psi\|_{L^2}^2 &\leq C \int_X |V'(|\psi|^2)|^2 |\psi|^2 d\mu \\
+&\leq C \int_X (1 + |\psi|^2)^{1+\epsilon} d\mu
+\end{align}
+For $Q < 4$, the Sobolev embedding gives $H^{1,2} \hookrightarrow L^{2+2\epsilon}$ for small $\epsilon > 0$, ensuring the integral is finite.
+
+(ii) For the semigroup preservation: Let $\psi \in \Dom(D\Phi)$ and $t > 0$. By the ultracontractivity result of Grigor'yan (1999), the heat semigroup satisfies:
+\begin{equation}
+\|e^{tA}\psi\|_{L^\infty} \leq C t^{-Q/4} \|\psi\|_{L^2}
+\end{equation}
+Thus $e^{tA}\psi \in L^\infty(X)$, and for any $s \geq 0$:
+\begin{equation}
+\int_X |V'(|e^{tA}\psi|^2)| |e^{tA}\psi|^2 d\mu \leq C(1 + \|e^{tA}\psi\|_{L^\infty}^2) < \infty
+\end{equation}
+showing $e^{tA}\psi \in \Dom(D\Phi)$.
+
+(iii) The Wirtinger calculus compatibility follows from the chain rule for Gateaux derivatives and the polynomial growth bounds ensuring differentiability in the required distributional sense.

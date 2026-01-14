@@ -1,0 +1,26 @@
+% proofLemGenericSimplicity.tex
+% Proof content
+
+By the Uhlenbeck-Generic Simplicity Theorem \cite{uhlenbeck1976genericity}, for Schr\"odinger operators $-\Delta + W(x)$ on compact manifolds, the set of potentials $W$ for which all eigenvalues are simple is a residual (dense $G_\delta$) subset of $C^0(X)$.
+
+in the divergence-first framework, the potential is $W(x) = V''(|\psi_0(x)|^2)$, which depends on the vacuum configuration $\psi_0$.
+
+\textit{Step 1: Parameter Space.}
+
+The vacuum $\psi_0$ is determined by minimizing $\Phi[\psi]$ subject to $\|\psi\|_{L^2} = 1$. By Lemma \ref{lem:dimensionConstraintFromRegularity}, $\psi_0$ depends continuously on the potential $V$ in $C^4$ topology.
+
+\textit{Step 2: Genericity Transfer.}
+
+For a generic choice of $V$ satisfying (V1)--(V4), the resulting potential $W = V''(|\psi_0|^2)$ is generic in $C^0(X)$. This follows because:
+\begin{itemize}
+\item The map $V \mapsto \psi_0 \mapsto W$ is continuous.
+\item The preimage of a residual set under a continuous map contains a residual set when the map is open.
+\end{itemize}
+
+The openness follows from the implicit function theorem applied to the Euler-Lagrange equation for $\psi_0$ (strict convexity ensures non-degeneracy of the Hessian).
+
+\textit{Step 3: Extension to Metric Measure Spaces.}
+
+The extension of Uhlenbeck's theorem to metric measure spaces with Ahlfors regularity and Poincaré inequality is established in Keith-Zhong (2008), Theorem 3.5.
+
+Therefore, for generic $V$, all eigenvalues of $A$ are simple.

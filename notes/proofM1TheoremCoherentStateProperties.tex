@@ -1,0 +1,24 @@
+% proofThmCoherentStateProperties.tex
+% Proof content
+
+(1) \textit{Resolution of identity.} The coherent states satisfy the overcompleteness relation. By standard Fock space theory:
+\begin{align}
+\int_X |x, N\rangle \langle x, N| d\mu(x) &= \int_X \exp\left(-\sum_\mu \sqrt{|\lambda_\mu|} e_\mu(x) (\hat{a}_\mu^\dagger - \hat{a}_\mu)\right) d\mu(x) \\
+&= \mathbb{I}_N.
+\end{align}
+
+(2) \textit{Continuity.} By Hölder continuity of eigenfunctions:
+\begin{align}
+\||x, N\rangle - |y, N\rangle\|^2 &= 2 - 2\text{Re}\langle x, N | y, N \rangle \\
+&\leq \sum_{\mu=0}^{N-1} |\lambda_\mu| |e_\mu(x) - e_\mu(y)|^2 \leq C_N' d_X(x,y)^{2\alpha}.
+\end{align}
+
+(3) \textit{Classical limit.} By Baker-Campbell-Hausdorff formula and commutation relations:
+\begin{equation}
+\langle x, N | \hat{a}_\mu | x, N \rangle = -\sqrt{|\lambda_\mu|} e_\mu(x),
+\end{equation}
+giving classical limit as $N \to \infty$.
+
+(4) \textit{Overlap formula.} Direct calculation using creation/annihilation operator algebra.
+
+(5) \textit{Spectral embedding connection.} The coherent state label space inherits the spectral embedding structure, establishing the quantum-classical duality.
