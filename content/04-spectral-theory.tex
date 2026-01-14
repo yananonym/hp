@@ -23,6 +23,11 @@ $$\sigma(\Delta) = \{0 \leq \lambda_0 < \lambda_1 \leq \lambda_2 \leq \cdots \to
 Each eigenvalue has finite multiplicity, and the normalized eigenfunctions $\{e_k\}_{k=0}^\infty$ form an orthonormal basis of $L^2(X, \mu; \bbC^n)$.
 \end{corollary}
 
+\begin{remark}[Domain and Self-Adjointness]
+\label{rem:domain-self-adjoint}
+The Laplacian $\Delta$ arising from the Dirichlet form (Theorem \ref{thm:beurling-deny}) is manifestly self-adjoint with domain $\Dom(\Delta) = H^{2,2}(X)$ (Corollary after Theorem \ref{thm:beurling-deny} in Section 3). By the spectral theorem for self-adjoint operators, $\Delta$ admits a unique spectral decomposition into eigenvalues and eigenfunctions. The resolvent $(I + \Delta)^{-1}$ is well-defined as a bounded operator, and compactness follows from the embedding $H^{1,2}(X) \hookrightarrow L^2(X)$ via Rellich--Kondrachov. No deficiency index computation is required; self-adjointness is guaranteed by the Beurling--Deny representation.
+\end{remark}
+
 \subsection{Eigenfunction Regularity}
 
 \begin{theorem}[Hölder Regularity of Eigenfunctions]
