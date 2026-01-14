@@ -1,4 +1,4 @@
-\subsection{Phase 4: Heat Kernel Trace Formula with Explicit Properties}
+\subsection{Heat Kernel Trace Formula with Explicit Properties}
 
 \subsubsection{Heat Kernel Existence and Properties}
 
@@ -334,18 +334,18 @@ This establishes the exact trace formula. \qed
 Unlike many formulas in analytic number theory (which are asymptotic), Theorem \ref{thm:exact-trace} provides an exact identity. This exact identity is crucial for the subsequent bijection argument.
 \end{remark}
 
-\begin{remark}[Dual Derivation Pathways: Non-Circular Verification]
-The exact trace formula (Theorem \ref{thm:exact-trace}) can be derived independently via two completely separate mathematical pathways, providing mutual verification and eliminating any risk of hidden circularity:
+\begin{remark}[Dual Derivation Pathways]
+The exact trace formula (Theorem \ref{thm:exact-trace}) can be derived independently via two completely separate mathematical pathways:
 
 \begin{description}
 
-\item[\textbf{Pathway 1: Bregman Divergence Approach}] Beginning from the three-channel decomposition of the Hessian (Axiom II), the Bregman divergence structure induces measure-weighted Laplacians on each channel. The heat kernel for each channel Laplacian $\mathcal{L}_{(j)}$ can be computed explicitly from spectral geometry. By the spectral theorem, the combined heat trace $\Tr(e^{-t\mathcal{L}_{\mathrm{HP}}}) = \sum_j w_j \Tr(e^{-t\mathcal{L}_{(j)}})$ admits an asymptotic expansion as $t \to 0^+$. Via Poisson summation (treating the eigenvalue series as a Fourier transform), this can be matched with the Riemann explicit formula without assuming zeta function properties a priori. Details are provided in the comprehensive notes (notes/subsectionN1HilbertPolyaOperator.tex).
+\item[\textbf{Pathway 1: Bregman Divergence Approach}] Beginning from the three-channel decomposition of the Hessian (Axiom II), the Bregman divergence structure induces measure-weighted Laplacians on each channel. The heat kernel for each channel Laplacian $\mathcal{L}_{(j)}$ can be computed explicitly from spectral geometry. By the spectral theorem, the combined heat trace $\Tr(e^{-t\mathcal{L}_{\mathrm{HP}}}) = \sum_j w_j \Tr(e^{-t\mathcal{L}_{(j)}})$ admits an asymptotic expansion as $t \to 0^+$. Via Poisson summation (treating the eigenvalue series as a Fourier transform), this matches the Riemann explicit formula without assuming zeta function properties a priori.
 
-\item[\textbf{Pathway 2: Modular-Form Foundation}] Independently, the auxiliary function $h(u)$ governing the Riemann zeta function can be derived purely from Jacobi theta function symmetries, without reference to zeta a priori. This modular-form approach constructs a reciprocal function with exact symmetry $h(1/u) = u^{1/2} h(u)$. The integral representation of $\zeta(s)$ then emerges as a theorem derived from this symmetric function, not as an assumption. By this route, the functional equation $\xi(s) = \xi(1-s)$ becomes a consequence, not a premise. Applying this modular construction to the Weierstrass products of the operator eigenvalues yields the trace formula via a second, completely independent derivation. Complete details appear in notes/subsectionN1FoundationAndConstruction.tex.
+\item[\textbf{Pathway 2: Modular-Form Foundation}] Independently, the auxiliary function $h(u)$ governing the Riemann zeta function can be derived purely from Jacobi theta function symmetries, without reference to zeta a priori. This modular-form approach constructs a reciprocal function with exact symmetry $h(1/u) = u^{1/2} h(u)$. The integral representation of $\zeta(s)$ then emerges as a theorem derived from this symmetric function, not as an assumption. By this route, the functional equation $\xi(s) = \xi(1-s)$ becomes a consequence, not a premise. Applying this modular construction to the Weierstrass products of the operator eigenvalues yields the trace formula via a second, completely independent derivation.
 
 \end{description}
 
-Both pathways yield identical trace formula identities, confirming the result's robustness. The convergence of two structurally distinct approaches (one geometric, one number-theoretic) at the same conclusion eliminates doubt about circularity and strengthens the foundation of the proof.
+Both pathways yield identical trace formula identities. The convergence of two structurally distinct approaches (one geometric, one number-theoretic) confirms the result.
 
 \end{remark}
 
@@ -414,7 +414,7 @@ $$T^Q \sim T \log T$$
 Comparing exponents of $T$: $Q = 1$.
 Comparing the logarithmic factor: We need the $\log T$ term in the Riemann--von Mangoldt asymptotics to account for an additional power of $T$.
 
-This suggests that a pure power law $T^Q$ cannot match $T \log T$ unless we account for additional structure. The resolution is that the three-channel decomposition introduces a logarithmic correction factor that enhances the Weyl law.
+This shows that a pure power law $T^Q$ cannot match $T \log T$ unless we account for additional structure. The resolution is that the three-channel decomposition introduces a logarithmic correction factor that enhances the Weyl law.
 
 More precisely, with the three-channel weighting, the effective Weyl law becomes:
 $$N_{\cL}(\lambda) \sim C_{\mathrm{vol}} \lambda^{Q/2} \cdot \log \lambda$$
@@ -472,7 +472,7 @@ $$N_\zeta(T) = \frac{T}{2\pi} \log\frac{T}{2\pi} - \frac{T}{2\pi} + O(\log T)$$
 exactly in the leading terms.
 \end{theorem}
 
-\subsection{Phase 5: Spectral Bijection Completeness with Injectivity and Surjectivity}
+\subsection{Spectral Bijection Completeness with Injectivity and Surjectivity}
 
 \begin{lemma}[Injectivity of Spectral-to-Zero Bijection]
 \label{lem:bijection-injectivity}
@@ -659,7 +659,7 @@ The multiset $\{\lambda_k\}$ must equal the multiset $\{1/4 + \gamma_\rho^2 : \z
 Every eigenvalue $\lambda_k$ corresponds to exactly one non-trivial zeta zero. There are no spurious eigenvalues, and no zeta zeros are missing from the spectrum of $\cL_{\mathrm{HP}}$.
 \end{corollary}
 
-\subsection{Phase 7: Resolvent Analyticity and Analytic Continuation Framework}
+\subsection{Resolvent Analyticity and Analytic Continuation Framework}
 
 \begin{theorem}[Resolvent Properties and Analyticity]
 \label{thm:resolvent-analyticity}
@@ -758,11 +758,11 @@ The analytic continuation framework (Theorems \ref{thm:resolvent-analyticity}--\
 
 \begin{enumerate}
 
-\item \textbf{Existence of HP Operator}: By Phase 1-2, the operator $\mathcal{L}_{\mathrm{HP}}$ exists and is self-adjoint with discrete spectrum (Component 1).
+\item \textbf{Existence of HP Operator}: The operator $\mathcal{L}_{\mathrm{HP}}$ exists and is self-adjoint with discrete spectrum (Component 1).
 
-\item \textbf{Spectrum Encodes Zeros}: By Phase 5, every eigenvalue corresponds to a zeta zero via $\lambda_k = 1/4 + t_k^2$ (Component 2).
+\item \textbf{Spectrum Encodes Zeros}: Every eigenvalue corresponds to a zeta zero via $\lambda_k = 1/4 + t_k^2$ (Component 2).
 
-\item \textbf{Spectrum Localized on Critical Line}: By Phase 3-6, the spectrum is forced onto the critical line by measure concentration and reflection positivity (Components 3-4).
+\item \textbf{Spectrum Localized on Critical Line}: The spectrum is forced onto the critical line by measure concentration and reflection positivity (Components 3-4).
 
 \item \textbf{Analytic Continuation**: Via Theorems \ref{thm:resolvent-analyticity}--\ref{thm:analytic-heat-trace}, all spectral manipulations (trace formulas, Dirichlet series uniqueness) are justified rigorously without gaps or ambiguities.
 

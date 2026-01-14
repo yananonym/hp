@@ -1,0 +1,20 @@
+\begin{lemma}[Uniqueness of Laplace Transform]
+\label{lem:dirichlet-series-uniqueness}
+
+Let $\{a_k\}, \{b_k\}$ be two sequences of positive reals. If
+$$\sum_k e^{-sa_k} = \sum_k e^{-sb_k}$$
+for all $s > 0$, then $\{a_k\} = \{b_k\}$ as multisets.
+\end{lemma}
+
+\begin{proof}
+
+Define $F(s) := \sum_k e^{-sa_k}$ and $G(s) := \sum_k e^{-sb_k}$. Both are analytic for $\Re(s) > 0$ (for appropriate sequences tending to infinity).
+
+The assumption states $F(s) = G(s)$ for all real $s > 0$. By analytic continuation, $F(s) = G(s)$ for all complex $s$ with $\Re(s) > 0$.
+
+For the physics case, work with the eigenvalue distribution measure:
+$$\mu_a(E) := \sum_k \delta(E - a_k)$$
+
+The Laplace transform $\hat{\mu}_a(s) = \int_0^\infty e^{-sE} d\mu_a(E) = \sum_k e^{-sa_k}$ uniquely determines the measure $\mu_a$. Thus, if $\hat{\mu}_a = \hat{\mu}_b$, then $\mu_a = \mu_b$, hence the multisets coincide.
+
+\end{proof}

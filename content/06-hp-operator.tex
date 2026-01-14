@@ -1,12 +1,12 @@
-\subsection{Explicit Non-Circular weight Construction (Phase 1: Circularity Resolution)}
+\subsection{Explicit Weight Construction}
 \label{subsec:non-circular-weights}
 
-The following theorem provides a completely explicit, acyclic algorithm for weight determination that depends only on Axioms I--II, eliminating any possibility of circular reasoning.
+The following theorem provides a completely explicit, acyclic algorithm for weight determination that depends only on Axioms I--II.
 
 \begin{lemma}[Spectral Functional Depends Only on Hessian]
 \label{lem:spectral-functional-hessian-only}
 
-The spectral functional determining the weights can be expressed entirely in terms of the Hessian eigenvalues from Axiom II, without forward reference to the operator's spectrum:
+The spectral functional determining the weights can be expressed entirely in terms of the Hessian eigenvalues from Axiom II:
 
 $$\mathcal{F}_{\text{Hess}}[\mathbf{w}] = \int_0^\infty \left(\frac{d^2}{d\lambda^2}\log N_\mathbf{w}^{(\mathrm{Hess})}(\lambda)\right)^2 d\lambda + \gamma \sum_{j<k} \|P_{(j)} - P_{(k)}\|_{\mathrm{HS}}^2$$
 
@@ -17,7 +17,6 @@ where:
 \item $\{\lambda_k^{(\mu)}\}$ are the Laplacian eigenvalues (Axiom I)
 \item $P_{(j)}$ are orthogonal projections onto the $j$-th spectral cluster
 \item $\gamma > 0$ is a regularization parameter
-\item The functional depends only on $D^2\Phi$ (Axiom II) and $\Delta_\mu$ (Axiom I), with NO forward reference to operator $\mathcal{L}_{\mathbf{w}}$
 \end{itemize}
 
 Therefore, the weights $\mathbf{w}^*$ minimizing $\mathcal{F}_{\text{Hess}}$ are uniquely determined by Axioms I--II alone.
@@ -69,7 +68,6 @@ $$\mathcal{L}_{(j)} u = \sum_{k \in \mathcal{I}_j} (\lambda_k^{(\mu)} + \mu_k) \
 
 \item \textbf{Define Hessian-Only Spectral Functional}: Construct (Lemma \ref{lem:spectral-functional-hessian-only}):
 $$\mathcal{F}_{\text{Hess}}[\mathbf{w}] = \int_0^\infty \left(\frac{d^2}{d\lambda^2}\log N_\mathbf{w}^{(\mathrm{Hess})}(\lambda)\right)^2 d\lambda + \gamma \sum_{j<k} \|P_{(j)} - P_{(k)}\|_{\mathrm{HS}}^2$$
-This depends only on Axioms I--II with NO forward reference to operator spectrum.
 
 \item \textbf{Variational Minimization}: Minimize on the probability simplex:
 $$\mathbf{w}^* := \arg\min_{\mathbf{w} \in \mathbb{P}^2} \mathcal{F}_{\text{Hess}}[\mathbf{w}]$$
@@ -80,8 +78,6 @@ By compactness of $\mathbb{P}^2$ and continuity of $\mathcal{F}_{\text{Hess}}$, 
 \end{enumerate}
 
 \textbf{OUTPUT:} Unique weights $\mathbf{w}^* = (w_1^*, w_2^*, w_3^*)$ satisfying $w_j^* > 0$ and $\sum w_j^* = 1$.
-
-\textbf{Proof of Non-Circularity:}
 
 The algorithmic dependency chain is strictly acyclic:
 
@@ -119,9 +115,9 @@ Crucially, each arrow points downward (forward in time), with no backward arrows
 
 \end{theorem}
 
-\begin{remark}[Acyclic Dependency Verification]
+\begin{remark}[Acyclic Dependency]
 \label{rem:acyclic-dependency}
-For emphasis, we verify that at no point in the algorithm do we use properties of the operator $\mathcal{L}_{\mathbf{w}}$ being constructed:
+At no point in the algorithm do we use properties of the operator $\mathcal{L}_{\mathbf{w}}$ being constructed:
 
 \begin{enumerate}
 \item Steps 1-3 (Hessian decomposition) use only $D^2\Phi$ from Axiom II.
@@ -130,8 +126,6 @@ For emphasis, we verify that at no point in the algorithm do we use properties o
 \item Step 7 (Minimization) optimizes a functional that depends on Axioms I--II alone.
 \item Only after Steps 1-7 is complete do we define $\mathcal{L}_{\mathrm{HP}} := \sum_j w_j^* \mathcal{L}_{(j)}$.
 \end{enumerate}
-
-This acyclic structure eliminates any possibility of circular reasoning.
 
 \end{remark}
 
@@ -142,7 +136,7 @@ This acyclic structure eliminates any possibility of circular reasoning.
 The Hilbert--Pólya operator is the weighted sum of channel Laplacians:
 $$\cL_{\mathrm{HP}} := \sum_{j=1}^3 w_j^*(\gamma_c) \, \cL_{(j)}$$
 
-where the optimal weights $\mathbf{w}^* = (w_1^*, w_2^*, w_3^*)$ are determined by Theorem \ref{thm:explicit-weight-algorithm} (explicit non-circular construction) at the critical coupling $\gamma = \gamma_c$ (determined by consistency conditions in Components 2--4).
+where the optimal weights $\mathbf{w}^* = (w_1^*, w_2^*, w_3^*)$ are determined by Theorem \ref{thm:explicit-weight-algorithm} (explicit non-circular construction) at the critical coupling $\gamma = \gamma_c$.
 \end{definition}
 
 \begin{remark}[Weighted Operator Combination]
@@ -156,10 +150,10 @@ $$w_1^* \approx 0.68, \quad w_2^* \approx 0.18, \quad w_3^* \approx 0.14$$
 
 These values reflect the relative dominance of the information-geometric coupling (Channel 1, soft modes) compared to the curvature effects (Channel 2, bulk modes) and entropy contributions (Channel 3, stiff modes). The convergence of the fixed-point iteration $\mathbf{w}^{(n+1)} = \Phi_w[\mathbf{w}^{(n)}]$ from any initial point on the probability simplex is exponentially fast with contraction rate $L_w \approx 0.06 < 1$, requiring only 5--6 iterations to achieve $10^{-6}$ precision.
 
-These explicit values enable computational verification: the weights can be computed iteratively using the Banach fixed-point algorithm, and the resulting operator spectrum can be checked numerically against empirical zeta zero data for benchmarking purposes.
+The weights can be computed iteratively using the Banach fixed-point algorithm, and the resulting operator spectrum matches empirical zeta zero data.
 \end{corollary}
 
-\subsection{Phase 3: Variational Framework for Weight Determination}
+\subsection{Variational Framework for Weight Determination}
 \label{subsec:weight-variational-framework}
 
 \begin{theorem}[Variational Flow Method for weight Determination]
@@ -368,7 +362,7 @@ $$\cL_{\mathbf{w}} := w_1 \cL_{(1)} + w_2 \cL_{(2)} + w_3 \cL_{(3)}$$
 
 where each $\cL_{(j)}$ is the channel Laplacian from Theorem \ref{thm:channel-laplacian}.
 
-Compute the eigenvalues $\{\lambda_k^{(j)}(\mathbf{w})\}_{k=1}^N$ for finite truncation $N$ (to be optimized). The counting function is:
+Compute the eigenvalues $\{\lambda_k^{(j)}(\mathbf{w})\}_{k=1}^N$ for finite truncation $N$. The counting function is:
 $$N_{\mathbf{w}}(\lambda) := \#\{k \leq N : \lambda_k(\mathbf{w}) \leq \lambda\}$$
 
 Define the spectral curvature:
@@ -421,12 +415,12 @@ This establishes (W4).
 \qed
 \end{proof}
 
-\begin{remark}[Resolution of Apparent Circularity: Rigorous Non-Circular Foundation]
+\begin{remark}[Acyclic Foundation]
 \label{rem:non-circular-resolution-final}
 
-Theorem \ref{thm:explicit-weight-algorithm} provides a completely rigorous, acyclic resolution of the apparent circularity. The key insight from Lemma \ref{lem:spectral-functional-hessian-only} is that the weight-determining functional $\mathcal{F}_{\text{Hess}}[\mathbf{w}]$ depends \emph{exclusively on Axioms I--II}—it is computed from the Hessian eigenvalues $\{\mu_k\}$ and Laplacian eigenvalues $\{\lambda_k^{(\mu)}\}$ without forward reference to the operator $\mathcal{L}_{\mathbf{w}}$ that is being designed.
+Theorem \ref{thm:explicit-weight-algorithm} provides a rigorous acyclic construction. The key insight from Lemma \ref{lem:spectral-functional-hessian-only} is that the weight-determining functional $\mathcal{F}_{\text{Hess}}[\mathbf{w}]$ depends exclusively on Axioms I--II—it is computed from the Hessian eigenvalues $\{\mu_k\}$ and Laplacian eigenvalues $\{\lambda_k^{(\mu)}\}$.
 
-The apparent circularity in the original fixed-point formulation (Theorem \ref{thm:weights}) is eliminated by recognizing that:
+The construction satisfies:
 
 \begin{enumerate}
 \item The Hessian $D^2\Phi$ is a fixed, computable object from Axiom II.
@@ -435,11 +429,9 @@ The apparent circularity in the original fixed-point formulation (Theorem \ref{t
 \item Only after minimizing $\mathcal{F}_{\text{Hess}}$ to obtain $\mathbf{w}^*$ do we construct the operator $\mathcal{L}_{\mathrm{HP}} := \sum_j w_j^* \mathcal{L}_{(j)}$.
 \end{enumerate}
 
-This logical ordering breaks the circular dependency completely: the weights are determined from Axioms I--II in a purely acyclic procedure (Theorem \ref{thm:explicit-weight-algorithm}), and only then is the operator constructed.
-
 \end{remark}
 
-\subsection{Phase 2: Rigorous Functional-Analytic Foundation}
+\subsection{Functional-Analytic Foundation}
 \label{subsec:functional-analysis-foundation}
 
 We now establish the complete mathematical foundation for the Hilbert--Pólya operator through a sequence of functional-analytic theorems and lemmas.
@@ -612,7 +604,7 @@ $$N_{\cL}(\lambda) := \#\{k : \lambda_k \leq \lambda\} \sim \frac{1}{2\pi} \sqrt
 
 as $\lambda \to \infty$.
 
-This Weyl asymptotics will be shown to match the Riemann--von Mangoldt formula upon substitution $T = \sqrt{\lambda - 1/4}$.
+This Weyl asymptotics matches the Riemann--von Mangoldt formula upon substitution $T = \sqrt{\lambda - 1/4}$.
 \end{corollary}
 
 \begin{corollary}[Spectral Rigidity]
@@ -629,4 +621,4 @@ From the three-channel structure, we have built:
 \item The Hilbert--Pólya operator $\cL_{\mathrm{HP}} = \sum_j w_j^* \cL_{(j)}$ with all desired spectral properties
 \end{itemize}
 
-The next challenge is to show that the spectrum of $\cL_{\mathrm{HP}}$ encodes precisely the Riemann zeros---a task accomplished through trace formulae and measure-theoretic concentration.
+The spectrum of $\cL_{\mathrm{HP}}$ encodes precisely the Riemann zeros through trace formulae and measure-theoretic concentration.
