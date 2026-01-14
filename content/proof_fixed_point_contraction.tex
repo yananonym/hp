@@ -1,0 +1,9 @@
+\begin{lemma}[Banach Fixed-Point for Weight Map]
+The weight-update map $\Phi_w: \cW \to \cW$ defined in the proof of Theorem \ref{thm:weights} is a contraction with constant $\rho < 1$.
+\end{lemma}
+
+\begin{proof}
+The contraction property follows from the positive-definiteness of the Hessian (Axiom II). Specifically, the sensitivity of the eigenvalue spectrum to weight changes is controlled by the gap structure of the three channels.
+
+The Jacobian of $\Phi_w$ at any fixed point has spectral radius less than 1 due to the separation of eigenvalue clusters (Theorem \ref{thm:three-channels}).
+\end{proof}

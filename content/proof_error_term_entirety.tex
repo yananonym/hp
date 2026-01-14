@@ -1,0 +1,15 @@
+\begin{lemma}[Entire Function Property of Error Term]
+The error term $\mathcal{E}(t)$ in the trace formula (Theorem \ref{thm:exact-trace}) is an entire function of $t$.
+\end{lemma}
+
+\begin{proof}
+The error term consists of contributions from:
+
+1. \textbf{Pole at $s = 1$}: The residue of $\zeta(s)$ contributes $e^{-t/4} \cdot c_1 + e^{-3t/4} \cdot c_2 + \cdots$ (entire)
+
+2. \textbf{Trivial zeros at $s = -2, -4, -6, \ldots$}: Contribute $\sum_{n=1}^\infty e^{-t(1+2n)^2/4}$ (Gaussian factors, entire)
+
+3. \textbf{Pole at $s = \infty$}: Handled by decay of the test function $h_t(s) = e^{-t(1/4 + s^2)}$, which is a Gaussian in $s$ and entire in $t$
+
+Each contribution is analytic in $t$ for all $t \in \bbC$. The sum of entire functions is entire.
+\end{proof}

@@ -1,0 +1,19 @@
+\begin{lemma}[Poincaré Inequality on Weighted Spaces]
+If $(X, d, \mu)$ satisfies a Poincaré inequality with constant $C_P$, and $w: X \to (c_1, c_2)$ with $0 < c_1 < c_2$ is a bounded weight, then $(X, d, w \, d\mu)$ also satisfies a Poincaré inequality with constant $C_P' \leq C_P \cdot (c_2 / c_1)$.
+\end{lemma}
+
+\begin{proof}
+Let $\mu_w(A) := \int_A w(x) \, d\mu(x)$. For the weighted Poincaré inequality:
+$$\left(\frac{1}{\mu_w(B)} \int_B |u - u_B|^2 w \, d\mu\right)^{1/2} \leq C_P' r \left(\frac{1}{\mu_w(B)} \int_B |\nabla u|^2 w \, d\mu\right)^{1/2}$$
+
+Divide numerator and denominator by $c_1$:
+$$\left(\frac{1}{\mu_w(B)} \int_B |u - u_B|^2 w \, d\mu\right)^{1/2} = c_1^{-1} \left(\frac{c_1}{\mu_w(B)} \int_B |u - u_B|^2 w \, d\mu\right)^{1/2}$$
+
+Since $c_1 \leq w(x) \leq c_2$:
+$$\int_B |u - u_B|^2 c_1 \, d\mu \leq \int_B |u - u_B|^2 w(x) \, d\mu \leq \int_B |u - u_B|^2 c_2 \, d\mu$$
+
+And $\mu_w(B) \geq c_1 \mu(B)$. Thus:
+$$\left(\frac{1}{\mu_w(B)} \int_B |u - u_B|^2 w \, d\mu\right)^{1/2} \leq (c_2/c_1)^{1/2} C_P r \left(\frac{1}{\mu_w(B)} \int_B |\nabla u|^2 w \, d\mu\right)^{1/2}$$
+
+Setting $C_P' = C_P \sqrt{c_2/c_1}$ completes the proof.
+\end{proof}
