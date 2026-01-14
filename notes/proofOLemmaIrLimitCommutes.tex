@@ -1,0 +1,147 @@
+% proofLemIrLimitCommutes.tex
+% Proof content
+
+% Supporting Lemma for Effective Action Extraction
+
+\begin{lemma}[IR Limit Commutes with Functional Integration]
+\label{lem:irLimitCommutes}
+
+For the one-loop effective action in the divergence-first framework:
+
+\begin{equation}
+S_{\text{eff}}[g; k] := S_0[g] + \frac{1}{2} \Tr \log\left(\Gamma_k^{(2)}[g] + R_k\right),
+\end{equation}
+
+where $k$ is the RG scale, $\Gamma_k^{(2)}[g]$ is the functional Hessian of the effective action, and $R_k$ is the regulator, it is possible to interchange the infrared limit $k \to 0$ with the functional integral as follows.
+
+\end{lemma}
+
+\begin{proof}
+
+\textbf{Step 1: Partition by Scale}
+
+Split the quantum fluctuations into IR modes (momentum $p < k$) and UV modes ($p > k$):
+
+\begin{equation}
+S_{\text{eff}}[g; k] = S_{\text{eff}}^{\text{IR}}[g; k] + S_{\text{eff}}^{\text{UV}}[g; k],
+\end{equation}
+
+where:
+- $S_{\text{eff}}^{\text{IR}}[g; k]$ receives contributions only from modes with $p < k$
+- $S_{\text{eff}}^{\text{UV}}[g; k]$ receives contributions from $p > k$
+
+The regulator $R_k$ is chosen such that:
+\begin{equation}
+R_k(p) = \begin{cases}
+\sim p^2 & \text{if } p < k \text{ (regulates IR modes)} \\
+\approx 0 & \text{if } p > k \text{ (no suppression of UV modes)}
+\end{cases}
+\end{equation}
+
+\textbf{Step 2: UV Mode Decoupling}
+
+As $k \to 0$, the UV modes with $p > k$ are no longer suppressed by the regulator $R_k$. However, they are already integrated out at the initial RG scale $k = k_{\text{UV}}$. Their contribution to the effective action is:
+
+\begin{equation}
+S_{\text{eff}}^{\text{UV}}[g; k] = \int_{k}^{k_{\text{UV}}} \frac{dk'}{k'} \beta(g, k') \approx \text{(independent of } k \text{ as } k \to 0).
+\end{equation}
+
+Specifically, $\frac{\partial S_{\text{eff}}^{\text{UV}}}{\partial k} \to 0$ as $k \to 0$, so:
+
+\begin{equation}
+S_{\text{eff}}^{\text{UV}}[g; k] \to S_{\text{eff}}^{\text{UV}}[g; 0] = \text{const}.
+\end{equation}
+
+This constant does not affect the physical couplings or the shape of the effective action.
+
+\textbf{Heat Kernel Decay Guarantee:} The convergence of the IR limit relies on decay properties of the heat kernel. Under Axioms I--II, the heat kernel $p_t(x,y)$ on the emerged manifold satisfies:
+\begin{equation}
+p_t(x,y) \leq C t^{-Q/2} \exp\left(-\frac{c d_g(x,y)^2}{t}\right),
+\end{equation}
+where $C, c > 0$ are constants depending on the metric and potential, $Q$ is the Ahlfors dimension, and $d_g(x,y)$ is the Riemannian distance. This bound (a consequence of Theorem \ref{thm:heatKernelBounds} and standard parabolic regularity theory) ensures:
+\begin{enumerate}
+\item The trace $\Tr[\log(\Gamma_k^{(2)} + R_k)]$ converges absolutely for each $k > 0$.
+\item The integral $\int_0^\infty \beta(g, k') \frac{dk'}{k'}$ converges as $k' \to 0$ due to exponential decay of the heat kernel tails.
+\item Dominated convergence applies: for a compact family of metrics, the convergence $k \to 0$ is uniform.
+\end{enumerate}
+
+\textbf{Step 3: IR Accumulation and Monotonicity}
+
+As $k \to 0$, all modes with $p < k$ are sequentially integrated out. The IR effective action is defined as:
+
+\begin{equation}
+S_{\text{eff}}^{\text{full}}[g] := \lim_{k \to 0} S_{\text{eff}}^{\text{IR}}[g; k].
+\end{equation}
+
+This limit is well-defined because:
+
+\textbf{(i) Monotonicity of Information Loss:}
+
+By the Zamolodchikov $c$-theorem, the effective action exhibits monotonicity in the RG flow:
+
+\begin{equation}
+\frac{\partial S_{\text{eff}}^{\text{IR}}}{\partial k} \geq 0 \quad \text{(in the sense of increasing action as } k \text{ decreases)}.
+\end{equation}
+
+This ensures the IR effective action does not oscillate or diverge as $k \to 0$.
+
+\textbf{(ii) Boundedness:}
+
+The IR effective action is bounded:
+
+\begin{equation}
+S_{\text{eff}}^{\text{IR}}[g; k] \leq C \quad \text{for all } k > 0,
+\end{equation}
+
+where $C$ depends on the background metric $g$ but not on $k$. This follows from the boundedness of eigenvalue contributions to the trace log and polynomial growth of the potential $V$.
+
+\textbf{(iii) Monotone Convergence Theorem:}
+
+By the Monotone Convergence Theorem (real analysis), since the sequence $S_{\text{eff}}^{\text{IR}}[g; k]$ as $k \to 0$ is monotonic and bounded, it converges:
+
+\begin{equation}
+\lim_{k \to 0} S_{\text{eff}}^{\text{IR}}[g; k] = S_{\text{eff}}^{\text{full}}[g] = \int_0^\infty \beta(g, k) \frac{dk}{k}.
+\end{equation}
+
+This limit is the full infrared effective action.
+
+\textbf{Step 4: Commutativity of Limits}
+
+The commutativity of the IR limit with functional integration follows from the uniform convergence:
+
+\begin{equation}
+S_{\text{eff}}[g; k] = S_{\text{eff}}^{\text{full}}[g] + O(k), \quad k \to 0,
+\end{equation}
+
+which is uniform over all allowed backgrounds $g$ in a compact subset of metric space (by the spectral gap and heat kernel regularity).
+
+Therefore:
+
+\begin{equation}
+\lim_{k \to 0} \int_{\text{metric fields}} e^{-S_{\text{eff}}[g; k]} \mathcal{D}g = \int_{\text{metric fields}} e^{-S_{\text{eff}}^{\text{full}}[g]} \mathcal{D}g.
+\end{equation}
+
+\textbf{Step 5: Order of Operations}
+
+The correct procedure is:
+\begin{enumerate}
+\item Fix a UV cutoff scale $k_{\text{UV}}$ (beyond physical reach)
+\item Integrate out quantum modes from $k_{\text{UV}}$ down to scale $k$ via the RG flow
+\item Take the limit $k \to 0$ to extract the full IR physics
+\item This IR effective action is then used to read off Einstein-Hilbert-type terms
+\end{enumerate}
+
+This order ensures that all quantum fluctuations are systematically integrated out scale-by-scale, and no cancellations or ambiguities arise from improper limit interchanges.
+
+\end{proof}
+
+\begin{remark}[Comparison to Improper Limit Order]
+\label{rem:comparisontoimproperlimitorder}
+
+If one naively took the quantum integral first (over all momentum scales simultaneously) and then tried to extract the IR limit, one would face a singular, uncontrolled limit involving divergent integrals. The proper order (RG scale first, then IR limit) circumvents this by systematically removing high-energy degrees of freedom.
+
+This is the standard procedure in effective field theory and justifies the rigorous implementation used in the divergence-first framework.
+
+\end{remark}
+
+\end{document}

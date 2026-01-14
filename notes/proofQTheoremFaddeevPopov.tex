@@ -1,0 +1,115 @@
+% proofThmFaddeevPopov.tex
+% Proof content
+
+\textbf{Gauge Redundancy and the Need for Gauge Fixing}
+
+The Yang-Mills path integral:
+\begin{equation}
+Z = \int \mathcal{D}A_\mu^A \, e^{iS_{\text{YM}}[A]/\hbar}
+\end{equation}
+contains an over-counting problem: two gauge potentials $A_\mu^A$ and $A_\mu'^A$ related by a gauge transformation,
+\begin{equation}
+A'_\mu(x) = \Omega(x) A_\mu(x) \Omega(x)^{-1} - i (\partial_\mu \Omega) \Omega^{-1},
+\end{equation}
+where $\Omega(x) \in G$ (the gauge group, e.g., $SU(3)$ for strong interactions), yield the same physical action $S_{\text{YM}}[A] = S_{\text{YM}}[A']$.
+
+Thus the functional integral over-counts: each physical configuration is represented infinitely many times (once for each gauge transformation in the gauge group).
+
+To correct this, the divide by the ``volume'' of the gauge group:
+\begin{equation}
+Z = \frac{1}{\text{Vol}(G)} \int \mathcal{D}A_\mu^A \, e^{iS_{\text{YM}}[A]/\hbar} \times (\text{Jacobian}).
+\end{equation}
+
+\textbf{Faddeev-Popov Determinant and Ghost Fields}
+
+\textbf{Step 1: Gauge Fixing Condition}
+
+The impose a gauge fixing condition $\mathcal{G}[A] = 0$ that picks out one representative from each gauge orbit. A common choice in covariant quantization is the \emph{Lorenz gauge}:
+\begin{equation}
+\mathcal{G}[A] := \partial^\mu A_\mu^A(x) = 0.
+\end{equation}
+
+The insert this constraint into the path integral via a functional delta function:
+\begin{equation}
+1 = \int \mathcal{D}\lambda^A(x) \, \prod_x \delta(\mathcal{G}[A](x)) \, e^{-i\int dx \lambda^A(x) \mathcal{G}[A](x)/\hbar},
+\end{equation}
+where $\lambda^A(x)$ are Lagrange multiplier fields (gauge fixing parameters).
+
+\textbf{Step 2: Faddeev-Popov Determinant}
+
+When the vary the gauge potential $A \to A + \delta A$, the gauge fixing condition varies as:
+\begin{equation}
+\delta \mathcal{G}[A] = \frac{\delta \mathcal{G}}{\delta A_\mu^A}(x) \delta A_\mu^A(x) =: M^{AB}(x, y) \delta A_B(y),
+\end{equation}
+where $M^{AB}$ is the Faddeev-Popov operator. For Lorenz gauge:
+\begin{equation}
+M^{AB}[A](x,y) = \delta^{AB} \square \delta(x-y) + f^{ABC} (\partial^\mu A_\mu^C(x)) \delta(x-y),
+\end{equation}
+where $f^{ABC}$ are the structure constants of the gauge group.
+
+The Jacobian of the change of variables from the original $A$ to a decomposition involving the gauge orbit direction is:
+\begin{equation}
+\text{Jacobian} = \left|\det M[A]\right| = \frac{1}{\text{Vol}(G)}.
+\end{equation}
+
+Thus:
+\begin{equation}
+\prod_x \delta(\mathcal{G}[A](x)) = \frac{\det M[A]^{-1}}{\text{Vol}(G)},
+\end{equation}
+
+and the path integral becomes:
+\begin{equation}
+Z = \int \mathcal{D}A_\mu^A \int \mathcal{D}\lambda^A \, \det M[A] \exp\left(iS_{\text{YM}}[A]/\hbar - \frac{i}{\hbar}\int d^4x \lambda^A(x) \partial^\mu A_\mu^A(x)\right).
+\end{equation}
+
+\textbf{Step 3: Ghost Field Representation of the Determinant}
+
+The Faddeev-Popov determinant can be represented using Grassmann (fermionic) variables via:
+\begin{equation}
+\det M[A] = \int \mathcal{D}c^A \mathcal{D}\overline{c}^A \exp\left(\frac{i}{\hbar}\int d^4x \, \overline{c}^A M^{AB}[A] c^B\right),
+\end{equation}
+where $c^A(x)$ and $\overline{c}^A(x)$ are anticommuting scalar (Grassmann) ghost fields with statistics opposite to the gauge field.
+
+The full path integral in Lorenz gauge becomes:
+\begin{equation}
+\begin{aligned}
+Z &= \int \mathcal{D}A_\mu^A \int \mathcal{D}c^A \mathcal{D}\overline{c}^A \int \mathcal{D}\lambda^A \\
+&\times \exp\left(\frac{i}{\hbar}\left[S_{\text{YM}}[A] + S_{\text{ghost}}[c, \overline{c}, A] + S_{\text{gauge fixing}}[A, \lambda]\right]\right),
+\end{aligned}
+\end{equation}
+where:
+\begin{align}
+S_{\text{ghost}} &:= \int d^4x \, \overline{c}^A D^\mu_{\mu} c^A, \\
+S_{\text{gauge fixing}} &:= -\int d^4x \, \lambda^A \partial^\mu A_\mu^A.
+\end{align}
+
+Integrating over the Lagrange multipliers $\lambda^A$ enforces the Lorenz gauge condition, yielding the \emph{gaugefixed path integral}:
+\begin{equation}
+Z = \int \mathcal{D}A_\mu^A \int \mathcal{D}c^A \mathcal{D}\overline{c}^A \exp\left(\frac{i}{\hbar}\left[S_{\text{YM}}[A] + S_{\text{ghost}}[c, \overline{c}, A]\right]\right).
+\end{equation}
+
+\textbf{Interpretation in the divergence-first framework}
+
+Within the divergence-first paradigm:
+
+The Faddeev-Popov ghost fields arise naturally as \emph{derived objects} from the divergence structure. By Definition \ref{def:divergencePotential}, the divergence is the fundamental structure. The Yang-Mills gauge field is built on the emerged Lorentzian manifold; the redundancy in the path integral description reflects a measure-theoretic over-counting, which the Faddeev-Popov procedure corrects.
+
+The ghost contribution to the effective action is:
+\begin{equation}
+S_{\text{eff, ghost}} = -\Tr \ln(D^\mu D_\mu) \bigg|_{\text{ghost}}
+\end{equation}
+where $D_\mu$ is the covariant derivative (which itself emerges from the divergence structure via Theorem \ref{thm:metricFromCarre}).
+
+\textbf{Unitarity and Physical Observables}
+
+For the theory to be unitary, all gauge-dependent degrees of freedom (the longitudinal component of $A$ and the ghosts) must decouple from physical observables. This is guaranteed by the BRST symmetry of the gaugefixed Lagrangian:
+
+\begin{equation}
+s A_\mu^A = D_\mu c^A, \quad s c^A = -\frac{1}{2}f^{ABC}c^B c^C, \quad s \overline{c}^A = \lambda^A,
+\end{equation}
+
+where $s$ is the nilpotent BRST operator ($s^2 = 0$). Physical states are BRST cohomology classes, ensuring independence from gauge-fixing scheme.
+
+\textbf{Conclusion}
+
+The Faddeev-Popov procedure is an essential component of covariant quantization. in the divergence-first framework, it arises as a correction to the path integral measure to account for gauge redundancy in the emerged gauge theories.

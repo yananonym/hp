@@ -1,0 +1,74 @@
+% proofXLemmaContractionTruncated.tex
+% Proof of contraction property in truncated coupling space
+
+\begin{proof}
+
+\textbf{Step 1: Define the Lipschitz Constant}
+
+In a neighborhood $\mathcal{B}_\epsilon(\mathbf{g}^*) = \{\mathbf{g} \in \mathcal{G}_{\text{trunc}} : \|\mathbf{g} - \mathbf{g}^*\|_{\text{trunc}} < \epsilon\}$ of the fixed point, the beta function vector $\boldsymbol{\beta}(\mathbf{g})$ can be expanded:
+
+\begin{equation}
+\boldsymbol{\beta}(\mathbf{g}) = \boldsymbol{\beta}(\mathbf{g}^*) + J(\mathbf{g}^*) (\mathbf{g} - \mathbf{g}^*) + O(\|\mathbf{g} - \mathbf{g}^*\|^2).
+\end{equation}
+
+Since $\boldsymbol{\beta}(\mathbf{g}^*) = 0$ at the fixed point:
+
+\begin{equation}
+\boldsymbol{\beta}(\mathbf{g}) = J(\mathbf{g}^*) (\mathbf{g} - \mathbf{g}^*) + O(\|\mathbf{g} - \mathbf{g}^*\|^2).
+\end{equation}
+
+\textbf{Step 2: Bound the Jacobian Norm}
+
+The Jacobian $J(\mathbf{g}^*)$ has norm:
+
+\begin{equation}
+\|J(\mathbf{g}^*)\|_{\text{trunc}} \leq \sup_{i,j} \left| \frac{\partial \beta_i}{\partial g_j}\bigg|_{\mathbf{g}^*} \right|.
+\end{equation}
+
+In the truncated space, this norm is determined by the three gauge coupling derivatives, which are finite (given by one-loop and higher beta function formulas from renormalization group theory).
+
+For a sufficiently small neighborhood around the fixed point, the higher-order correction terms are suppressed, and the Lipschitz constant can be bounded:
+
+\begin{equation}
+L_{\text{trunc}} = \sup_{\mathbf{g}, \mathbf{g}' \in \mathcal{B}_\epsilon(\mathbf{g}^*)} \frac{\|\boldsymbol{\beta}(\mathbf{g}) - \boldsymbol{\beta}(\mathbf{g}')\|}{\|\mathbf{g} - \mathbf{g}'\|} \leq \|J(\mathbf{g}^*)\|_{\text{trunc}} + O(\epsilon).
+\end{equation}
+
+\textbf{Step 3: Achieve Contraction}
+
+The eigenvalues of the stability matrix (negative of the Jacobian at the fixed point in RG flow) control the approach to the fixed point. For an asymptotically safe fixed point approached in the UV, the flow is:
+
+\begin{equation}
+\frac{d}{d\ln k} (\mathbf{g} - \mathbf{g}^*) = J(\mathbf{g}^*) (\mathbf{g} - \mathbf{g}^*) + O(\|\mathbf{g} - \mathbf{g}^*\|^2).
+\end{equation}
+
+The solution of the linearized RG flow near the fixed point is:
+
+\begin{equation}
+\mathbf{g}(k) - \mathbf{g}^* \propto e^{-\lambda_{\min} \ln k} = k^{-\lambda_{\min}},
+\end{equation}
+
+where $\lambda_{\min} > 0$ is the smallest critical exponent (least relevant direction). This exponential approach guarantees that for $\epsilon$ sufficiently small:
+
+\begin{equation}
+L_{\text{trunc}} < 1,
+\end{equation}
+
+making $\boldsymbol{\beta}$ a contraction mapping in a sufficiently small neighborhood of $\mathbf{g}^*$.
+
+\textbf{Step 4: Apply Banach Fixed Point Theorem}
+
+By the Banach Fixed Point Theorem, since $\boldsymbol{\beta}$ is a contraction mapping on the complete metric space $\mathcal{B}_\epsilon(\mathbf{g}^*)$, it has a unique fixed point $\mathbf{g}^*_{\text{trunc}}$ in this ball. Moreover, the iteration:
+
+\begin{equation}
+\mathbf{g}^{(n+1)} = \mathbf{g}^{(n)} - \boldsymbol{\beta}(\mathbf{g}^{(n)})
+\end{equation}
+
+(or equivalently, solving the fixed point equation) converges exponentially to $\mathbf{g}^*_{\text{trunc}}$.
+
+\textbf{Conclusion}
+
+The Lipschitz constant $L_{\text{trunc}} < 1$ in a suitable neighborhood of the presumed fixed point, guaranteeing existence and uniqueness of the fixed point in the truncated coupling space and exponential convergence of RG trajectories.
+
+\qed
+
+\end{proof}

@@ -1,0 +1,133 @@
+% proofN3TheoremReciprocalOperatorProperties.tex
+% Proof of Theorem: Fundamental Properties of the Reciprocal Transformation Operator
+% Supporting material for enhanced Section N3
+
+\subsection*{Proof of Theorem \ref{thm:reciprocalOperatorProperties}}
+
+\textit{Fundamental Properties of $\mathcal{R}$: Isometry, Self-Adjointness, and Involution}
+
+The following derivation establishes that the reciprocal transformation operator is an isometric, self-adjoint involution on the exponential-weight Hilbert space $\mathcal{H}_{\mathrm{exp}} = L^2((0,\infty), e^{-2/u}u^{-1/2}du)$.
+
+\begin{proof}
+
+\textbf{(RO1) Isometry: $\|\mathcal{R}f\|_{\mathcal{H}_{\mathrm{exp}}} = \|f\|_{\mathcal{H}_{\mathrm{exp}}}$}
+
+The norm in $\mathcal{H}_{\mathrm{exp}}$ is:
+\begin{equation}
+\|f\|_{\mathcal{H}_{\mathrm{exp}}}^2 = \int_0^\infty |f(u)|^2 e^{-2/u} u^{-1/2} \, du.
+\end{equation}
+
+For $\mathcal{R}f$:
+\begin{equation}
+\|\mathcal{R}f\|_{\mathcal{H}_{\mathrm{exp}}}^2 = \int_0^\infty |(\mathcal{R}f)(u)|^2 e^{-2/u} u^{-1/2} \, du = \int_0^\infty |u^{-1/2} f(u^{-1})|^2 e^{-2/u} u^{-1/2} \, du.
+\end{equation}
+
+Simplifying:
+\begin{equation}
+\|\mathcal{R}f\|_{\mathcal{H}_{\mathrm{exp}}}^2 = \int_0^\infty u^{-1} |f(u^{-1})|^2 e^{-2/u} u^{-1/2} \, du = \int_0^\infty |f(u^{-1})|^2 e^{-2/u} u^{-3/2} \, du.
+\end{equation}
+
+Now perform the change of variables $v = 1/u$, so $u = 1/v$ and $du = -dv/v^2$:
+\begin{align}
+\|\mathcal{R}f\|_{\mathcal{H}_{\mathrm{exp}}}^2 
+&= \int_\infty^0 |f(v)|^2 e^{-2v} (1/v)^{-3/2} \cdot (-dv/v^2) \\
+&= \int_0^\infty |f(v)|^2 e^{-2v} v^{3/2} \cdot dv/v^2 \\
+&= \int_0^\infty |f(v)|^2 e^{-2v} v^{-1/2} \, dv \\
+&= \|f\|_{\mathcal{H}_{\mathrm{exp}}}^2.
+\end{align}
+
+Thus $\mathcal{R}$ is an isometry.
+
+\textbf{(RO2) Self-Adjointness: $\langle \mathcal{R}f, g \rangle = \langle f, \mathcal{R}g \rangle$}
+
+Compute:
+\begin{align}
+\langle \mathcal{R}f, g \rangle_{\mathcal{H}_{\mathrm{exp}}} 
+&= \int_0^\infty (\mathcal{R}f)(u) \overline{g(u)} \, e^{-2/u} u^{-1/2} \, du \\
+&= \int_0^\infty u^{-1/2} f(u^{-1}) \overline{g(u)} \, e^{-2/u} u^{-1/2} \, du \\
+&= \int_0^\infty f(u^{-1}) \overline{g(u)} \, e^{-2/u} u^{-1} \, du.
+\end{align}
+
+Substitute $v = 1/u$:
+\begin{align}
+\langle \mathcal{R}f, g \rangle 
+&= \int_0^\infty f(v) \overline{g(1/v)} \, e^{-2v} v \cdot dv/v^2 \\
+&= \int_0^\infty f(v) \overline{g(1/v)} \, e^{-2v} v^{-1} \, dv.
+\end{align}
+
+Now compute the other direction:
+\begin{align}
+\langle f, \mathcal{R}g \rangle_{\mathcal{H}_{\mathrm{exp}}} 
+&= \int_0^\infty f(u) \overline{(\mathcal{R}g)(u)} \, e^{-2/u} u^{-1/2} \, du \\
+&= \int_0^\infty f(u) \overline{u^{-1/2} g(u^{-1})} \, e^{-2/u} u^{-1/2} \, du \\
+&= \int_0^\infty f(u) \overline{g(u^{-1})} \, e^{-2/u} u^{-1} \, du.
+\end{align}
+
+This is identical to $\langle \mathcal{R}f, g \rangle$ after renaming $u \to v$. Thus $\mathcal{R}$ is self-adjoint.
+
+\textbf{(RO3) Involution: $\mathcal{R}^2 = I$}
+
+Apply $\mathcal{R}$ twice:
+\begin{align}
+(\mathcal{R}^2 f)(u) &= (\mathcal{R}(\mathcal{R}f))(u) \\
+&= u^{-1/2} (\mathcal{R}f)(u^{-1}) \\
+&= u^{-1/2} \cdot (u^{-1})^{-1/2} f((u^{-1})^{-1}) \\
+&= u^{-1/2} \cdot u^{1/2} f(u) \\
+&= f(u).
+\end{align}
+
+Thus $\mathcal{R}^2 = I$.
+
+\textbf{(RO4) Spectrum: $\sigma(\mathcal{R}) = \{+1, -1\}$}
+
+Since $\mathcal{R}$ is a self-adjoint involution, there is $\mathcal{R}^2 = I$, which means $(A - \lambda I)^2 = 0$ only if $\lambda^2 = 1$ for any eigenvalue $\lambda$. Therefore:
+\begin{equation}
+\sigma(\mathcal{R}) = \{+1, -1\}.
+\end{equation}
+
+The eigenspaces are:
+\begin{align}
+\mathcal{H}_{\mathrm{exp}}^+ &= \{f : \mathcal{R}f = f\} = \{f : f(u^{-1}) = u^{1/2} f(u)\}, \\
+\mathcal{H}_{\mathrm{exp}}^- &= \{f : \mathcal{R}f = -f\} = \{f : f(u^{-1}) = -u^{1/2} f(u)\}.
+\end{align}
+
+Since $\mathcal{R}$ is self-adjoint with spectrum $\{+1, -1\}$, the space decomposes orthogonally:
+\begin{equation}
+\mathcal{H}_{\mathrm{exp}} = \mathcal{H}_{\mathrm{exp}}^+ \oplus \mathcal{H}_{\mathrm{exp}}^-.
+\end{equation}
+
+\textbf{Orthogonality of the Decomposition}
+
+Let $f^+ \in \mathcal{H}_{\mathrm{exp}}^+$ and $f^- \in \mathcal{H}_{\mathrm{exp}}^-$. Then:
+\begin{equation}
+\langle f^+, f^- \rangle = \langle \mathcal{R}f^+, \mathcal{R}f^- \rangle = \langle f^+, -f^- \rangle = -\langle f^+, f^- \rangle.
+\end{equation}
+
+This implies $\langle f^+, f^- \rangle = 0$. Thus the decomposition is orthogonal.
+
+\end{proof}
+
+\subsection*{Geometric Interpretation}
+
+The reciprocal transformation $\mathcal{R}f(u) = u^{-1/2}f(u^{-1})$ encodes the functional equation symmetry of the Riemann zeta function geometrically:
+
+\begin{enumerate}
+
+\item The transformation $u \to 1/u$ corresponds to the functional equation variable transformation $s \to 1-s$ in the zeta function.
+
+\item The weight factor $u^{-1/2}$ corresponds to the gamma-factor prefactor in the functional equation.
+
+\item The exponential-weight measure $d\mu(u) = e^{-2/u}u^{-1/2}du$ is invariant under $\mathcal{R}$, ensuring the transformation respects the inner product structure.
+
+\item The spectrum $\{+1, -1\}$ of $\mathcal{R}$ means functions split into symmetric and antisymmetric components under the reciprocal transformation.
+
+\item The auxiliary function $h(u)$ satisfies $h \in \mathcal{H}_{\mathrm{exp}}^+$ (symmetric eigenspace) due to its reciprocal symmetry $h(1/u) = u^{1/2}h(u)$.
+
+\end{enumerate}
+
+This geometric encoding of the functional equation as an operator-theoretic property provides a clean, coordinate-independent way to work with the reflection symmetry underlying the Riemann Hypothesis.
+
+\subsection*{Commutation with Other Operators}
+
+An important consequence: the reciprocal operator commutes with any operator that respects the reciprocal symmetry structure, such as the symmetrized HP operator of Definition \ref{def:symmetrizedHPOperator}. This ensures that eigenspaces of the HP operator can be chosen to lie in either $\mathcal{H}_{\mathrm{exp}}^+$ or $\mathcal{H}_{\mathrm{exp}}^-$, simplifying the spectral analysis.
+

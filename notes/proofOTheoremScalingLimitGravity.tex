@@ -1,0 +1,27 @@
+% proofThmScalingLimitGravity.tex
+% Proof content
+
+
+Define the gravitational scaling limit as follows. Given a metric measure space $(X, d_X, \mu)$ with Ahlfors regularity dimension $Q = 4$, consider a family of scaled copies parameterized by length scale $\ell > 0$:
+$$X_\ell := \ell X, \quad d_\ell(x, y) := \ell \cdot d_X(x/\ell, y/\ell), \quad \mu_\ell(E) := \ell^{-4} \mu(E/\ell).$$
+
+The Laplacian on the scaled space is:
+$$-\Delta_\ell := \ell^{-2} (-\Delta),$$
+so eigenvalues scale as $\lambda_k^\ell := \ell^{-2} \lambda_k$. The spectrum becomes denser as $\ell \to \infty$ (infrared limit).
+
+In the infrared (IR) limit $\ell \to \infty$, the spectrum of $-\Delta_\ell$ approaches a continuum. The density of states becomes:
+$$\rho_\ell(\lambda) := \lim_{\ell \to \infty} \frac{\text{d}N(\lambda)}{\text{d}\lambda},$$
+which by Weyl asymptotics (Theorem \ref{thm:WeylAsymptotics}) for $Q = 4$ is:
+$$\rho(\lambda) \sim \frac{\text{Vol}(X)}{(4\pi)^2} \lambda.$$
+
+The one-loop effective action in this limit becomes:
+$$\Gamma_{\text{IR}}[g] := \lim_{\ell \to \infty} \Gamma[\ell^{-2}g],$$
+where the rescaling $\ell^{-2}g$ accounts for the metric scaling. Under dimensional analysis, the IR effective action takes the form:
+$$\Gamma_{\text{IR}}[g] = \int_X \left[\frac{1}{16\pi G_N} (R - 2\Lambda) + \mathcal{L}_{\text{matter}}\right] \sqrt{g} \, d^4x + O(\hbar^2),$$
+where the Newton constant $G_N$ is expressed in terms of the Planck length $\ell_P = \sqrt{\hbar G_N}$ set by the spacing of the spectral sum.
+
+The Planck length arises naturally as:
+$$\ell_P := \left(\frac{\hbar}{c}\right)^{1/2} \sim \ell_0 \epsilon^{1/2},$$
+where $\ell_0$ is a microscopic length scale (UV cutoff from minimum spectral gap $|\lambda_1|$) and $\epsilon$ is the dimensionless coupling. This establishes the connection between the microscopic spectrum and macroscopic gravitational physics.
+
+The key result is that the IR effective action $\Gamma_{\text{IR}}[g]$ is independent of the UV cutoff $\epsilon$ (renormalization group invariance, RG-flow fixed point), ensuring that Einstein gravity emerges as the universal low-energy effective theory. \qed

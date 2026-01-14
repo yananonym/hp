@@ -1,0 +1,16 @@
+% proofThmGaussLawConstraint.tex
+% Proof content
+
+The Gauss law arises as follows. Variation of the action:
+\begin{equation}
+\delta S_{\text{YM}} = -\int G^{\mu\nu,A} \partial_\nu \delta G_{\mu}^A \sqrt{g} d^4x = \int \partial_\nu G^{\mu\nu,A} \delta G_{\mu}^A \sqrt{g} d^4x
+\end{equation}
+gives the Euler-Lagrange equations. The temporal equation ($\mu = 0$):
+\begin{equation}
+\partial_\nu G^{0\nu,A} = j^0_A
+\end{equation}
+is the Gauss law. Unlike spatial equations ($\mu = 1,2,3$), which are second-order and determine time evolution, the temporal equation is first-order (containing only $\partial_0 G^{00,A} = 0$, which is automatic by antisymmetry) and instead becomes a constraint.
+
+In the Hamiltonian formulation, the Gauss law is the generator of gauge transformations: infinitesimal gauge transformations $\delta G_\mu^A = D_\mu \epsilon^A = (\partial_\mu + g_s f^{ABC} G_\mu^B)\epsilon^C$ leave the physical constraint surface (Gauss law surface) invariant.
+
+For gauge fixing in the path integral, one imposes a condition like $\partial_\mu G^\mu_A = 0$ and introduces Faddeev-Popov ghosts to account for the Jacobian of the gauge-fixing map (see Theorem \ref{thm:faddeevPopov} below).

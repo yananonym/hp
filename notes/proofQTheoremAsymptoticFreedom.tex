@@ -1,0 +1,50 @@
+% proofThmAsymptoticFreedom.tex
+% Proof content
+
+\noindent\textbf{One-Loop Renormalization Group Analysis.}
+
+In Yang-Mills theory with gauge group $G = SU(N_c)$ and $n_f$ quark flavors, the one-loop beta function for the gauge coupling $g_s$ is computed from loop diagrams in dimensional regularization (\cite{Weinberg1996theory}, Chapter 19; \cite{peskin1995introduction} 1995, Chapter 17):
+
+\begin{equation}
+\beta(g_s) = \frac{dg_s}{d\ln\mu} = -\frac{g_s^3}{16\pi^2}\left(\frac{11N_c}{3} - \frac{2n_f}{3}\right) + O(g_s^5).
+\end{equation}
+
+The coefficient $\frac{11N_c}{3}$ comes from the non-Abelian gluon self-interaction (cubic and quartic gluon vertices in the Yang-Mills action). The coefficient $\frac{2n_f}{3}$ (with opposite sign) comes from quark loop contributions.
+
+\noindent\textbf{Asymptotic Freedom Condition.}
+
+For the coupling to decrease at high energies (asymptotic freedom), it is required $\beta(g_s) < 0$:
+\begin{equation}
+\frac{11N_c}{3} - \frac{2n_f}{3} > 0 \quad \Rightarrow \quad n_f < \frac{11N_c}{2}.
+\end{equation}
+
+For $N_c = 3$ (the strong interaction gauge group $SU(3)$):
+\begin{equation}
+n_f < \frac{11 \cdot 3}{2} = 16.5.
+\end{equation}
+
+The Standard Model has $n_f = 6$ quark flavors (up, down, charm, strange, top, bottom), satisfying $6 < 16.5$. Thus the strong interaction is asymptotically free.
+
+\noindent\textbf{Running of the Coupling.}
+
+Integrating the one-loop equation:
+\begin{equation}
+\int_{g_0}^{g(\mu)} \frac{dg}{g^3 \beta(g)/g} = \int_{\mu_0}^\mu \frac{d\mu'}{\mu'},
+\end{equation}
+one obtains (\cite{Weinberg1996theory}, Eq. 19.4.5):
+\begin{equation}
+\alpha_s(\mu) := \frac{g_s^2(\mu)}{4\pi} = \frac{\alpha_s(\mu_0)}{1 + \frac{\alpha_s(\mu_0)}{3\pi}(11N_c/3 - 2n_f/3)\ln(\mu/\mu_0)}.
+\end{equation}
+
+As $\mu \to \infty$ (high energies), the denominator increases, so $\alpha_s(\mu) \to 0$. Thus $g_s(\mu) \to 0$, establishing asymptotic freedom.
+
+\noindent\textbf{QCD Scale and Confinement.}
+
+The running coupling has a Landau pole at a low-energy scale $\Lambda_{\text{QCD}}$:
+\begin{equation}
+\Lambda_{\text{QCD}} := \mu_0 \exp\left(-\frac{3\pi}{(11N_c - 2n_f)\alpha_s(\mu_0)}\right) \approx 200 \text{ MeV}.
+\end{equation}
+
+For $\mu > \Lambda_{\text{QCD}}$, the coupling remains weak ($g_s(\mu) \ll 1$), validating perturbation theory. For $\mu \sim \Lambda_{\text{QCD}}$ or lower, the coupling becomes $O(1)$ and perturbation theory breaks down.
+
+In this nonperturbative regime, quarks and gluons cannot propagate as free states. Only color singlet bound states (hadrons) appear in the asymptotic spectrum. This is the origin of color confinement: the confinement scale $\Lambda_c \sim \Lambda_{\text{QCD}}$ arises dynamically from the asymptotic freedom beta function.
