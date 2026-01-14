@@ -1,0 +1,50 @@
+% Part of sectionEHeatKernelIndependent.tex
+\subsection{Heat Kernel Construction and Existence}
+\label{subsec:heatKernelConstructionAndExistence}
+
+\begin{theorem}[Heat Kernel Existence and Basic Properties]
+\label{thm:heatKernelExistence}
+Let $A = -\Delta_\mu$ be the negative Laplacian operator from Theorem \ref{thm:laplacianProperties}, with domain $\Dom(A) \subset H^{1,2}(X) \otimes \mathbb{C}^n$. Then:
+
+\begin{enumerate}
+\item \textbf{Heat Semigroup Generation.} The operator $-A$ generates a contraction semigroup $\{e^{tA}\}_{t \geq 0}$ on $L^2(X, \mu; \mathbb{C}^n)$. This semigroup is self-adjoint and has the property:
+\begin{equation}
+\|e^{tA} f\|_{L^2} \leq \|f\|_{L^2} \quad \forall t \geq 0, \, f \in L^2.
+\end{equation}
+
+\item \textbf{Heat Kernel Representation.} For all $f \in L^2(X, \mu; \mathbb{C}^n)$ and all $t > 0$, there exists a heat kernel $p_t(x, y): X \times X \to \mathbb{R}_{\geq 0}$ (the fundamental solution of the heat equation) such that:
+\begin{equation}
+(e^{tA} f)(x) = \int_X p_t(x, y) f(y) \, d\mu(y).
+\end{equation}
+
+The kernel is Borel measurable in $(t, x, y)$, symmetric in $(x, y)$: $p_t(x, y) = p_t(y, x)$, and satisfies $p_t(x, y) \geq 0$.
+
+\item \textbf{Semigroup Property and Chapman-Kolmogorov Equation.} The heat kernels satisfy:
+\begin{equation}
+p_{t+s}(x, y) = \int_X p_t(x, z) p_s(z, y) \, d\mu(z) \quad \forall t, s > 0.
+\end{equation}
+
+\item \textbf{Heat Equation Regularity.} The heat kernel satisfies the heat equation:
+\begin{equation}
+\frac{\partial p_t}{\partial t}(x, y) = A_x p_t(x, y) = A_y p_t(x, y),
+\end{equation}
+where $A_x$ and $A_y$ denote application of the Laplacian in the $x$ and $y$ variables respectively.
+
+\item \textbf{Initial Condition.} As $t \to 0^+$, the heat kernel converges to the Dirac mass:
+\begin{equation}
+\lim_{t \to 0^+} \int_X p_t(x, y) f(y) d\mu(y) = f(x) \quad \text{in } L^2(X),
+\end{equation}
+for all $f \in L^2(X, \mu)$.
+
+\item \textbf{Integral Property.} For all $x \in X$ and $t > 0$:
+\begin{equation}
+\int_X p_t(x, y) d\mu(y) \leq 1,
+\end{equation}
+with equality holding when $A$ has no positive eigenvalues.
+\end{enumerate}
+
+\begin{proof}
+\input{proofETheoremHeatKernelExistence}
+\end{proof}
+\end{theorem}
+

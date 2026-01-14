@@ -1,0 +1,67 @@
+% Part of sectionCDirichletFormTheory.tex
+\subsection{Two-Stage Logical Construction: Pre-Spectral and Post-Spectral Definitions}
+\label{subsec:twoStageLogicalConstructionPreSpectralAndPo}
+
+\begin{definition}[Two-Stage Dirichlet Form - Non-Circular Definition]
+\label{def:dirichletFormTwoStage}
+The Dirichlet form $\mathcal{E}: \mathcal{D}(\mathcal{E}) \times \mathcal{D}(\mathcal{E}) \to \mathbb{R}$ is constructed in two logically independent stages:
+
+\noindent\textbf{Stage 1: Pre-Spectral Definition (Depends Only on Axiom 1)}
+
+The Dirichlet form domain is:
+\begin{equation}
+\mathcal{D}(\mathcal{E}) := H^{1,2}(X) \otimes \mathbb{C}^n = \{\psi: X \to \mathbb{C}^n : \psi_i \in H^{1,2}(X) \text{ for } i = 1, \ldots, n\}
+\end{equation}
+
+Define the form using \textbf{only the minimal upper gradient} (Definition \ref{def:upperGradient}) from Axiom \ref{ax:polishSpace}, with no reference to eigenfunctions or Carre du Champ:
+\begin{equation}
+\mathcal{E}_{\text{pre}}(\psi, \phi) := \int_X \sum_{i=1}^n |\nabla_{\min} \psi_i|^2 \, d\mu + \mathcal{Q}(\psi, \phi),
+\end{equation}
+where:
+\begin{itemize}
+\item $\nabla_{\min}$ is the minimal upper gradient from Definition \ref{def:upperGradient}
+\item $\mathcal{Q}(\psi, \phi)$ is the quadratic form from divergence polarization (Definition \ref{def:quadraticForm})
+\item These are defined using only $(X, d_X, \mu)$ and the generating functional $\Phi$
+\end{itemize}
+
+\textbf{Critically:} This stage uses \textbf{NO eigenfunctions and NO Carre du Champ operator}. The definition is purely algebraic and depends only on the metric measure space structure and the divergence quadratic form.
+
+\noindent\textbf{Stage 2: Post-Spectral Construction (After Eigenfunction Computation)}
+
+After constructing the Laplacian operator $A = -\Delta_\mu$ from $\mathcal{E}_{\text{pre}}$ (via Lax-Milgram theorem in Theorem \ref{thm:laplacianProperties}) and computing its eigenfunctions $\{e_k\}_{k=0}^\infty$ (which are Holder continuous by Theorem \ref{thm:eigenfunctionRegularity}), Define the Carre du Champ operator using these eigenfunctions:
+
+\begin{equation}
+\Gamma(e_\mu, e_\nu)(x) := \nabla_{\min} e_\mu(x) \cdot \nabla_{\min} e_\nu(x).
+\end{equation}
+
+This definition is valid because:
+\begin{itemize}
+\item Eigenfunctions $e_k \in C^{0,\alpha}(X)$ by Theorem \ref{thm:eigenfunctionRegularity}
+\item Products of Holder continuous functions are Holder continuous
+\item The minimal upper gradients of Holder functions are pointwise defined $\mu$-almost everywhere
+\end{itemize}
+
+\noindent\textbf{Consistency and Equivalence}
+
+The must verify that the pre-spectral form $\mathcal{E}_{\text{pre}}$ is consistent with post-spectral usage of Carre du Champ:
+
+\begin{lemma}[Consistency of Two-Stage Construction]
+\label{lem:consistencyTwoStage}
+For any $f, g \in H^{1,2}(X)$, the energy integral of the pre-spectral form satisfies:
+\begin{equation}
+\int_X |\nabla_{\min} f|^2 \, d\mu = \int_X \Gamma(f, f) \, d\mu,
+\end{equation}
+where the Carre du Champ $\Gamma(f, f) := |\nabla_{\min} f|^2$ is defined post-spectrally using the minimal upper gradient of $f$. Thus, the pre-spectral form structure is preserved: any energy computation via pre-spectral form equals the corresponding post-spectral Carre du Champ computation.
+\end{lemma}
+
+\noindent\textbf{Final Merged Definition}
+
+In all subsequent sections, the Dirichlet form is denoted:
+\begin{equation}
+\mathcal{E}(\psi, \phi) := \mathcal{E}_{\text{pre}}(\psi, \phi) = \int_X \sum_{i=1}^n |\nabla_{\min} \psi_i|^2 \, d\mu + \mathcal{Q}(\psi, \phi).
+\end{equation}
+
+This single formula encapsulates both stages: the gradient term is computed pre-spectrally (using only Axiom 1), and the metric tensor (via Carre du Champ) is computed post-spectrally (using eigenfunctions). the derivation follows a hierarchical logical order because logical dependencies flow in one direction: $\mathcal{E} \to A \to \{e_k\} \to \Gamma \to \text{metric tensor}$.
+
+\end{definition}
+

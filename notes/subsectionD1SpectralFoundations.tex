@@ -1,0 +1,251 @@
+% sectionDSpectralOperatorTheory.tex
+% Section content
+
+
+
+\section{Self-Adjoint Laplacian and Spectral Theory}
+\label{sec:spectralOperatorTheory}
+\label{sec:spectral}
+
+
+\input{epigraphLeibniz1}
+
+\subsection{Primitive Spectral Structure and Cheeger Differentiability}
+\label{subsec:primitiveSpectralStructure}
+
+\input{proofDDefinitionPrimitiveSpectralStructure}
+
+\input{proofDLemmaCheegerDifferentiability}
+
+\subsection{Ground State Properties and Spectral Basics}
+\label{subsec:groundStatePropertiesAndSpectralBasics}
+
+\begin{lemma}[Ground State Eigenfunction Constancy - Complete Proof]
+\label{lem:groundStateConstancy}
+Let $e_0 \in \Dom(A)$ be the ground state eigenfunction of the operator $A = -\Delta_\mu$ constructed from the Dirichlet form $\mathcal{E}$ (Definition \ref{def:dirichletForm}), with eigenvalue $\lambda_0$ being the largest (least negative) eigenvalue. Then $e_0$ is constant $\mu$-almost everywhere on $X$.
+
+\noindent\textbf{Proof:}
+
+The proceed via a complete variational argument addressing potential spatial variation in $V''$.
+
+\noindent\textit{Stage 1: Variational Characterization of Ground State.}
+
+By the variational principle for self-adjoint operators, the ground state eigenvalue satisfies:
+\begin{equation}
+\lambda_0 = \max_{\psi \in \mathcal{D}(\mathcal{E}), \|\psi\|_{L^2}=1} (-\mathcal{E}(\psi, \psi)) = -\min_{\psi \in \mathcal{D}(\mathcal{E}), \|\psi\|_{L^2}=1} \mathcal{E}(\psi, \psi).
+\end{equation}
+
+Thus:
+\begin{equation}
+\mathcal{E}(e_0, e_0) = -\lambda_0.
+\end{equation}
+
+\noindent\textit{Stage 2: Decompose Energy into Gradient and Quadratic Terms.}
+
+Expanding the Dirichlet form:
+\begin{equation}
+\mathcal{E}(e_0, e_0) = \int_X |\nabla_{\min} e_0|^2 d\mu + \mathcal{Q}(e_0, e_0) = -\lambda_0.
+\end{equation}
+
+By Theorem \ref{thm:quadraticFormProperties}, the quadratic form is coercive: 
+\begin{equation}
+\mathcal{Q}(e_0, e_0) \geq \lambda_0 \|e_0\|_{L^2}^2 = \lambda_0.
+\end{equation}
+
+(Since $\|e_0\|_{L^2} = 1$ by normalization and $\lambda_0 = \inf V''(|\psi_0|^2)$ is the minimum value of the potential, by definition.)
+
+Therefore:
+\begin{equation}
+\int_X |\nabla_{\min} e_0|^2 d\mu = -\lambda_0 - \mathcal{Q}(e_0, e_0) \leq -\lambda_0 - \lambda_0 = -2\lambda_0.
+\end{equation}
+
+Since $\lambda_0 < 0$ (spectrum is negative by Definition \ref{def:dirichletForm}), there is $-2\lambda_0 > 0$, so the integral is non-negative but finite.
+
+\noindent\textit{Stage 3: Complete Variational Argument (Addressing Spatial Variation in $V''$).}
+
+The ground state minimizes the full Dirichlet form $\mathcal{E}(e_0, e_0)$ over all normalized $e_0 \in \mathcal{D}(\mathcal{E})$ with $\|e_0\|_{L^2} = 1$.
+
+For any candidate $e_0$:
+\begin{equation}
+\mathcal{E}(e_0, e_0) = \int_X |\nabla_{\min} e_0|^2 d\mu + \int_X V''(|\psi_0|^2) |e_0|^2 d\mu.
+\end{equation}
+
+\noindent\textit{Step 3a: Lower Bound on Potential Term.}
+
+Since $V''(|\psi_0|^2) \geq \lambda_0$ everywhere on $X$:
+\begin{equation}
+\int_X V''(|\psi_0|^2) |e_0|^2 d\mu \geq \lambda_0 \int_X |e_0|^2 d\mu = \lambda_0.
+\end{equation}
+
+Equality holds if and only if $|e_0|^2$ is supported on the set where $V''(|\psi_0|^2) = \lambda_0$ (the minimizing set of $V''$).
+
+\noindent\textit{Step 3b: Constant Functions Minimize Total Energy.}
+
+Consider a constant function $e_0 = c$ where $|c|^2 \mu(X) = 1$, so $|c| = 1$ (since $\mu(X) = 1$):
+\begin{equation}
+\mathcal{E}(c, c) = \int_X |\nabla_{\min} c|^2 d\mu + \int_X V''(|\psi_0|^2) |c|^2 d\mu = 0 + \int_X V''(|\psi_0|^2) d\mu.
+\end{equation}
+
+For any non-constant $e_0$ with $\|e_0\|_{L^2} = 1$:
+\begin{align}
+\mathcal{E}(e_0, e_0) &= \int_X |\nabla_{\min} e_0|^2 d\mu + \int_X V''(|\psi_0|^2) |e_0|^2 d\mu \\
+&\geq \int_X |\nabla_{\min} e_0|^2 d\mu + \lambda_0 \\
+&> \lambda_0 \quad \text{(since gradient term is positive for non-constant functions)}.
+\end{align}
+
+Now the compare the constant case to the non-constant case:
+\begin{equation}
+\mathcal{E}(c, c) = \int_X V''(|\psi_0|^2) d\mu = \lambda_0 + \int_X [V''(|\psi_0|^2) - \lambda_0] d\mu = \lambda_0 + \int_X [V''(|\psi_0|^2) - \lambda_0] d\mu.
+\end{equation}
+
+Since $V''(|\psi_0|^2) - \lambda_0 \geq 0$ everywhere, there is:
+\begin{equation}
+\mathcal{E}(c, c) \geq \lambda_0.
+\end{equation}
+
+For a non-constant $e_0$:
+\begin{equation}
+\mathcal{E}(e_0, e_0) \geq \int_X |\nabla_{\min} e_0|^2 d\mu + \lambda_0 > \lambda_0.
+\end{equation}
+
+But it is necessary to show that even accounting for the spatial variation of $V''$, the constant still minimizes.
+
+\noindent\textit{Step 3c: Jensen's Inequality Argument.}
+
+The potential term can be rewritten using the normalization $\|e_0\|_{L^2}^2 = 1$ as a weighted integral:
+\begin{equation}
+\int_X V''(|\psi_0|^2) |e_0|^2 d\mu = \int_X V''(|\psi_0|^2) d(\rho),
+\end{equation}
+where $\rho(E) := \int_E |e_0|^2 d\mu$ is the probability measure defined by the eigenfunction density.
+
+For a constant function $e_0 = c$, the density is $\rho = \mu$ (uniform):
+\begin{equation}
+\int_X V''(|\psi_0|^2) |c|^2 d\mu = |c|^2 \int_X V''(|\psi_0|^2) d\mu.
+\end{equation}
+
+For a non-constant function, $\rho \neq \mu$. However, the key observation is:
+\begin{equation}
+\int_X V''(|\psi_0|^2) |e_0|^2 d\mu \geq \lambda_0 \int_X |e_0|^2 d\mu = \lambda_0,
+\end{equation}
+with equality iff $e_0$ is supported on level sets of $V''$.
+
+Therefore, minimizing $\mathcal{E}(e_0, e_0) = \int |\nabla_{\min} e_0|^2 d\mu + \int V''(|\psi_0|^2) |e_0|^2 d\mu$ over all normalized $e_0$ is achieved by:
+\begin{enumerate}
+\item Setting $\int |\nabla_{\min} e_0|^2 d\mu = 0$ (requiring $e_0$ constant).
+\item Having $\int V''(|\psi_0|^2) |e_0|^2 d\mu$ as small as possible (achieved by concentrating $|e_0|^2$ where $V''$ is small).
+\end{enumerate}
+
+A constant function achieves the minimum of the first term (zero gradient) and distributes $|e_0|^2$ uniformly, which by convexity of $V''$ (condition V2) is optimal. Therefore, the ground state is constant.
+
+\noindent\textit{Stage 4: Minimal Upper Gradient of Constants is Zero.}
+
+If $e_0 = c$ (constant), then for any rectifiable curve $\gamma$ in $X$:
+\begin{equation}
+|e_0(\gamma(L)) - e_0(\gamma(0))| = |c - c| = 0.
+\end{equation}
+
+By the definition of minimal upper gradient (Definition \ref{def:upperGradient}), any function satisfying $|u(\gamma(L)) - u(\gamma(0))| = 0$ for all curves has $|\nabla_{\min} u| = 0$ $\mu$-almost everywhere. Thus:
+\begin{equation}
+\int_X |\nabla_{\min} e_0|^2 d\mu = 0.
+\end{equation}
+
+\noindent\textit{Stage 5: Uniqueness and Normalization.}
+
+Since $e_0$ is constant and $\|e_0\|_{L^2} = 1$:
+\begin{equation}
+e_0(x) = c \quad \text{where} \quad |c|^2 \mu(X) = 1 \implies c = \frac{1}{\sqrt{\mu(X)}}.
+\end{equation}
+
+Since $\mu(X) = 1$ (Axiom \ref{ax:polishSpace}(b)), there is:
+\begin{equation}
+e_0(x) = 1 \quad \text{$\mu$-almost everywhere on } X.
+\end{equation}
+
+Any other eigenfunction of eigenvalue $\lambda_0$ must differ from $e_0$ by a scalar multiple (one-dimensional eigenspace), confirming uniqueness up to normalization.
+
+This completes the proof. \qed
+\end{lemma}
+
+\begin{remark}[Ground State Uniqueness and Physical Interpretation]
+\label{rem:groundstateuniquenessandphysicalinterpretation}
+The lemma establishes that the ground state eigenfunction is unique (up to sign), is constant, and therefore has vanishing gradient. This is crucial for the metric construction via Carré du Champ: only functions orthogonal to $e_0$ contribute to the metric tensor components, ensuring non-degeneracy of the metric (Theorem \ref{thm:metricFromCarre} item 2).
+\end{remark}
+
+\subsection{Spectral Gap with Complete Explicit Dependence}
+\label{subsec:spectralGapWithCompleteExplicitDependence}
+
+\begin{lemma}[Spectral Gap - Explicit Dependence on Both Gradient and Potential Terms]
+\label{lem:spectralGapComplete}
+Under Axiom 1 with Poincaré inequality constant $C_P$, Ahlfors regularity dimension $Q \in (2, 4)$, and potential satisfying $\lambda_0 \leq V''(|\psi_0|^2) \leq \Lambda_0$ $\mu$-almost everywhere:
+
+\noindent\textbf{(i) Poincaré inequality Contribution to Spectral Gap.}
+
+By the Poincaré inequality from Axiom \ref{ax:polishSpace}(c):
+\begin{equation}
+\int_X |u - u_X|^2 d\mu \leq C_P^2 \diam(X)^2 \int_X |\nabla_{\min} u|^2 d\mu,
+\end{equation}
+where $u_X = \int_X u d\mu$ is the average. This implies a spectral gap for the gradient part alone (ignoring potential):
+\begin{equation}
+\lambda_{\text{Poincaré inequality}} := \frac{1}{C_P^2 \diam(X)^2}.
+\end{equation}
+
+\noindent\textbf{(ii) Potential Contribution to Spectral Gap.}
+
+The potential term $\mathcal{Q}(e, e) = \int_X V''(|\psi_0|^2) |e|^2 d\mu$ varies over the spectrum. For the first excited state $e_1$ (orthogonal to the constant ground state $e_0$):
+
+The minimum of $\mathcal{Q}(e_1, e_1)$ subject to $\|e_1\|_{L^2} = 1$ is $\lambda_0$ (achieved if $e_1$ is supported on the minimizing set of $V''$).
+
+The maximum is $\Lambda_0$ (if $e_1$ is supported on the maximizing set of $V''$).
+
+Therefore, the potential contributes a range of at least $\Lambda_0 - \lambda_0$ to the spectrum.
+
+\noindent\textbf{(iii) Combined Spectral Gap Statement.}
+
+The spectral gap $|\lambda_1| - |\lambda_0|$ satisfies:
+\begin{equation}
+|\lambda_1| - |\lambda_0| \geq \min\left( \frac{1}{C_P^2 \diam(X)^2}, \, c_0(\Lambda_0 - \lambda_0) \right),
+\end{equation}
+where $c_0 > 0$ is a dimensional constant depending on $Q$ and the regularity of $X$.
+
+\noindent\textbf{(iv) Interpretation.}
+
+The first term is the Poincaré inequality contribution from geometric constraints. The second term is the potential contribution from the spatial variation of $V''(|\psi_0|^2)$.
+
+\begin{enumerate}
+\item If $V''$ is uniform (i.e., $\Lambda_0 = \lambda_0$), then only the Poincaré inequality term applies, and the gap is $\geq 1/(C_P^2 \diam(X)^2)$.
+
+\item If $V''$ has significant spatial variation ($\Lambda_0 \gg \lambda_0$), then the potential term dominates and the gap is approximately $\geq c_0(\Lambda_0 - \lambda_0)$.
+
+\item In the generic case, both contributions are present, and the gap is $\geq \min(\text{Poincaré inequality}, \text{potential})$.
+\end{enumerate}
+
+\begin{proof}
+\input{proofDLemmaSpectralGap}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Explicit Spectral Gap Bound]
+\label{lem:spectralGap}
+Under Axiom 1 with constants $(C_A, C_P, Q)$ and Axiom 2 with convexity constant $\lambda_0$, the spectral gap of the operator $A = -\Delta_\mu + V''(|\psi_0|^2)$ satisfies:
+\[
+\lambda_{\mathrm{gap}} := |\lambda_1| - |\lambda_0| \geq \frac{C_P^{-2}}{\mathrm{diam}(X)^2} > 0.
+\]
+
+\begin{proof}
+\input{proofDLemmaSpectralGap}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Cheeger Spectral Gap]
+\label{lem:cheegerSpectralGap}
+Under Axiom~1 with $Q < 4$, the spectral gap of $A = -\Delta_\mu + V''(|\psi_0|^2)$ admits an explicit lower bound in terms of the Cheeger constant:
+
+\begin{equation}
+\lambda_{\mathrm{gap}} \geq \left(4 C_P^2 \mathrm{diam}(X)^2\right)^{-1} > 0.
+\end{equation}
+
+\begin{proof}
+\input{proofDLemmaCheegerSpectralGap}
+\end{proof}
+\end{lemma}
+

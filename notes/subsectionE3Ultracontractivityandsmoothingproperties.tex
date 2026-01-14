@@ -1,0 +1,43 @@
+% Part of sectionEHeatKernelIndependent.tex
+\subsection{Ultracontractivity and Smoothing Properties}
+\label{subsec:ultracontractivityAndSmoothingProperties}
+
+\begin{lemma}[Ultracontractivity of Heat Semigroup]
+\label{lem:ultracontractivity}
+Under Axiom 1 with $Q < 4$, the heat semigroup $P_t = e^{tA}$ is ultracontractive: there exist constants $C, \alpha > 0$ such that:
+\begin{equation}
+\|P_t f\|_{L^\infty} \leq C e^{\alpha t} \|f\|_{L^2} \quad \forall t > 0, \, f \in L^2.
+\end{equation}
+
+In fact, for Ahlfors-regular spaces with spectral gap $\lambda_{\text{gap}} > 0$:
+\begin{equation}
+\|P_t f\|_{L^\infty} \leq C t^{-Q/2} \|f\|_{L^1}.
+\end{equation}
+
+\begin{proof}
+\input{proofELemmaUltracontractivity}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Heat Flow Regularization]
+\label{lem:heatFlowRegularization}
+For any $f \in H^{1,2}(X)$, the heat flow $P_t f$ regularizes the function:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Sobolev Regularity Improvement:} $P_t f \in H^{2,2}(X)$ for all $t > 0$.
+
+\item \textbf{Hölder Regularity:} $P_t f \in C^{0,\alpha}(X)$ for all $t > 0$ and any $\alpha < 1 - Q/4$.
+
+\item \textbf{Gradient Decay:} $\|\nabla_{\min} P_t f\|_{L^\infty} \leq C t^{-1/2} \|f\|_{L^2}$.
+
+\item \textbf{Pointwise Convergence:} For $f \in C^{0,\beta}(X)$ with $\beta > 0$:
+\[
+|(P_t f)(x) - f(x)| \leq C t^{\min(\beta/2, 1)} \|f\|_{C^{0,\beta}}.
+\]
+\end{enumerate}
+
+\begin{proof}
+\input{proofELemmaHeatFlowRegularization}
+\end{proof}
+\end{lemma}
+

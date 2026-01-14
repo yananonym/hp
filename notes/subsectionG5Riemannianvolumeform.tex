@@ -1,0 +1,30 @@
+% Part of sectionGMetricEmergence.tex
+\subsection{Riemannian Volume Form}
+\label{subsec:riemannianVolumeForm}
+
+\begin{corollary}[Volume Form]
+\label{cor:volumeForm}
+The metric $g$ induces a volume form $d\text{vol}_g := \sqrt{\det g} \, d^Q x$ where $Q$ is the regularity dimension. This volume form satisfies:
+\begin{equation}
+d\text{vol}_g \sim d\mu
+\end{equation}
+in the sense that $d\mu = \rho \, d\text{vol}_g$ for density $\rho \in C^{0,\beta}(X)$ bounded above and below by constants depending on $C_A$ and metric tensor bounds.
+
+\begin{proof}
+\input{proofGCorollaryVolumeForm}
+\end{proof}
+\end{corollary}
+
+\begin{proposition}[Polynomial Volume Growth]
+\label{prop:polynomialVolumeGrowth}
+The Riemannian metric $g$ on $X$ satisfies polynomial volume growth with dimension $Q$:
+\begin{equation}
+\text{Vol}_g(B_r(p)) := \int_{B_r(p)} \sqrt{\det g(x)} \, d^Q x \sim C_{\text{vol}} r^Q \quad \text{as } r \to 0^+,
+\end{equation}
+where $C_{\text{vol}} > 0$ depends on the Ahlfors constant $C_A$ and bounds on the metric tensor density.
+
+\begin{proof}
+\input{proofGPropositionPolynomialVolumeGrowth}
+\end{proof}
+\end{proposition}
+

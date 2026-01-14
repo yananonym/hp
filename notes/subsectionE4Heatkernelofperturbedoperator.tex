@@ -1,0 +1,17 @@
+% Part of sectionEHeatKernelIndependent.tex
+\subsection{Heat Kernel of Perturbed Operator}
+\label{subsec:heatKernelOfPerturbedOperator}
+
+\begin{lemma}[Heat Kernel under Potential Perturbation]
+\label{lem:perturbedHeatKernel}
+Let $A = -\Delta_\mu + W$ where $W = V''(|\psi_0|^2)$ is the quadratic form potential from Axiom 2, satisfying $\lambda_0 \leq W(x) \leq \Lambda_0$ for all $x \in X$. Then the heat kernel $p_t^A(x,y)$ of the perturbed operator satisfies the same Gaussian bounds as the unperturbed kernel, with constants modified by factors of $e^{(\Lambda_0 - \lambda_0)t}$:
+
+\begin{equation}
+p_t^A(x,y) \leq C e^{\Lambda_0 t} t^{-Q/2} \exp\left(-\frac{d_X(x,y)^2}{Ct}\right).
+\end{equation}
+
+\begin{proof}
+\input{proofELemmaPerturbedHeatKernel}
+\end{proof}
+\end{lemma}
+

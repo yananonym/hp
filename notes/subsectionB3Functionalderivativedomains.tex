@@ -1,0 +1,216 @@
+% Part of sectionBDivergenceStructure.tex
+\subsection{Functional Derivative Domains and Regularity}
+\label{subsec:functionalDerivativeDomains}
+
+To ensure mathematical rigor, the specify precisely the domains on which all functional derivatives and Hessians are defined throughout this manuscript.
+
+\begin{definition}[Domain Hierarchy for Functional Calculus]
+\label{def:domainHierarchy}
+
+For the generating functional $\Phi: \mathcal{H} \to \mathbb{R} \cup \{+\infty\}$ with $\mathcal{H} = L^2(X; \mathbb{C}^n)$:
+
+\begin{enumerate}
+
+\item \textbf{Domain of $\Phi$ (Zero-th Functional Derivative)}
+\begin{equation}
+\Dom(\Phi) := \left\{\psi \in L^2(X) : \int_X V(|\psi|^2) \, d\mu < \infty\right\}.
+\end{equation}
+By Axiom II, $V$ is a growth-controlled polynomial, so $\Dom(\Phi)$ is well-defined and includes at least $H^{1,2}(X)$.
+
+\item \textbf{First Functional Derivative $D\Phi[\psi]$ (Fréchet Derivative)}
+
+The Fréchet derivative $D\Phi: \Dom(\Phi) \to \mathcal{H}^*$ is defined in the weak sense:
+\begin{equation}
+\langle D\Phi[\psi], \eta \rangle_{\mathcal{H}} := \lim_{t \to 0^+} \frac{\Phi[\psi + t\eta] - \Phi[\psi]}{t} = 2\int_X V'(|\psi|^2) \overline{\eta} \psi \, d\mu,
+\end{equation}
+for all $\eta \in L^2(X)$ such that the limit exists and defines a bounded linear functional on $L^2$.
+
+\textbf{Domain:} For the explicit $\Phi[\psi] = \int_X V(|\psi|^2) d\mu$, the first functional derivative exists as an element of $L^2(X)^*$ for all $\psi \in H^{1,2}(X)$, and:
+\begin{equation}
+D\Phi[\psi] = 2V'(|\psi|^2)\psi \in L^2(X).
+\end{equation}
+
+\item \textbf{Second Functional Derivative $D^2\Phi[\psi]$ (Hessian)}
+
+For $\psi \in H^{1,2}(X)$, the Hessian (second Fréchet derivative) defines a bounded operator:
+\begin{equation}
+D^2\Phi[\psi]: H^{1,2}(X) \to H^{-1,2}(X),
+\end{equation}
+where $H^{-1,2}(X)$ is the dual of $H^{1,2}(X)$. Explicitly, for $\eta, \xi \in H^{1,2}(X)$:
+\begin{equation}
+\langle D^2\Phi[\psi](\eta), \xi \rangle := \int_X \left[2V''(|\psi|^2)(\overline{\eta}\psi)(\overline{\xi}\psi) + 2V'(|\psi|^2)\overline{\xi}\eta\right] d\mu.
+\end{equation}
+
+By Axiom II, the Hessian is strictly positive-definite on $H^{1,2}(X)$.
+
+\item \textbf{Functional Derivatives on Infinite-Dimensional Spaces (RG Analysis)}
+
+In Section X (Asymptotic Safety), the coupling space $\mathcal{G} \cong \mathbb{R}^9$ is treated as an infinite-dimensional functional space when considering scale-dependent running couplings. The functional derivatives with respect to scale:
+\begin{equation}
+\frac{\partial}{\partial \ln k} \Phi[g(k)]
+\end{equation}
+are computed using the chain rule and the Wetterich equation. These derivatives are well-defined in the sense of distributions (weak derivatives) and are bounded in the topology of the coupling space.
+
+\item \textbf{Regularity for Integral Exchange}
+
+Functional derivatives commute with integrals and limits under the following conditions:
+
+\begin{itemize}
+\item \textbf{Dominated Convergence:} If $|\frac{\partial f}{\partial \psi}| \leq g$ for an $L^p$-integrable $g$, then:
+\begin{equation}
+\int_X \frac{\partial f(\psi(x))}{\partial \psi(x)} d\mu = \frac{\partial}{\partial \psi} \int_X f(\psi(x)) d\mu.
+\end{equation}
+
+\item \textbf{weak vs. Strong Derivatives:} When test functions are smooth with compact support ($\eta \in C_c^\infty(X)$), functional derivatives can be computed in the weak sense (via integration by parts), and the result is independent of the choice of test function.
+
+\item \textbf{Sobolev Embedding:} Once $Q < 4$ is established (Section L), the Sobolev embedding $H^{1,2}(X) \hookrightarrow C^{0,\alpha}(X)$ allows eigenfunctions and field configurations to be treated as continuous functions where needed.
+
+\end{itemize}
+
+\end{enumerate}
+
+\end{definition}
+
+\textbf{Summary:} All functional derivatives in this manuscript respect the domain hierarchies specified above. Where functional derivatives appear, the implied domain is:
+\begin{itemize}
+\item $D\Phi[\psi]$ is defined for $\psi \in H^{1,2}(X)$
+\item $D^2\Phi[\psi]$ is defined for $\psi \in H^{1,2}(X)$ and acts on the Sobolev space
+\item Higher-order functional derivatives are defined in the distributional sense
+\end{itemize}
+
+Unless explicitly stated otherwise, all functional calculus operations assume these domain specifications.
+
+The divergence vanishes identically on the magnitude-matching set:
+\begin{equation}
+D[\psi \| \phi] = 0 \iff |\psi(x)|^2 = |\phi(x)|^2 \text{ for } \mu\text{-almost every } x \in X.
+\end{equation}
+\end{definition}
+
+\begin{lemma}[Density of Finite-Divergence Pairs]
+\label{lem:densityFiniteDivergence}
+For $Q < 4$, the set $\{(\psi, \phi) : D[\psi \| \phi] < \infty\}$ is dense in $\mathcal{H} \times \mathcal{H}$. This is because $H^{1,2}(X) \otimes \mathbb{C}^n \subset \Dom(D\Phi)$ is dense in $L^2(X, \mu; \mathbb{C}^n)$ (Lemma \ref{lem:phiProperties}), so finite-divergence pairs form a dense subset of the product space.
+\end{lemma}
+
+\begin{lemma}[Bregman Divergence Properties]
+\label{lem:bregmanProperties}
+The divergence functional satisfies:
+
+\begin{enumerate}
+\item \textbf{Non-negativity and Identity of Indiscernibles.} For all $\psi, \phi \in \mathcal{H}$:
+\begin{equation}
+D[\psi \| \phi] \geq 0,
+\end{equation}
+with equality if and only if $|\psi(x)|^2 = |\phi(x)|^2$ $\mu$-almost everywhere on $X$.
+
+\item \textbf{Asymmetry (Fundamental Property).} In general, $D[\psi \| \phi] \neq D[\phi \| \psi]$. This asymmetry is the source of temporal arrow of time (Theorem \ref{thm:su2WeakStructure}).
+
+\item \textbf{Convexity in First Argument.} For fixed $\phi \in \mathcal{H}$, the functional $\psi \mapsto D[\psi \| \phi]$ is strictly convex:
+\begin{equation}
+D[t\psi_1 + (1-t)\psi_2 \| \phi] < t D[\psi_1 \| \phi] + (1-t) D[\psi_2 \| \phi]
+\end{equation}
+for $t \in (0,1)$ and $\psi_1 \neq \psi_2$.
+
+\item \textbf{Frechet Differentiability.} The map $\psi \mapsto D[\psi \| \phi]$ is Frechet differentiable with:
+\begin{equation}
+\frac{\partial D[\psi \| \phi]}{\partial \psi} = 2\int_X V'(|\psi|^2) \text{Re}(\overline{\psi} \cdot \cdot) d\mu - 2\int_X V'(|\phi|^2) \text{Re}(\overline{\phi} \cdot \cdot) d\mu,
+\end{equation}
+yielding a bounded linear functional in the second argument.
+\end{enumerate}
+
+\begin{proof}
+\input{proofBLemmaBregmanProperties}
+\end{proof}
+\end{lemma}
+
+\begin{definition}[Operator Hierarchy: Rigorous Ordering]
+\label{def:operatorHierarchy}
+
+the divergence-first theory of quantum gravity proceeds through a strictly ordered hierarchy of mathematical objects to avoid circular dependencies:
+
+\textbf{Level 1:} Axioms (Polish space + generating functional)
+\textbf{Level 2:} Bregman divergence functional $D[\psi \| \phi]$ (information-geometric primitive)
+\textbf{Level 3:} Functional derivative and quadratic form (from divergence polarization)
+\textbf{Level 4:} Dirichlet form $\mathcal{E}$ (functional-analytic extension)
+\textbf{Level 5:} Self-adjoint Laplacian operator $A = -\Delta_\mu$ (from Dirichlet form representation)
+\textbf{Level 6:} Spectral geometry (metric emergence from eigenfunctions)
+
+See Definition \ref{def:operatorHierarchy} and the detailed proof in \texttt{proof\_def\_operator\_hierarchy.tex} for the complete logical ordering.
+\end{definition}
+
+\begin{remark}[Divergence vs. Laplacian: Clarification of Operator Hierarchy]
+\label{rem:divergenceVsLaplacianOperators}
+
+To avoid confusion about the role of divergence in the theory, the clarify:
+
+\noindent\textbf{(i) Bregman Divergence is a Functional, Not an Operator.}
+
+The Bregman divergence $D[\psi \| \phi]$ is a scalar functional on pairs of field configurations. It induces a \emph{functional derivative}:
+\begin{equation}
+\frac{\delta D[\psi \| \phi]}{\delta \psi(x)} = 2V'(|\psi|^2) \psi(x) - 2V'(|\phi|^2) \psi(x),
+\end{equation}
+which is an element of the dual space $\mathcal{H}^*$, not an operator on $\mathcal{H}$.
+
+\noindent\textbf{(ii) The Primary Operator is the Dirichlet Laplacian $\Delta_\mu$.}
+
+All spectral theory and geometric constructions in this paper use the Dirichlet form Laplacian $A = -\Delta_\mu$ (Definition \ref{def:dirichletForm}, Theorem \ref{thm:laplacianProperties}). The divergence structure informs the \emph{quadratic form} component $\mathcal{Q}$ of the Dirichlet form, but does not replace the Laplacian.
+
+\noindent\textbf{(iii) No Separate Divergence Laplacian.}
+
+The do not construct a divergence-based Laplacian operator (e.g., via $\Delta_D f = \mathrm{div}(\nabla_D f)$ with divergence-dependent metrics). Such constructions would require additional assumptions and constitute part of the divergence-first framework. The divergence structure serves as the foundational axiom guiding field dynamics, not as the source of a distinct differential operator.
+
+\noindent\textbf{(iv) Logical Non-Circularity.}
+
+By Definition \ref{def:operatorHierarchy}, the divergence structure (Level 2) is defined purely from the generating functional $\Phi$ without reference to any metric or Laplacian. The Laplacian (Level 5) emerges from the Dirichlet form (Level 4) via representation theorem. The metric (Level 6) emerges from Laplacian spectral properties. This breaking of circular dependencies is formalized in \texttt{proof\_def\_operator\_hierarchy.tex}.
+
+This hierarchical distinction ensures logical clarity: axioms $\to$ divergence functional $\to$ quadratic form $\to$ Dirichlet form $\to$ Laplacian $\to$ spectral theory.
+\end{remark}
+
+\begin{definition}[Sesquilinear Form from Divergence Polarization]
+\label{def:quadraticForm}
+Polarize the Bregman divergence at the vacuum state $\psi_0$ to extract the sesquilinear form:
+\begin{equation}
+\mathcal{Q}(f, g) := \int_X V''(|\psi_0|^2) \overline{f(x)} \cdot g(x) \, d\mu(x).
+\end{equation}
+
+This is a sesquilinear form: linear in $g$, antilinear in $f$. The quadratic form is the diagonal:
+\begin{equation}
+\mathcal{Q}(f, f) = \int_X V''(|\psi_0|^2) |f(x)|^2 \, d\mu(x).
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Sesquilinear Form Properties]
+\label{thm:quadraticFormProperties}
+The form $\mathcal{Q}$ defined by Bregman divergence polarization at the vacuum is sesquilinear and positive definite:
+
+\begin{enumerate}
+\item \textbf{Sesquilinearity:} $\mathcal{Q}(f, g)$ is linear in the second argument $g$ and antilinear in the first argument $f$. The form satisfies:
+\begin{equation}
+\mathcal{Q}(\alpha f_1 + \beta f_2, g) = \overline{\alpha} \mathcal{Q}(f_1, g) + \overline{\beta} \mathcal{Q}(f_2, g)
+\end{equation}
+and $\mathcal{Q}(f, \alpha g) = \alpha \mathcal{Q}(f, g)$.
+
+\item \textbf{Hermiticity:} $\mathcal{Q}(g, f) = \overline{\mathcal{Q}(f, g)}$ for all $f, g \in \mathcal{H}$.
+
+\item \textbf{Positive Definiteness:} There exist constants $\lambda_0, \Lambda_0 > 0$ such that:
+\begin{equation}
+\lambda_0 \|f\|_{\mathcal{H}}^2 \leq \mathcal{Q}(f, f) \leq \Lambda_0 \|f\|_{\mathcal{H}}^2
+\end{equation}
+for all $f \in \mathcal{H}$.
+
+\item \textbf{Constants determined by $V$:} The bounds depend on the second derivative of $V$ evaluated at $|\psi_0|^2$:
+\begin{equation}
+\lambda_0 = \inf_{x \in X} V''(|\psi_0(x)|^2), \quad \Lambda_0 = \sup_{x \in X} V''(|\psi_0(x)|^2).
+\end{equation}
+By Axiom \ref{ax:configSpace} condition (V2), $\lambda_0 > 0$. By polynomial growth (V3) and compactness of $X$, $\Lambda_0 < \infty$.
+\end{enumerate}
+
+\begin{proof}
+\input{proofBTheoremQuadraticFormProperties}
+\end{proof}
+\end{theorem}
+
+\begin{remark}[Equivalence with Dirichlet Form]
+\label{rem:equivalencewithdirichletform}
+The quadratic form $\mathcal{Q}$ constructed via divergence polarization at the vacuum can be embedded into the Dirichlet form $\mathcal{E}$ (Definition \ref{def:dirichletForm}) by recognizing that near the vacuum, the divergence-induced structure is equivalent to the functional-analytic structure from Dirichlet form theory. This equivalence is established rigorously in Theorem \ref{thm:dirichletCoercivity}.
+\end{remark}
+

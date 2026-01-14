@@ -1,0 +1,77 @@
+% Part of sectionGMetricEmergence.tex
+\subsection{Pointwise Metric Tensor}
+\label{subsec:pointwiseMetricTensor}
+
+\begin{theorem}[Metric from Carre du Champ - Complete Proof with Positive-Definiteness]
+\label{thm:metricFromCarre}
+The Carre du Champ operator $\Gamma$ (Definition \ref{def:carreDuChamp}), defined post-spectrally via minimal upper gradients of eigenfunctions, induces a Riemannian metric tensor on $X$. This is non-circular and logically consistent with the pre-spectral Dirichlet form definition.
+
+\begin{enumerate}
+\item \textbf{Pointwise Metric Tensor.} At each $x \in X$, define:
+\begin{equation}
+g_{\mu\nu}(x) := \Gamma(e_\mu, e_\nu)(x) = \nabla_{\min} e_\mu(x) \cdot \nabla_{\min} e_\nu(x),
+\end{equation}
+where $\{e_k\}_{k=0}^\infty$ are the orthonormal eigenfunctions from Theorem \ref{thm:laplacianProperties}.
+
+\item \textbf{Positive Definiteness and Non-Degeneracy.} For all $x \in X$ and all nonzero vectors $v = \sum_{\mu=1}^{N-1} v^\mu e_\mu$ with $v \perp e_0$ (orthogonal to the ground state, which is constant by Lemma \ref{lem:groundStateConstancy}):
+\begin{equation}
+\sum_{\mu,\nu=1}^{N-1} g_{\mu\nu}(x) v^\mu v^\nu = \Gamma(v, v)(x) = |\nabla_{\min} v|^2(x) > 0 \quad \text{$\mu$-almost everywhere}.
+\end{equation}
+
+\item \textbf{Continuity.} The metric components $g_{\mu\nu} \in C^{0,\beta}(X)$ for $\beta \in (0, \alpha)$ where $\alpha = 1 - Q/4$ is the Hölder exponent of eigenfunctions (Theorem \ref{thm:eigenfunctionRegularity}). This follows from the product of Hölder continuous functions being Hölder continuous.
+
+\item \textbf{Bi-Lipschitz Equivalence with Original Metric $d_X$.} The Riemannian distance induced by $g$:
+\begin{equation}
+d_g(x, y) := \inf_\gamma \int_0^1 \sqrt{g_{\mu\nu}(\gamma(t)) \dot{\gamma}^\mu(t) \dot{\gamma}^\nu(t)} \, dt
+\end{equation}
+satisfies:
+\begin{equation}
+C^{-1} d_X(x, y) \leq d_g(x, y) \leq C d_X(x, y)
+\end{equation}
+for some constant $C = C(\lambda_{\text{Poincaré C_A, \|g\|_\infty)$ depending only on the spectral data and space constants.
+
+\item \textbf{Riemannian Energy.} The induced Riemannian Laplacian agrees with the spectral Laplacian in coordinates given by the eigenfunctions.
+\end{enumerate}
+
+\begin{proof}
+\input{proofGTheoremMetricFromCarre}
+\end{proof}
+\end{theorem}
+
+\begin{lemma}[Bi-Lipschitz Equivalence: Explicit Constants]
+\label{lem:biLipschitzExplicit}
+Let $d_X$ be the input metric from Axiom \ref{ax:polishSpace} and $d_g$ the emerged Riemannian metric from Theorem \ref{thm:metricFromCarre}. Then for all $x, y \in X$:
+\[
+C^{-1} d_X(x,y) \leq d_g(x,y) \leq C d_X(x,y),
+\]
+where the constant $C$ depends only on:
+\begin{itemize}
+\item Ahlfors regularity constant $C_A$ (Axiom \ref{ax:polishSpace}(c))
+\item Poincaré constant $C_P$ (Axiom \ref{ax:polishSpace}(c))
+\item Coercivity constant $\lambda_0$ (Axiom \ref{ax:polynomialCoercivity})
+\item Dimension $Q$ (via the Hölder exponent $\alpha = 1 - Q/4$ in Theorem \ref{thm:eigenfunctionRegularity})
+\end{itemize}
+
+The constant is explicitly computable as:
+\[
+C = \max\left\{C_A^{1/2} C_P, \, (C_A C_P \lambda_0^{-1})^{1/2}\right\}.
+\]
+
+\begin{proof}
+\input{proofGLemmaBiLipschitzExplicit}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Uniform Metric Non-Degeneracy from Spectral Gap]
+\label{lem:uniformMetricNondegeneracy}
+Under Axiom 1 with spectral gap $\lambda_{\text{gap}} = |\lambda_1| - |\lambda_0| > 0$ and $Q < 4$, the metric tensor satisfies:
+\begin{equation}
+\inf_{x \in X} \lambda_{\min}(g_{\mu\nu}(x)) \geq c_0 > 0
+\end{equation}
+where $c_0 = c_0(\lambda_{\text{gap}}, C_P, C_A, Q)$ depends only on spectral gap, Poincaré constant $C_P$, Ahlfors constant $C_A$, and dimension $Q$.
+
+\begin{proof}
+\input{proofGLemmaUniformMetricNondegeneracy}
+\end{proof}
+\end{lemma}
+

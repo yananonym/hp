@@ -1,0 +1,67 @@
+% Part of sectionRTheMoonSpinorFermionStructure.tex
+\subsection{Dirac Operator and Fermionic Spectrum}
+\label{subsec:diracOperatorAndFermionicSpectrum}
+
+\begin{definition}[Dirac Operator on Lorentzian Manifold]
+\label{def:diracOperator}
+On the Lorentzian spacetime $(X, g)$ with signature $(-,+,+,+)$, the Dirac operator is:
+\begin{equation}
+\slashed{D} := \gamma^\mu (D_\mu + \omega_\mu),
+\end{equation}
+where:
+
+\begin{enumerate}
+\item $\gamma^\mu$ satisfy the Clifford algebra $\{\gamma^\mu, \gamma^\nu\} = 2g^{\mu\nu}$.
+\item $D_\mu = \partial_\mu + iA_\mu$ is the gauge-covariant derivative.
+\item $\omega_\mu = \frac{1}{4}\omega_\mu^{ab} \sigma_{ab}$ is the spin connection, with $\sigma_{ab} = \frac{i}{2}[\gamma_a, \gamma_b]$.
+\end{enumerate}
+
+The Dirac operator is formally self-adjoint with respect to the natural inner product on spinors.
+\end{definition}
+
+\begin{lemma}[Counting of Weyl Spinor Species per Generation]
+\label{lem:WeylSpeciesCounting}
+
+In the Standard Model (without right-handed neutrinos), Weyl spinor content per generation:
+
+\textbf{Leptons:}
+\begin{enumerate}
+\item $\nu_e^L$ (left-handed electron neutrino)
+\item $e^L$ (left-handed electron)
+\item $e^R$ (right-handed electron)
+\end{enumerate}
+
+\textbf{Quarks:}
+\begin{enumerate}
+\item $u^L, d^L$ (left-handed, each in 3 colors = 6 species)
+\item $u^R, d^R$ (right-handed, each in 3 colors = 6 species)
+\end{enumerate}
+
+\textbf{Total per generation:}
+\begin{equation}
+N_{\text{Weyl}} = 3 \text{ (leptons)} + 6 \text{ (quark colors)} + 6 \text{ (quark colors)} = 15.
+\end{equation}
+
+For representation theory: count all Weyl components = 15.
+
+\end{lemma}
+
+\begin{theorem}[Index of Dirac Operator]
+\label{thm:diracSpectrum}
+On a compact four-dimensional Riemannian manifold, the Dirac operator has:
+
+\begin{enumerate}
+\item Discrete spectrum with $\lambda \to \pm\infty$.
+\item Spectral symmetry: $\lambda$ eigenvalue $\implies$ $-\lambda$ eigenvalue.
+\item Index given by Atiyah-Singer formula:
+\begin{equation}
+\text{ind}(\slashed{D}) := \dim \ker(\slashed{D}_+) - \dim \ker(\slashed{D}_-) = \frac{1}{32\pi^2} \int_X \Tr(R \edge R) - \frac{1}{8\pi^2} \int_X \Tr(F \edge F),
+\end{equation}
+where $R$ is the Riemann curvature and $F$ is the gauge field strength.
+\end{enumerate}
+
+\begin{proof}
+\input{proofRTheoremDiracSpectrum}
+\end{proof}
+\end{theorem}
+

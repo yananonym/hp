@@ -1,0 +1,101 @@
+% sectionPElectromagnetismEmergence.tex
+% Section content
+
+
+
+\section{Gauge Invariance and Ward-Takahashi Identities}
+\label{sec:electromagnetismEmergence}
+\label{subsec:gauge_invariance_and_ward_takahashi_identities}
+
+
+\input{epigraphKircher}
+
+\begin{theorem}[Ward-Takahashi Identities Preserved to All Loop Orders]
+\label{thm:ward_identities_allorders}
+
+Gauge invariance of the electromagnetic (and electroweak/strong) interactions is preserved to all orders in the renormalization group flow. The Ward-Takahashi identities hold exactly:
+
+\begin{equation}
+\partial_\mu \Gamma^\mu(x, y; g) = i[S_F^{-1}(y, g) - S_F^{-1}(x, g)],
+\end{equation}
+
+where $\Gamma^\mu$ is the photon-fermion vertex, $S_F$ is the fermion propagator, and the identity holds at all loop orders and all renormalization scales $k$ in the RG flow.
+
+\begin{enumerate}
+
+\item \textbf{One-Loop Level.} At tree level and one-loop, gauge invariance ensures:
+\begin{equation}
+\partial_\mu \Gamma_0^\mu + \text{one-loop correction} = i[\Delta S_F^{-1}]_{\text{one-loop}},
+\end{equation}
+where both sides receive one-loop contributions from photon self-energy $\Pi(p^2)$, electron self-energy $\Sigma(p)$, and vertex correction $\Lambda^\mu(p, p')$.
+
+The explicit one-loop calculation:
+\begin{itemize}
+\item \textbf{Photon polarization:} The one-loop photon bubble diagram contributes:
+\begin{equation}
+\Pi^{\mu\nu}_1(p) = e^2 \int \frac{d^d\ell}{(2\pi)^d} \frac{\text{Tr}[\gamma^\mu S_F^{(0)}(\ell) \gamma^\nu S_F^{(0)}(\ell+p)]}{[\ell^2 - m^2][(\ell+p)^2 - m^2]}.
+\end{equation}
+This is transverse: $p_\mu \Pi_1^{\mu\nu}(p) = 0$ (consequence of gauge invariance at one-loop).
+
+\item \textbf{Electron self-energy:} The one-loop fermion self-energy is:
+\begin{equation}
+\Sigma_1(p) = e^2 \int \frac{d^d\ell}{(2\pi)^d} \frac{\gamma^\mu S_F^{(0)}(\ell) \gamma_\mu}{[\ell^2][(p - \ell)^2 - m^2]}.
+\end{equation}
+
+\item \textbf{Vertex correction:} The one-loop vertex correction satisfies:
+\begin{equation}
+p_\mu \Lambda_1^\mu(p, p') = \Sigma_1(p') - \Sigma_1(p),
+\end{equation}
+which is the Ward identity at one-loop level.
+
+\end{itemize}
+
+\item \textbf{Two-Loop Level.} At two-loop, additional diagrams contribute:
+\begin{itemize}
+\item Box diagram (two-photon exchange)
+\item Triangle diagram (photon + fermion loop)
+\item Nested one-loop corrections
+\end{itemize}
+
+The key fact is that the Ward identity is maintained automatically by gauge symmetry: any diagrams that would violate the Ward identity must cancel by the Gauss-Bonnet theorem in gauge theories. Specifically:
+\begin{equation}
+\sum_{\text{diagrams}} \partial_\mu \Gamma_n^\mu = i \sum_{\text{diagrams}} [S_F^{-1}(p') - S_F^{-1}(p)]_n,
+\end{equation}
+where the sum is over all two-loop diagrams contributing to the vertex and propagators.
+
+\item \textbf{All-Orders Cohomology Argument.} To all orders, the Ward identities follow from BRST cohomology (Piguet-Sorella algebraic renormalization). The BRST symmetry:
+\begin{equation}
+s A_\mu = \partial_\mu c, \quad s \psi = ic \psi, \quad s \bar{\psi} = -i\bar{\psi}c, \quad s c = -\frac{e}{2}[c,c]
+\end{equation}
+(with ghost field $c$) encodes gauge invariance at the quantum level.
+
+Any counterterm $\Delta \mathcal{L}$ must be BRST-invariant to respect gauge symmetry:
+\begin{equation}
+s \Delta \mathcal{L} = 0.
+\end{equation}
+
+By BRST cohomology theorem, all such counterterms are BRST-exact or are proportional to BRST-closed terms. This automatic protection of gauge structure ensures Ward identities are preserved under renormalization to all orders.
+
+\item \textbf{Weinberg Power-Counting.} By Weinberg's power-counting theorem, once the one-loop renormalization is performed (introducing counterterms to cancel divergences), higher-loop diagrams are finite. The finiteness is preserved by Ward identity structure: diagrams that would be divergent without gauge invariance are automatically suppressed by the transversality condition $p_\mu \Pi^\mu_n(p) = 0$ at all loop levels.
+
+\item \textbf{Electroweak Extension.} The full Standard Model with electroweak sector ($SU(2) \times U(1)$ gauge group) has Ward-Slavnov-Taylor identities that are similarly protected. For the $W^\pm, Z$ bosons coupled to fermions:
+\begin{equation}
+\partial_\mu T^{\mu}_{\text{em}} = 0 \quad \text{(electromagnetic current conservation)}.
+\end{equation}
+
+The loop structure of the electroweak theory ensures these identities hold at all orders, with violations (anomalies) appearing only in specific sectors (triangle diagrams involving three gauge bosons) that are controlled by the anomaly cancellation condition (verified in Theorem \ref{thm:standardModelGaugeGroupDerivation}).
+
+\item \textbf{QCD (Strong Interactions).} For the non-Abelian $SU(3)$ color gauge theory (QCD), the non-Abelian Ward-Slavnov-Taylor identities are:
+\begin{equation}
+\partial_\mu \Gamma^{a,\mu}(x, y; \alpha, \beta) = i T^a_{\alpha\beta}[\Delta S^{-1}]_{\alpha\beta},
+\end{equation}
+where $a$ is the color index, $T^a$ are $SU(3)$ generators, and $\Gamma^{a,\mu}$ is the gluon-quark vertex.
+
+These identities protect color gauge invariance and are maintained by the non-Abelian BRST symmetry, which is more subtle but structurally identical to the Abelian case.
+
+\end{enumerate}
+
+\begin{proof}
+\input{proofSTheoremWardIdentitiesAllOrdersDetailed}
+\end{proof}
+\end{theorem}

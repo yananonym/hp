@@ -1,0 +1,42 @@
+% Part of sectionQTheStarStrongInteractionsEmergence.tex
+\subsection{Color Charge and $SU(3)$ Structure}
+\label{subsec:colorChargeAndSu3Structure}
+
+\begin{theorem}[$SU(3)_c$ Color Gauge Group from Divergence]
+\label{thm:su3StrongStructure}
+The strong interaction emerges from $SU(3)_c$ color gauge symmetry acting on quark fields $q^a_i$ where $a = 1, 2, 3$ is the color index and $i = 1, \ldots, n_f$ is the flavor index.
+
+\begin{enumerate}
+\item \textbf{Global color symmetry:} The generating functional $\Phi[\psi] = \int V(|\psi|^2) d\mu$ with $\psi = (q^1, q^2, q^3)^T$ is invariant under global $SU(3)_c$ color rotations:
+\begin{equation}
+q^a \to U^a{}_b q^b, \quad U \in SU(3)_c.
+\end{equation}
+
+\item \textbf{Local gauge principle:} Promoting to local symmetry $U(x) \in SU(3)_c$ requires covariant derivative:
+\begin{equation}
+D_\mu := \partial_\mu + i g_s G_\mu^A T^A,
+\end{equation}
+where $G_\mu^A$ are the eight gluon fields ($A = 1, \ldots, 8$), $T^A$ are $SU(3)$ generators in the fundamental representation, and $g_s$ is the strong coupling constant.
+
+\item \textbf{Gluon field strength:}
+\begin{equation}
+G_{\mu\nu}^A := \partial_\mu G_\nu^A - \partial_\nu G_\mu^A + g_s f^{ABC} G_\mu^B G_\nu^C.
+\end{equation}
+
+\item \textbf{Yang-Mills action:}
+\begin{equation}
+S_{YM}[G] = -\frac{1}{4} \int_X G_{\mu\nu}^A G^{A\mu\nu} \sqrt{g} \, d^4x.
+\end{equation}
+
+\item \textbf{Quark-gluon coupling:}
+\begin{equation}
+S_{matter}[q, G] = \int_X \overline{q}^a i \gamma^\mu (D_\mu)^a{}_b q^b \sqrt{g} \, d^4x,
+\end{equation}
+where the covariant derivative acts on the color index.
+\end{enumerate}
+
+\begin{proof}
+\input{proofQTheoremSu3StrongStructure}
+\end{proof}
+\end{theorem}
+

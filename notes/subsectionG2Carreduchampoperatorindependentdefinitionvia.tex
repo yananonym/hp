@@ -1,0 +1,70 @@
+% Part of sectionGMetricEmergence.tex
+\subsection{Carre du Champ Operator - Independent Definition via Minimal Upper Gradient}
+\label{subsec:carreDuChampOperatorIndependentDefinitionVia}
+
+\begin{definition}[Carre du Champ via Minimal Upper Gradient - Non-Circular Definition]
+\label{def:carreDuChamp}
+The Carre du Champ operator is defined as follows:
+
+\noindent\textbf{Post-Spectral Definition (Using Eigenfunctions):}
+
+For eigenfunctions $e_\mu, e_\nu$ from the spectral decomposition (Theorem \ref{thm:laplacianProperties}), define:
+\begin{equation}
+\Gamma(e_\mu, e_\nu)(x) := \nabla_{\min} e_\mu(x) \cdot \nabla_{\min} e_\nu(x),
+\end{equation}
+where the product is taken pointwise, and equals zero outside the set where both minimal upper gradients are defined.
+
+This definition:
+\begin{enumerate}
+\item \textbf{Is Measurable:} By \cite{cheeger1999differentiation}), the minimal upper gradient is measurable for all $u \in H^{1,2}(X)$. Thus products of minimal upper gradients are measurable.
+
+\item \textbf{Requires No Circular Reference:} The definition uses only:
+\begin{itemize}
+\item Eigenfunctions $\{e_k\}$ (computed from $A$)
+\item The minimal upper gradient $\nabla_{\min}$ (derived from Axiom 1, not from $\Gamma$)
+\item Pointwise multiplication (an algebraic operation)
+\end{itemize}
+
+\item \textbf{Is Integrable:} For $e_\mu, e_\nu \in H^{1,2}(X)$ (since eigenfunctions are in the domain of $A$):
+\begin{equation}
+\int_X \Gamma(e_\mu, e_\nu) d\mu = \int_X \nabla_{\min} e_\mu \cdot \nabla_{\min} e_\nu \, d\mu \leq \|\nabla_{\min} e_\mu\|_{L^2} \|\nabla_{\min} e_\nu\|_{L^2} < \infty
+\end{equation}
+by Cauchy-Schwarz and Hölder continuity (Theorem \ref{thm:eigenfunctionRegularity}).
+
+\item \textbf{Hölder Continuity for Eigenfunctions:} For eigenfunctions $e_k, e_\ell \in C^{0,\alpha}(X)$ (Theorem \ref{thm:eigenfunctionRegularity}), the pointwise product $\nabla_{\min} e_k \cdot \nabla_{\min} e_\ell \in C^{0,\beta}(X)$ for some $\beta \in (0, \alpha)$ by standard product estimates on Hölder spaces. Thus:
+\begin{equation}
+\Gamma(e_k, e_\ell)(x) = \nabla_{\min} e_k(x) \cdot \nabla_{\min} e_\ell(x)
+\end{equation}
+is well-defined and continuous $\mu$-almost everywhere without any distributional interpretation or reference to the Laplacian.
+
+\item \textbf{General Functions:} For arbitrary $f, g \in H^{1,2}(X)$, define Carre du Champ by:
+\begin{equation}
+\Gamma(f, g)(x) := \nabla_{\min} f(x) \cdot \nabla_{\min} g(x),
+\end{equation}
+which is integrable and measurable.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}[Pointwise Minimal Upper Gradient Regularity - Cheeger]
+\label{lem:canonicalGradientRepresentative}
+For $f \in H^{1,2}(X) \cap C^{0,\alpha}(X)$ with $\alpha > 0$, the minimal upper gradient $|\nabla_{\min} f|(x)$ is measurable and satisfies:
+\begin{enumerate}[label=(\roman*)]
+\item For H\"older-continuous $f$, the minimal upper gradient is Borel measurable and admits a continuous representative on a set of full measure (Cheeger 1999, Theorem 4.21).
+\item The pointwise value $|\nabla_{\min} f|(x)$ can be computed as the infinitesimal Lipschitz constant:
+\[
+|\nabla_{\min} f|(x) = \limsup_{y \to x} \frac{|f(y) - f(x)|}{d_X(x, y)}.
+\]
+This definition depends only on the metric $d_X$ and $f$, not on any differential operator.
+\item For eigenfunctions $e_k \in C^{0,\alpha}(X)$ (Theorem \ref{thm:eigenfunctionRegularity}), this limit exists pointwise, and $|\nabla_{\min} e_k|$ is continuous.
+\end{enumerate}
+
+\begin{proof}
+By \cite{cheeger1999differentiation}, Theorem 4.21), on metric measure spaces with Poincaré inequalities, H\"older-continuous functions have measurable minimal upper gradients with Borel representatives. The infinitesimal Lipschitz formula is a standard characterization of the minimal upper gradient (\cite{heinonen1998quasiconformal}). Pointwise existence for eigenfunctions follows from Theorem \ref{thm:eigenfunctionRegularity} and standard metric space calculus.
+\end{proof}
+\end{lemma}
+
+\begin{remark}[Non-Circular Nature of Carre du Champ]
+\label{rem:nonCircularCarre}
+The definition of $\Gamma$ does \textbf{NOT} invoke the Laplacian using the polarization formula $\Gamma(f, g) = \frac{1}{2}[A(fg) - f(Ag) - g(Af)]$. That formula is a \textit{consequence} of the definition once the Laplacian is constructed. The minimal upper gradient definition is fundamental and non-circular, depending only on $(X, d_X, \mu)$ and pointwise products.
+\end{remark}
+

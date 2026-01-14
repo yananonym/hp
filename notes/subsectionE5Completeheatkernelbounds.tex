@@ -1,0 +1,33 @@
+% Part of sectionEHeatKernelIndependent.tex
+\subsection{Complete Heat Kernel Bounds with All Conditions}
+\label{subsec:completeHeatKernelBounds}
+
+\begin{lemma}[Complete Heat Kernel Bounds]
+\label{lem:heatKernelComplete}
+Under Axiom 1 (Ahlfors $Q$-regularity with $Q \in (2,4)$ and $(1,2)$-Poincaré inequality), the heat kernel $p_t(x, y)$ of the operator $A = -\Delta_\mu$ satisfies:
+
+\textbf{(i) On-diagonal upper bound:}
+\[
+p_t(x, x) \leq \frac{C_1}{t^{Q/2}} \quad \forall t > 0, x \in X.
+\]
+
+\textbf{(ii) Off-diagonal Gaussian upper bound:}
+\[
+p_t(x, y) \leq \frac{C_2}{t^{Q/2}} \exp\left(-\frac{d_X(x, y)^2}{C_3 t}\right) \quad \forall t > 0, x, y \in X.
+\]
+
+\textbf{(iii) Near-diagonal lower bound:}
+\[
+p_t(x, y) \geq \frac{c_1}{t^{Q/2}} \exp\left(-\frac{d_X(x, y)^2}{c_2 t}\right) \quad \text{for } d_X(x, y) \leq \sqrt{t}.
+\]
+
+\textbf{(iv) Hölder continuity in space:}
+\[
+|p_t(x, y) - p_t(x', y)| \leq \frac{C_4}{t^{(Q+\alpha)/2}} d_X(x, x')^\alpha \quad \text{for } \alpha = 1 - Q/4.
+\]
+
+\textbf{Proof.} Conditions (i)--(iii) follow from the Grigor'yan-Saloff-Coste theorem: on metric measure spaces, volume doubling $+$ Poincaré inequality $\Leftrightarrow$ Gaussian heat kernel bounds \cite{grigoryan2009heat,saloff2002isoperimetric}.
+
+Condition (iv) follows from parabolic regularity: the heat equation $\partial_t u = \Delta_\mu u$ with Hölder initial data has Hölder continuous solutions \cite{sturm2006geometry}. \qed
+\end{lemma}
+

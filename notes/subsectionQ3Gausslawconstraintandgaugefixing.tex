@@ -1,0 +1,110 @@
+% Part of sectionQTheStarStrongInteractionsEmergence.tex
+\subsection{Gauss Law Constraint and Gauge Fixing}
+\label{subsec:gaussLawConstraintAndGaugeFixing}
+
+\begin{theorem}[Gauss Law from Gauge Constraints]
+\label{thm:gaussLawConstraint}
+The Yang-Mills equations of motion for $SU(3)_c$ gauge theory possess constraints arising from gauge symmetry:
+
+\begin{enumerate}
+\item \textbf{Equations of Motion.} Variation of the Yang-Mills action gives:
+\begin{equation}
+\partial_\nu G^{\mu\nu,A} = j^\mu_A,
+\end{equation}
+where $j^\mu_A$ is the color current from matter (quarks and gluons).
+
+\item \textbf{Gauss Law Constraint.} The temporal component ($\mu = 0$) yields:
+\begin{equation}
+\partial_i G^{0i,A} = \nabla_i E^i_A = j^0_A \equiv \rho^A,
+\end{equation}
+where $E^i_A := G^{0i,A}$ is the chromoelectric field and $\rho^A$ is the color charge density. In vacuum ($j^0_A = 0$), this reduces to:
+\begin{equation}
+\nabla \cdot E^A = 0 \quad \text{(color charge conservation)}.
+\end{equation}
+
+\item \textbf{Secondary Constraint.} The Gauss law itself is a constraint (not a dynamical equation) that relates the electric field to sources and must be satisfied at all times. It restricts the allowed initial conditions to lie on the physical constraint surface:
+\begin{equation}
+\Sigma_{\text{phys}} := \{\text{field configurations satisfying } \nabla \cdot E^A = \rho^A\}.
+\end{equation}
+
+\item \textbf{Gauge Redundancy.} The vector potential $G_\mu^A$ has $4 \times 8 = 32$ components, but only $2 \times 8 = 16$ physical degrees of freedom (two polarization states per gluon type). The four equations of motion (temporal and three spatial components) provide four constraints per color, but one is the Gauss law (not dynamical), leaving three constraints plus four solutions from integrating the spatial equations. The remaining redundancy corresponds to gauge freedom.
+
+\item \textbf{Gauge Fixing.} To eliminate gauge redundancy in the path integral, impose a gauge condition such as:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Lorenz Gauge:} $\partial_\mu G^\mu_A = 0$ (covariant gauge, simplifies calculations).
+\item \textbf{Coulomb Gauge:} $\nabla \cdot G^A = 0$ (physical gauge, separates instantaneous and radiative parts).
+\item \textbf{Axial Gauge:} $G^A_3 = 0$ (breaks manifest Lorentz covariance but useful for calculations).
+\end{enumerate}
+
+Each choice trades manifest covariance for explicit physical interpretation or calculational convenience.
+\end{enumerate}
+
+\begin{proof}
+\input{proofQTheoremGaussLawConstraint}
+\end{proof}
+\end{theorem}
+
+\begin{theorem}[Faddeev-Popov Procedure for Path Integral]
+\label{thm:faddeevPopov}
+To compute the path integral with gauge-fixed action, use the Faddeev-Popov procedure:
+
+\begin{enumerate}
+\item \textbf{Gauge-Fixed Path Integral.} With Lorenz gauge $\partial_\mu G^\mu_A = 0$:
+\begin{equation}
+Z = \int \mathcal{D}[G] \delta(\partial_\mu G^\mu_A) \, \det\left(\frac{\delta(\partial_\mu G^\mu_A)}{\delta \epsilon_A}\right) \exp\left(-S_{YM}[G] - S_{matter}[q, G]\right)
+\end{equation}
+
+\item \textbf{Faddeev-Popov Determinant.} The functional derivative:
+\begin{equation}
+\frac{\delta(\partial_\mu G^\mu_A)}{\delta \epsilon_B} = -\partial_\mu D_\mu^{AB} = -(\square + \text{gluon self-interaction})^{AB}
+\end{equation}
+is encoded via ghost fields $c^A, \bar{c}^A$ (anticommuting Grassmann variables):
+\begin{equation}
+\det(\text{Faddeev-Popov}) \equiv \int \mathcal{D}[\bar{c}]\mathcal{D}[c] \, \exp\left(-S_{FP}[c, \bar{c}, G]\right),
+\end{equation}
+where the Faddeev-Popov ghost action is:
+\begin{equation}
+S_{FP}[c, \bar{c}, G] = \int \bar{c}^A \partial_\mu D_\mu^{AB}[G] c^B \sqrt{g} \, d^4x.
+\end{equation}
+
+\item \textbf{Gauge-Fixed Lagrangian.} The complete effective action becomes:
+\begin{equation}
+S_{eff}[G, q, c, \bar{c}] = S_{YM}[G] + S_{matter}[q, G] + S_{GF}[G] + S_{FP}[c, \bar{c}, G],
+\end{equation}
+where the gauge-fixing term is:
+\begin{equation}
+S_{GF}[G] = \frac{1}{2\xi} \int (\partial_\mu G^\mu_A)^2 \sqrt{g} \, d^4x.
+\end{equation}
+The gauge-fixing parameter $\xi$ controls the gauge (Lorenz gauge for $\xi = 1$, Landau gauge for $\xi = 0$).
+
+\item \textbf{Path Integral.} The partition function becomes:
+\begin{equation}
+Z = \int \mathcal{D}[G] \mathcal{D}[q] \mathcal{D}[\bar{c}]\mathcal{D}[c] \, \exp(-S_{eff}/\hbar),
+\end{equation}
+which is manifestly gauge-invariant under residual (unbroken) global color symmetries and independent of the gauge-fixing choice (to leading order).
+
+\item \textbf{Physical Observables.} Gauge-invariant operators such as:
+\begin{equation}
+\text{Tr}(P e^{i \int_C G}) = \text{Wilson loops}
+\end{equation}
+(holonomy along contour $C$) remain invariant. The constraint surface (Gauss law) is automatically preserved by the Faddeev-Popov procedure, ensuring physical consistency.
+\end{enumerate}
+
+\begin{proof}
+\input{proofQTheoremFaddeevPopov}
+\end{proof}
+\end{theorem}
+
+\begin{remark}[Gauss Law Implementation in the Framework]
+\label{rem:gausslawimplementationintheframework}
+The Gauss law constraint $\nabla \cdot E^A = \rho^A$ emerges naturally from:
+\begin{enumerate}
+\item The divergence structure $D[\psi \| \phi]$ (Definition \ref{def:bregman}) is gauge-invariant by design (depends only on magnitudes).
+\item The coupling between chromoelectric field and quark currents arises from the minimal coupling Hamiltonian.
+\item In the continuum limit of the lattice theory (Section \ref{subsec:su3TrialityEmergence}), the Gauss law is the leading-order constraint determining the lattice dynamics.
+\end{enumerate}
+
+This confirms that the divergence-first framework naturally produces gauge-constrained QCD dynamics.
+\end{remark}
+

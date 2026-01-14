@@ -1,0 +1,88 @@
+% Part of sectionFRegularityEmergence.tex
+\subsection{Perturbation Stability of Eigenfunction and Spectral Projectors}
+\label{subsec:perturbationStabilityOfEigenfunctionAndSpectr}
+
+\begin{lemma}[Generic Simplicity of Eigenvalues in divergence-first framework]
+\label{lem:genericSimplicity}
+For the operator $A = -\Delta_\mu + V''(|\psi_0|^2)$ under Axioms 1--2, eigenvalues are generically simple (multiplicity one).
+
+\begin{proof}
+\input{proofFLemmaGenericSimplicity}
+\end{proof}
+\end{lemma}
+
+\begin{remark}[Non-Generic Cases]
+\label{rem:nongenericcases}
+If fine-tuning produces degenerate eigenvalues, \cite{kato1995perturbation} theory still applies: the spectral projector onto the degenerate eigenspace varies analytically. For the metric construction, only the projector (not individual eigenvectors) is required, so the framework remains consistent even without eigenvalue simplicity.
+\end{remark}
+
+\begin{theorem}[Continuity of Spectral Data Under Measure Perturbations]
+\label{thm:perturbationStability}
+Let $(X, d_X, \mu)$ satisfy Axiom \ref{ax:polishSpace}, and let $\mu_\epsilon := (1 + \epsilon w) \mu$ be a perturbed measure for $w \in C^0(X)$ bounded: $\|w\|_\infty \leq M$. For sufficiently small $\epsilon > 0$ (specifically $\epsilon < 1/(2M)$ ensuring positivity), the eigenvalues and eigenfunctions of the perturbed operator $A_\epsilon = -\Delta_{\mu_\epsilon}$ vary continuously with $\epsilon$:
+
+\begin{enumerate}
+\item \textbf{Eigenvalue Continuity.} For each $k \geq 0$:
+\begin{equation}
+|\lambda_k(\epsilon) - \lambda_k(0)| \leq C_k \epsilon \|w\|_\infty,
+\end{equation}
+where $C_k$ depends on the $k$-th eigenvalue and the regularity constants.
+
+\item \textbf{Eigenfunction Continuity in $C^{0,\alpha}$ Norm.} For each $k \geq 0$:
+\begin{equation}
+\|e_k(\epsilon) - e_k(0)\|_{C^{0,\alpha}} \leq C_k' \epsilon \|w\|_\infty,
+\end{equation}
+where $C_k'$ depends on eigenvalue, Holder exponent $\alpha$, and regularity constants.
+
+\item \textbf{Metric Tensor Stability.} The metric tensor components satisfy:
+\begin{equation}
+|g_{\mu\nu}(\epsilon; x) - g_{\mu\nu}(0; x)| \leq C_{g} \epsilon \|w\|_\infty \quad \text{uniformly in } x \in X,
+\end{equation}
+for all $\mu, \nu$ and some constant $C_g$ depending on the spectral gap and regularity data.
+
+\item \textbf{Spectral Projector Continuity.} The spectral projectors $P_k(\epsilon) := |e_k(\epsilon)\rangle \langle e_k(\epsilon)|$ vary continuously in operator norm:
+\begin{equation}
+\|P_k(\epsilon) - P_k(0)\|_{\text{op}} \leq C_k'' \epsilon \|w\|_\infty.
+\end{equation}
+\end{enumerate}
+
+\begin{proof}
+\input{proofFTheoremPerturbationStability}
+\end{proof}
+\end{theorem}
+
+\begin{lemma}[Generic Simplicity of Eigenvalues]
+\label{lem:genericSimplicityEigenvalues}
+For the Schrodinger-type operator $A = -\Delta_\mu + W(x)$ on compact $(X, d_X, \mu)$ satisfying Axiom 1:
+
+\begin{enumerate}
+\item \textbf{Genericity of Simplicity.} Eigenvalues are generically simple: for a dense $G_\delta$ set of potentials $W \in C^0(X)$, all eigenvalues have multiplicity one.
+
+\item \textbf{Perturbation Stability at Simple Eigenvalues.} At simple eigenvalues, perturbation theory (\cite{kato1995perturbation}) gives analytic dependence of eigenvalues and eigenfunctions on the potential.
+
+\item \textbf{Application to divergence-first theory.} For the specific potential $W = V''(|\psi_0|^2)$ with $\psi_0$ the vacuum, simplicity follows from the non-degeneracy condition on $V$ (condition V2 in Axiom \ref{ax:configSpace}).
+
+\item \textbf{Proof Reference.} Uhlenbeck's theorem on generic simplicity \cite{uhlenbeck1976genericity}, extended to metric measure spaces by Keith-Zhong (2008).
+\end{enumerate}
+
+\begin{proof}
+\input{proofFLemmaGenericSimplicity}
+\end{proof}
+\end{lemma}
+
+\begin{corollary}[Robustness of Physical Predictions]
+\label{cor:robustnessOfFramework}
+The continuity of eigenvalues, eigenfunctions, metric tensor, and spectral projectors under small perturbations ensures that the divergence-first theory of quantum gravity framework is physically robust. Small variations in the measure $\mu$ (arising from quantum corrections, observational uncertainties, or renormalization flow) produce only small changes in the emergent geometric and spectral data, guaranteeing the physical consistency and stability of the theory.
+\end{corollary}
+\begin{lemma}[Continuity of Spectral Projectors under Perturbations]
+\label{lem:projectorContinuityGeneral}
+For perturbations $A_\delta = A + \delta V$ where $\delta V$ is a bounded operator with $\|\delta V\|_\infty < 1/4$ (smaller than the spectral gap divided by 4), the spectral projectors to the first $N$ eigenspaces:
+\begin{equation}
+P_N = \sum_{k=0}^{N-1} e_k \otimes e_k
+\end{equation}
+vary continuously in the operator norm: $\|P_N(A_\delta) - P_N(A)\| \leq C_N \|\delta V\|$.
+
+\begin{proof}
+\input{proofFLemmaProjectorContinuityGeneral}
+\end{proof}
+\end{lemma}
+

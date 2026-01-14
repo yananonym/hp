@@ -1,0 +1,35 @@
+% Part of sectionGMetricEmergence.tex
+\subsection{Positive Definiteness and Ricci Curvature Bounds}
+\label{subsec:metricPositiveDefiniteness}
+
+\begin{lemma}[Positive Definiteness of the Emerged Metric and Ricci Curvature Lower Bound]
+\label{lem:metricPositiveDefiniteness}
+
+The Riemannian metric $g_{\mu\nu}$ that emerges from the divergence-first framework (via Theorem \ref{thm:metricFromCarre}) on the four-dimensional manifold $X$ is positive definite and satisfies a strictly positive lower bound on the Ricci curvature tensor:
+
+\begin{enumerate}
+
+\item \textbf{Positive Definiteness:} The metric tensor satisfies:
+\[
+g_{\mu\nu}(x) v^\mu v^\nu > 0 \quad \text{for all nonzero } v \in T_x X, \quad \forall x \in X.
+\]
+
+\item \textbf{Ricci Curvature Lower Bound:} There exists a constant $\mathrm{Ric}_{\min} > 0$ such that:
+\[
+\mathrm{Ric}_{\mu\nu}(x) \geq \mathrm{Ric}_{\min} \cdot g_{\mu\nu}(x) \quad \text{in the distributional sense},
+\]
+meaning that the Ricci tensor bounds below by a positive multiple of the metric.
+
+\item \textbf{Cheeger Isoperimetric Constant:} The Cheeger constant is strictly positive:
+\[
+h_{\mathrm{Cheeger}}(X) := \inf_{\Omega} \frac{\mathrm{Vol}(\partial \Omega)}{\min(\mathrm{Vol}(\Omega), \mathrm{Vol}(X \setminus \Omega))} > 0,
+\]
+ensuring the manifold is geometrically non-degenerate.
+
+\end{enumerate}
+
+\begin{proof}
+\input{proofGLemmaMetricPositiveDefiniteness}
+\end{proof}
+\end{lemma}
+

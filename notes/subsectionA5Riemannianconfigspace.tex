@@ -1,0 +1,30 @@
+% Part of sectionAAxiomaticFoundation.tex
+\subsection{Riemannian Structure on Configuration Space (Subsection A.5)}
+\label{subsec:riemannianConfigSpace}
+
+\begin{definition}[Riemannian Metric on Configuration Space from Hessian]
+\label{def:riemannianMetricConfig}
+
+The Hessian operator $D^2\Phi[\psi]: \mathcal{H} \times \mathcal{H} \to \mathbb{R}$ from Axiom II defines a Riemannian metric on the Hilbert manifold $\mathcal{H}$ by:
+\begin{equation}
+g_\psi(h, k) := \langle D^2\Phi[\psi] h, k \rangle_{\mathcal{H}},
+\end{equation}
+where $h, k \in T_\psi \mathcal{H}$ are tangent vectors. By strict convexity (Axiom II.iv), this metric is positive definite.
+
+\end{definition}
+
+\begin{theorem}[Riemannian Hilbert Manifold Structure from Axioms]
+\label{thm:riemannianManifoldStructure}
+
+Under Axiom II, the configuration space $(\mathcal{H}, g)$ becomes a Riemannian Hilbert manifold. This enables the application of Riemannian geometry, including:
+\begin{enumerate}
+\item Exponential map and geodesics
+\item Curvature tensor and Ricci curvature
+\item Hodge decomposition of differential forms
+\item Floer homology (defined via gradient flows with respect to $g$)
+\end{enumerate}
+
+This Riemannian structure is entirely determined by the axioms and is independent of any physical input.
+
+\end{theorem}
+

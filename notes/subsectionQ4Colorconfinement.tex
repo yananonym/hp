@@ -1,0 +1,68 @@
+% Part of sectionQTheStarStrongInteractionsEmergence.tex
+\subsection{Color Confinement from Spectral Properties}
+\label{subsec:colorConfinement}
+
+\begin{theorem}[Color Confinement from Covariant Dirichlet Form]
+\label{thm:colorConfinement}
+In the $SU(3)_c$ gauge theory emerging from the divergence-first framework, color confinement holds in the following precise sense:
+
+\begin{enumerate}
+\item \textbf{Hilbert Space Decomposition.} The configuration space decomposes by irreducible representations of $SU(3)_c$:
+\begin{equation}
+\mathcal{H} = \bigoplus_{R \in \widehat{SU(3)}} \mathcal{H}_R = \mathcal{H}_{\mathbf{1}} \oplus \mathcal{H}_{\mathbf{3}} \oplus \mathcal{H}_{\mathbf{\bar{3}}} \oplus \mathcal{H}_{\mathbf{8}} \oplus \cdots,
+\end{equation}
+where $\mathcal{H}_{\mathbf{1}}$ is the color-singlet sector and $\mathcal{H}_{R}$ for $R \neq \mathbf{1}$ are colored sectors.
+
+\item \textbf{Spectral Gap in Colored Sectors.} The covariant Dirichlet form $\mathcal{E}_A$ restricted to non-singlet sectors $\mathcal{H}_R$ ($R \neq \mathbf{1}$) satisfies:
+\begin{equation}
+\mathcal{E}_A(\psi, \psi) \geq m_R^2(\mu) \|\psi\|_{L^2}^2 \quad \text{for all } \psi \in \mathcal{H}_R,
+\end{equation}
+where $m_R(\mu) > 0$ is a mass gap depending on the quadratic Casimir $C_2(R)$ and the running coupling $g_s(\mu)$.
+
+\item \textbf{Infrared Divergence.} As the infrared cutoff is removed ($\mu \to 0$):
+\begin{equation}
+\lim_{\mu \to 0^+} m_R(\mu) = +\infty \quad \text{for all } R \neq \mathbf{1}.
+\end{equation}
+This follows from the infrared growth of the strong coupling (asymptotic freedom in reverse).
+
+\item \textbf{Physical Hilbert Space.} The physical Hilbert space consists exclusively of color singlets:
+\begin{equation}
+\mathcal{H}_{\mathrm{phys}} = \mathcal{H}_{\mathbf{1}}.
+\end{equation}
+
+\item \textbf{Linear Confining Potential.} The static quark-antiquark potential grows linearly at large separation:
+\begin{equation}
+V(r) = \sigma r + V_0 + O(1/r) \quad \text{as } r \to \infty,
+\end{equation}
+where $\sigma \approx (440 \text{ MeV})^2$ is the string tension.
+
+\item \textbf{Wilson Loop Area Law.} For Wilson loops $W(C)$ enclosing area $A(C)$:
+\begin{equation}
+\langle W(C) \rangle \sim e^{-\sigma A(C)} \quad \text{(area law)}.
+\end{equation}
+\end{enumerate}
+
+\begin{proof}
+\input{proofQTheoremColorConfinement}
+\end{proof}
+\end{theorem}
+
+\begin{theorem}[Asymptotic Freedom of $SU(3)_c$]
+\label{thm:asymptoticFreedom}
+The $SU(3)_c$ gauge coupling $g_s$ exhibits asymptotic freedom: at one-loop order, the beta function is:
+\begin{equation}
+\beta(g_s) = \mu \frac{dg_s}{d\mu} = -\frac{g_s^3}{16\pi^2}\left(\frac{11N_c - 2n_f}{3}\right),
+\end{equation}
+where $N_c = 3$ is the number of colors and $n_f$ is the number of active quark flavors. For $n_f < 16.5$, this is negative, implying:
+\begin{enumerate}
+\item At high energies $\mu \gg \Lambda_{\mathrm{QCD}}$: $g_s(\mu) \to 0$ (perturbative regime).
+\item At low energies $\mu \to \Lambda_{\mathrm{QCD}}$: $g_s(\mu) \to \infty$ (nonperturbative confinement regime).
+\end{enumerate}
+
+The QCD scale $\Lambda_{\mathrm{QCD}} \approx 200\text{--}300$ MeV marks the transition between regimes.
+
+\begin{proof}
+\input{proofQTheoremAsymptoticFreedom}
+\end{proof}
+\end{theorem}
+

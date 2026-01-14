@@ -1,0 +1,24 @@
+% Part of sectionAAxiomaticFoundation.tex
+\subsection{Symplectic Structure from Divergence Asymmetry (Subsection A.6)}
+\label{subsec:symplecticDivergence}
+
+The asymmetry of the Bregman divergence, inherent in Axiom II's breaking of time-reversal symmetry, induces a symplectic structure on configuration space. This structure is essential for Floer homology and the topological count of three generations.
+
+\begin{definition}[Symplectic Form from Divergence Asymmetry]
+\label{def:symplecticFormDivergence}
+
+For any base point $\psi_0 \in \mathcal{H}$, define the skew-symmetric 2-form:
+\begin{equation}
+\omega_{\psi_0}(h, k) := \mathrm{Im}\left(\int_X \overline{h}(x) \, (D^2\Phi[\psi_0])^{-1} k(x) \, d\mu(x)\right),
+\end{equation}
+where the inverse Hessian $(D^2\Phi[\psi_0])^{-1}$ exists by strict convexity. This is a closed 2-form (satisfying $d\omega = 0$ in the distributional sense).
+
+\end{definition}
+
+\begin{lemma}[Non-Degeneracy of Symplectic Structure]
+\label{lem:symplecticNonDegenerate}
+
+The form $\omega_\psi$ is non-degenerate: if $\omega_\psi(h, k) = 0$ for all $k \in \mathcal{H}$, then $h = 0$. This follows immediately from the invertibility of $D^2\Phi[\psi]$ guaranteed by Axiom II's coercivity condition.
+
+\end{lemma}
+

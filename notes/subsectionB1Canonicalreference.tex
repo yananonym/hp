@@ -1,0 +1,65 @@
+% Part of sectionBDivergenceStructure.tex
+\subsection{Canonical Reference State - Non-Circular Construction}
+\label{subsec:canonicalReference}
+
+\begin{definition}[Vacuum State - Variational Definition]
+\label{def:vacuumState}
+The vacuum state $\psi_0 \in \mathcal{H}$ is the unique minimizer:
+\begin{equation}
+\psi_0 := \arg\min_{\|\psi\|_{\mathcal{H}} = 1} \Phi[\psi].
+\end{equation}
+By strict convexity of $\Phi$ (Lemma \ref{lem:phiProperties}), this minimizer exists and is unique up to global $U(1)$ phase.
+\end{definition}
+
+\begin{lemma}[Variational Regularity Bootstrap]
+\label{lem:variationalBootstrap}
+Let $\psi_0 \in L^2(X,\mu;\mathbb{C}^n)$ minimize $\Phi[\psi]$ over $\{\psi: \|\psi\|_{L^2}=1\}$. Then $\psi_0 \in H^{1,2}(X)\otimes\mathbb{C}^n$ without presupposing any elliptic equation.
+
+\begin{proof}
+\input{proofBLemmaVariationalBootstrap}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Functional Convexity of the Generating Functional]
+\label{lem:functionalConvexity}
+The generating functional $\Phi[\psi]$ defined in Axiom \ref{ax:configSpace} is strictly convex on the domain $\mathcal{D}(\Phi) = L^2(X, \mathcal{B}(X), \mu; \mathbb{C}^n)$. That is, for all $\psi, \phi \in \mathcal{D}(\Phi)$ with $\psi \neq \phi$, and all $t \in (0, 1)$:
+\begin{equation}
+\Phi[t\psi + (1-t)\phi] < t\Phi[\psi] + (1-t)\Phi[\phi].
+\end{equation}
+
+This strict convexity follows directly from condition (V2) in Axiom \ref{ax:configSpace}: $V''(s) > \lambda_0 > 0$ for all $s \geq 0$.
+\end{lemma}
+
+\begin{lemma}[Properties of Vacuum State - Non-Circular Order]
+\label{lem:vacuumProperties}
+The vacuum state $\psi_0$ satisfies the following properties in logically ordered sequence avoiding circularity:
+
+\begin{enumerate}
+\item \textbf{Existence and Uniqueness in $L^2$.} By coercivity and weak lower semicontinuity of $\Phi$ (Axiom \ref{ax:configSpace}), the minimization problem over $\mathcal{S} := \{\psi \in \mathcal{H} : \|\psi\|_{\mathcal{H}} = 1\}$ admits a solution in $L^2(X, \mu; \mathbb{C}^n)$ via the direct method in calculus of variations. The constraint set $\mathcal{S}$ is weakly compact in $\mathcal{H}$ by Banach-Alaoglu, and $\Phi$ is weakly lower semicontinuous by (V1)-(V3) and dominated convergence. By strict convexity of $V$ (condition V2), this solution is unique up to phase.
+
+\item \textbf{$H^{1,2}$ Regularity.} By Lemma \ref{lem:variationalBootstrap}, $\psi_0 \in H^{1,2}(X) \otimes \mathbb{C}^n$. This regularity is established without circular reference to elliptic equations or Dirichlet forms.
+
+\item \textbf{Euler-Lagrange Equation.} The vacuum satisfies the variational condition:
+\begin{equation}
+D\Phi[\psi_0] = \lambda_0 \psi_0
+\end{equation}
+for Lagrange multiplier $\lambda_0 \in \mathbb{R}$ determined by normalization $\|\psi_0\|_{\mathcal{H}} = 1$. Explicitly:
+\begin{equation}
+\lambda_0 = 2\int_X V'(|\psi_0|^2)|\psi_0|^2 d\mu(x).
+\end{equation}
+
+This equation is established via standard Lagrange multiplier theory without requiring knowledge of the Dirichlet form or Laplacian.
+
+\item \textbf{$L^\infty$ Regularity via Sobolev Embedding (Conditional).} The vacuum satisfies $\psi_0 \in L^\infty(X)$ if the Ahlfors dimension satisfies $Q < 4$ (established in Section \ref{sec:dimensionUniqueness}). Once $Q = 3$ is verified via dimensional selection in Section L, the Sobolev embedding $H^{1,2}(X) \hookrightarrow L^\infty(X)$ applies (Lemma \ref{lem:polishConsequences}), yielding $\psi_0 \in L^\infty(X)$. Until then, $\psi_0 \in H^{1,2}(X)$ suffices for all constructions.
+
+\item \textbf{$U(1)$ Invariance.} If $\psi_0$ is a minimizer of $\Phi[\psi]$ subject to $\|\psi\|_{\mathcal{H}} = 1$, then $e^{i\theta}\psi_0$ for any $\theta \in [0, 2\pi)$ is equally a minimizer, since $\Phi[e^{i\theta}\psi] = \Phi[\psi]$ by magnitude-only dependence. The minimizer is unique only up to global phase.
+\end{enumerate}
+
+\begin{proof}
+\input{proofBLemmaVacuumProperties}
+\end{proof}
+\end{lemma}
+
+\textbf{Key Non-Circularity Statement:}
+The vacuum state $\psi_0$ exists uniquely in $L^2(X, \mu; \mathbb{C}^n)$ as the minimizer of $\Phi$ without reference to any Dirichlet form or spectral properties. The regularity $\psi_0 \in H^{1,2}(X)$ follows from the variational bootstrap (Lemma \ref{lem:variationalBootstrap}) using truncated functionals, and the further regularity $\psi_0 \in L^\infty(X)$ follows from Sobolev embedding. This logical order breaks the circular dependency between vacuum definition, Dirichlet form construction, and eigenfunction regularity.
+

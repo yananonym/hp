@@ -1,0 +1,98 @@
+% Part of sectionEHeatKernelIndependent.tex
+\subsection{Heat Kernel Estimates on Metric Measure Spaces}
+\label{subsec:heatKernelEstimatesOnMetricMeasureSpaces}
+
+\begin{lemma}[Harnack Inequality on Poincaré inequality Inequality Spaces]
+\label{lem:harnackInequality}
+Under Axiom 1 (Polish space with Ahlfors $Q$-regularity where $Q < 4$ and $(1,2)$-Poincaré inequality), the heat semigroup $P_t = e^{tA}$ satisfies the parabolic Harnack inequality:
+
+For any positive solution $u(t,x)$ to the heat equation $\partial_t u = Au$ on a parabolic cylinder $[T_1, T_2] \times B_R(x_0)$ with $0 < T_1 < T_2$:
+\[
+\sup_{(t,x) \in Q_-} u(t, x) \leq C_H \inf_{(t,x) \in Q_+} u(t, x)
+\]
+where:
+\begin{itemize}
+\item $Q_- = [T_1, (T_1 + T_2)/2] \times B_{R/2}(x_0)$ (inner parabolic region, early time)
+\item $Q_+ = [(T_1 + T_2)/2, T_2] \times B_{R/2}(x_0)$ (inner parabolic region, late time)
+\item $C_H$ is a constant depending only on the Ahlfors dimension $Q$, Poincaré inequality constant, and volume doubling constant
+\end{itemize}
+
+\begin{proof}
+\input{proofELemmaHarnackInequality}
+\end{proof}
+
+All three conditions are verified in the divergence-first framework. Therefore the Harnack inequality holds. \qed
+
+\textbf{Remark (Consequences for Heat Kernel Bounds):}
+
+The Harnack inequality immediately implies Gaussian upper bounds:
+\[
+p_t(x,y) \leq \frac{C}{t^{Q/2}} \exp\left(-c \frac{d_X(x,y)^2}{t}\right)
+\]
+
+where the constants $C, c$ depend on the volume doubling constant and Poincaré inequality constant. This is the key step in the full proof of Theorem \ref{thm:heatKernelBounds}.
+
+Lower bounds follow from the Li-Yau inequality combined with heat kernel existence (Theorem \ref{thm:heatKernelExistence}).
+\end{lemma}
+
+
+\begin{theorem}[Gaussian Heat Kernel Bounds on Ahlfors-Regular Spaces]
+\label{thm:heatKernelBounds}
+Under Axiom~1 with $Q \in (2,4)$, the heat kernel $p_t(x,y)$ of the operator $A = -\Delta_\mu$ satisfies:
+
+\textbf{(i) On-diagonal upper bound:}
+\[
+p_t(x,x) \leq \frac{C_1}{t^{Q/2}} \quad \forall t > 0, \, x \in X.
+\]
+
+\textbf{(ii) Off-diagonal Gaussian upper bound:}
+\[
+p_t(x,y) \leq \frac{C_2}{t^{Q/2}} \exp\left(-\frac{d_X(x,y)^2}{C_3 t}\right) \quad \forall t > 0, \, x, y \in X.
+\]
+
+\textbf{(iii) Near-diagonal lower bound:}
+\[
+p_t(x,y) \geq \frac{c_1}{t^{Q/2}} \quad \text{for } d_X(x,y) \leq c_2 \sqrt{t}.
+\]
+
+\textbf{(iv) Long-time behavior:}
+\[
+p_t(x,y) \to 1 \quad \text{as } t \to \infty \quad (\text{uniformly in } x, y).
+\]
+
+\textbf{Constants:} $C_1, C_2, C_3, c_1, c_2$ depend only on $Q$, $C_A$ (Ahlfors constant), and $C_P$ (Poincaré inequality constant).
+
+\begin{proof}
+\input{proofETheoremHeatKernelBounds}
+\end{proof}
+\end{theorem}
+
+\begin{theorem}[On-Diagonal and Off-Diagonal Heat Kernel Bounds]
+\label{thm:heatKernelAsymptotics}
+Let $(X, d_X, \mu)$ satisfy Axiom \ref{ax:polishSpace} with Ahlfors regularity dimension $Q \in (2, 4)$, and let $p_t^{A_0}(x, y)$ be the heat kernel of the unperturbed operator $A_0 = -\Delta_\mu$. Then:
+
+\begin{enumerate}
+\item \textbf{On-Diagonal Bounds.} There exist constants $c_1, c_2 > 0$ depending on $Q, C_A, C_P$ such that:
+\begin{equation}
+c_1 t^{-Q/2} \leq p_t^{A_0}(x, x) \leq c_2 t^{-Q/2} \quad \forall x \in X, \, 0 < t < T_0,
+\end{equation}
+for some $T_0 > 0$ depending on the space.
+
+\item \textbf{Off-Diagonal Gaussian Bounds.} For all $x, y \in X$ and $0 < t < T_0$:
+\begin{equation}
+p_t^{A_0}(x, y) \leq C t^{-Q/2} \exp\left(-\frac{d_X(x, y)^2}{Ct}\right),
+\end{equation}
+where $C$ depends on $Q, C_A, C_P, \diam(X)$.
+
+\item \textbf{Long-Time Behavior Dominated by Ground State.} For large $t$, the heat kernel is dominated by the ground state:
+\begin{equation}
+p_t^{A_0}(x, y) = e^{t\lambda_0} e_0(x) e_0(y) + \text{lower order terms},
+\end{equation}
+where $e_0$ is the constant ground state (Lemma \ref{lem:groundStateConstancy}) and $\lambda_0$ is the largest eigenvalue (least negative).
+\end{enumerate}
+
+\begin{proof}
+\input{proofETheoremHeatKernelAsymptotics}
+\end{proof}
+\end{theorem}
+

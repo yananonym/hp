@@ -1,0 +1,43 @@
+% Part of sectionRTheMoonSpinorFermionStructure.tex
+\subsection{Instantons and Zero Modes}
+\label{subsec:instantonsAndZeroModes}
+
+\begin{definition}[Instanton Topological Charge]
+\label{def:instanton}
+An instanton is a finite-action solution to Yang-Mills equations. For $SU(N)$ gauge field, the topological charge is:
+\begin{equation}
+Q_{\text{inst}} := \frac{1}{32\pi^2} \int_X \Tr(F \edge F) = \frac{1}{8\pi^2} \int_X \Tr(F_{\mu\nu} \tilde{F}^{\mu\nu}) \sqrt{g} \, d^4x \in \mathbb{Z},
+\end{equation}
+where $\tilde{F}$ is the Hodge dual.
+\end{definition}
+
+\begin{theorem}[Instanton Moduli Space]
+\label{thm:instantonModuli}
+For $SU(N)$ gauge theory on $\mathbb{R}^4$ or $S^4$, the moduli space of instantons with charge $Q$ has dimension:
+\begin{equation}
+\dim \mathcal{M}_Q = 4NQ - (N^2 - 1).
+\end{equation}
+
+For $SU(2)$: $\dim \mathcal{M}_Q = 8Q - 3$.
+
+For $SU(3)$: $\dim \mathcal{M}_Q = 12Q - 8$.
+
+\begin{proof}
+\input{proofRTheoremInstantonModuli}
+\end{proof}
+\end{theorem}
+
+\begin{theorem}[Fermion Zero Modes from Instantons]
+\label{thm:fermionZeroModes}
+In an instanton background with charge $Q_{\text{inst}}$, the number of left-handed Weyl fermion zero modes satisfies:
+\begin{equation}
+n_- = |Q_{\text{inst}}|.
+\end{equation}
+
+Each instanton contributes exactly one zero mode per unit topological charge.
+
+\begin{proof}
+\input{proofRTheoremFermionZeroModes}
+\end{proof}
+\end{theorem}
+

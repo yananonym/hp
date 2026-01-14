@@ -1,0 +1,225 @@
+% Part of sectionCDirichletFormTheory.tex
+\subsection{Dirichlet Form Definition and Properties}
+\label{subsec:dirichletFormDefinitionAndProperties}
+
+\begin{lemma}[weak Subadditivity of Minimal Upper Gradient]
+\label{lem:weakSubadditivityMug}
+For $u, v \in H^{1,2}(X)$, the minimal upper gradients satisfy:
+\begin{equation}
+|\nabla_{\min}(u + v)|(x) \leq |\nabla_{\min} u|(x) + |\nabla_{\min} v|(x) \quad \mu\text{-a.e.}
+\end{equation}
+
+\begin{proof}
+\input{proofCLemmaWeakSubadditivityMug}
+\end{proof}
+\end{lemma}
+
+\begin{definition}[Dirichlet Form on Configuration Space - Explicit Non-Circular Form]
+\label{def:dirichletForm}
+The Dirichlet form $\mathcal{E}: \mathcal{D}(\mathcal{E}) \times \mathcal{D}(\mathcal{E}) \to \mathbb{R}$ is defined on domain:
+\begin{equation}
+\mathcal{D}(\mathcal{E}) := H^{1,2}(X) \otimes \mathbb{C}^n = \{\psi: X \to \mathbb{C}^n : \psi_i \in H^{1,2}(X) \text{ for } i = 1, \ldots, n\}
+\end{equation}
+by:
+\begin{equation}
+\mathcal{E}(\psi, \phi) := \int_X \sum_{i=1}^n |\nabla_{\min} \psi_i|^2 \, d\mu + \mathcal{Q}(\psi, \phi),
+\end{equation}
+where:
+
+\begin{enumerate}
+\item $\nabla_{\min}$ denotes the minimal upper gradient (Definition \ref{def:upperGradient}) from Axiom \ref{ax:polishSpace}, defined directly without reference to any Laplacian or spectral data.
+
+\item $\mathcal{Q}(\psi, \phi)$ is the quadratic form from divergence polarization (Definition \ref{def:quadraticForm}).
+
+\item The Carre du Champ operator $\Gamma$ (Definition \ref{def:carreDuChamp}) is defined \textbf{post-spectrally} using eigenfunctions $\{e_k\}$ computed from $A$. For general functions $f, g \in H^{1,2}(X)$, the relation $\Gamma(f, g) = |\nabla_{\min} f| \cdot |\nabla_{\min} g|$ reflects the pointwise product of minimal upper gradients and is consistent with the Dirichlet form structure.
+\end{enumerate}
+
+\end{definition}
+
+\begin{lemma}[Coercivity and Boundedness of Pre-Spectral Dirichlet Form]
+\label{lem:dirichletFormCoercivity}
+The pre-spectral Dirichlet form $\mathcal{E}(\psi, \phi)$ defined on $\Dom(\mathcal{E}) = H^{1,2}(X) \otimes \mathbb{C}^n$ (Definition \ref{def:dirichletForm}) satisfies:
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Boundedness:} There exists a constant $C_E > 0$ depending on $X$, $\mu$, and $V''$ such that:
+$$|\mathcal{E}(\psi, \phi)| \leq C_E \|\psi\|_{H^{1,2}} \|\phi\|_{H^{1,2}} \quad \forall \psi, \phi \in \Dom(\mathcal{E}).$$
+
+\item \textbf{weak Coercivity:} There exist constants $\lambda_\mathcal{E} > 0$ and $c_E > 0$ such that:
+$$\mathcal{E}(\psi, \psi) + \lambda_\mathcal{E} \|\psi\|_{L^2}^2 \geq c_E \|\psi\|_{H^{1,2}}^2 \quad \forall \psi \in \Dom(\mathcal{E}).$$
+\end{enumerate}
+
+\begin{proof}
+\input{proofCTheoremDirichletCoercivity}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Form Domain vs. Operator Domain - Explicit Distinction]
+\label{lem:formOperatorDomainRelation}
+
+The Dirichlet form domain $\Dom(\mathcal{E}) = H^{1,2}(X) \otimes \mathbb{C}^n$ and the Laplacian operator domain $\Dom(A)$ are distinct:
+
+\begin{enumerate}[label=(\roman*)]
+
+\item \textbf{Form Domain Definition.} $\Dom(\mathcal{E}) := H^{1,2}(X) \otimes \mathbb{C}^n$ is the set of square-integrable Sobolev functions. This is defined purely variational: an element of the form domain is a square-integrable function with square-integrable weak derivatives (or minimal upper gradient in the metric setting).
+
+\item \textbf{Operator Domain Definition.} By the Lax-Milgram representation theorem, an element $\psi \in \Dom(\mathcal{E})$ belongs to $\Dom(A)$ if and only if there exists $f \in L^2(X, \mu; \mathbb{C}^n)$ such that:
+$$\mathcal{E}(\psi, \phi) = -\langle A\psi, \phi\rangle_{L^2} + \lambda_{\mathcal{E}}\langle \psi, \phi\rangle_{L^2}$$
+for all $\phi \in \Dom(\mathcal{E})$. Thus $\Dom(A) := \{\psi \in \Dom(\mathcal{E}) : A\psi \in L^2(X, \mu; \mathbb{C}^n)\}$.
+
+\item \textbf{Regularity of Operator Domain.} For $Q \in (2, 4)$, Theorem \ref{thm:laplacianProperties} and Lemma \ref{lem:domainDensity} imply:
+$$\Dom(A) \subset C^{0,\beta}(X) \otimes \mathbb{C}^n$$
+where $\beta = 1 - Q/4 - \epsilon$ for arbitrarily small $\epsilon > 0$. Thus operator-domain functions are Holder continuous, whereas form-domain functions need only be in $H^{1,2}(X)$ (which can have jump discontinuities).
+
+\item \textbf{Domain Hierarchy.} The strict inclusion holds:
+$$\Dom(A) \subsetneq \Dom(\mathcal{E}) = H^{1,2}(X).$$
+
+\item \textbf{Interpretation.} The quadratic form $\mathcal{E}$ extends continuously to the form domain by definition. For functions outside $\Dom(A)$, the weak Laplacian does not exist in $L^2$. This distinction is essential: the spectral theory (semigroup, heat kernel, heat regularization) depends on $A$ and hence on the operator domain, but the variational framework (Dirichlet form energy, Sobolev estimates) is naturally defined on the larger form domain.
+
+\end{enumerate}
+
+\begin{proof}
+\input{proofCLemmaFormOperatorDomainRelation}
+\end{proof}
+
+\end{lemma}
+
+\begin{lemma}[Sesquilinear Extension via Cheeger Polarization]
+\label{lem:sesquilinearCheeger}
+For $\psi, \phi \in H^{1,2}(X) \otimes \mathbb{C}^n$, define:
+\begin{equation}
+\mathcal{E}_{\mathrm{grad}}(\psi, \phi) := \int_X \sum_{i=1}^n 
+\langle d\psi_i, d\phi_i \rangle_x \, d\mu(x),
+\end{equation}
+where $\langle d\psi_i, d\phi_i \rangle_x$ is the Cheeger inner product 
+on cotangent fibers.
+
+This definition satisfies:
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Consistency:} 
+$\mathcal{E}_{\mathrm{grad}}(\psi, \psi) = \int_X |\nabla_{\min} \psi|^2 \, d\mu$.
+
+\item \textbf{Sesquilinearity:} Linear in second argument, antilinear in first.
+
+\item \textbf{Boundedness:} 
+$|\mathcal{E}_{\mathrm{grad}}(\psi, \phi)| \leq 
+\|\nabla_{\min}\psi\|_{L^2} \|\nabla_{\min}\phi\|_{L^2}$.
+\end{enumerate}
+
+\begin{proof}
+\input{proofCLemmaSesquilinearCheeger}
+\end{proof}
+\end{lemma}
+
+\begin{theorem}[Dirichlet Form Coercivity and Closability]
+\label{thm:dirichletCoercivity}
+
+The Dirichlet form $\mathcal{E}$ from Definition \ref{def:dirichletForm} satisfies the following properties:
+
+\begin{enumerate}
+\item \textbf{Symmetry.} $\mathcal{E}(\psi, \phi) = \overline{\mathcal{E}(\phi, \psi)}$ for all $\psi, \phi \in \mathcal{D}(\mathcal{E})$.
+
+\item \textbf{Coercivity.} There exists $\lambda_{\mathcal{E}} > 0$ (depending on the coercivity constants from $\mathcal{Q}$ and the spectral gap) such that:
+\begin{equation}
+\mathcal{E}(\psi, \psi) + \lambda_{\mathcal{E}} \|\psi\|_{L^2}^2 \geq C_{\mathcal{E}} \|\psi\|_{H^{1,2}}^2
+\end{equation}
+for all $\psi \in \mathcal{D}(\mathcal{E})$, where $C_{\mathcal{E}} > 0$ depends on $\lambda_0$ (the coercivity constant of $\mathcal{Q}$ from Theorem \ref{thm:quadraticFormProperties}) and the Poincare constant $C_P$ from Axiom \ref{ax:polishSpace}(c).
+
+\item \textbf{Closability.} The form $\mathcal{E}$ is closable in $L^2(X, \mu; \mathbb{C}^n)$. 
+
+Assume a sequence $\{f_n\}_{n=1}^\infty \subseteq \mathcal{D}(\mathcal{E})$ satisfies:
+\begin{itemize}
+\item $f_n \to 0$ in $L^2(X, \mu; \mathbb{C}^n)$ as $n \to \infty$
+\item $\mathcal{E}(f_n - f_m, f_n - f_m) \to 0$ as $n, m \to \infty$
+\end{itemize}
+
+It is proven that for any $h \in \mathcal{D}(\mathcal{E})$:
+\begin{equation}
+\lim_{n \to \infty} \mathcal{E}(f_n, h) = 0.
+\end{equation}
+
+By coercivity (item 2):
+\begin{equation}
+C_{\mathcal{E}} \|f_n - f_m\|_{H^{1,2}}^2 \leq \mathcal{E}(f_n - f_m, f_n - f_m) + \lambda_{\mathcal{E}} \|f_n - f_m\|_{L^2}^2.
+\end{equation}
+
+Since $f_n \to 0$ in $L^2$, there is $\|f_n - f_m\|_{L^2} \to 0$. Since $\mathcal{E}(f_n - f_m, f_n - f_m) \to 0$ by assumption, the right-hand side vanishes. Therefore:
+\begin{equation}
+\|f_n - f_m\|_{H^{1,2}} \to 0 \quad \text{as } n, m \to \infty.
+\end{equation}
+
+By completeness of $H^{1,2}(X) \otimes \mathbb{C}^n$ (Lemma \ref{lem:polishConsequences}), there exists $f \in H^{1,2}(X) \otimes \mathbb{C}^n$ such that:
+\begin{equation}
+f_n \to f \quad \text{in } H^{1,2}(X) \otimes \mathbb{C}^n.
+\end{equation}
+
+But the also have $f_n \to 0$ in $L^2(X, \mu; \mathbb{C}^n)$ by assumption. Since $H^{1,2}(X) \subset L^2(X, \mu; \mathbb{C}^n)$ (embedding is continuous by definition of Sobolev space), and limits are unique in metric spaces, the conclude $f = 0$ in $L^2$ and hence in $H^{1,2}$.
+
+Now for any $h \in \mathcal{D}(\mathcal{E}) = H^{1,2}(X) \otimes \mathbb{C}^n$, it is necessary to bound $|\mathcal{E}(f_n, h)|$. The gradient term requires special care:
+
+For the gradient term, use the pre-spectral definition:
+\begin{equation}
+\mathcal{E}_{\mathrm{grad}}(f_n, h) := \lim_{\epsilon\to 0}\frac{1}{2\epsilon}\left[\int_X |\nabla_{\min}(f_n + \epsilon h)|^2\,d\mu - \int_X |\nabla_{\min} f_n|^2\,d\mu\right].
+\end{equation}
+
+By convexity of $s \mapsto s^2$ and weak subadditivity of minimal upper gradients (Lemma \ref{lem:weakSubadditivityMug}):
+\begin{equation}
+|\nabla_{\min}(f_n + \epsilon h)|(x) \leq |\nabla_{\min} f_n|(x) + |\epsilon||\nabla_{\min} h|(x) \quad \mu\text{-a.e.}
+\end{equation}
+
+Squaring and expanding:
+\begin{equation}
+|\nabla_{\min}(f_n + \epsilon h)|^2 \leq (|\nabla_{\min} f_n| + |\epsilon||\nabla_{\min} h|)^2 = |\nabla_{\min} f_n|^2 + 2|\epsilon||\nabla_{\min} f_n||\nabla_{\min} h| + \epsilon^2|\nabla_{\min} h|^2.
+\end{equation}
+
+Taking $\epsilon \to 0$:
+\begin{equation}
+|\mathcal{E}_{\mathrm{grad}}(f_n, h)| \leq \int_X |\nabla_{\min} f_n| \cdot |\nabla_{\min} h|\,d\mu \leq \|\nabla_{\min} f_n\|_{L^2}\|\nabla_{\min} h\|_{L^2}.
+\end{equation}
+
+Combined with the $\mathcal{Q}$ bound: 
+\begin{equation}
+|\mathcal{Q}(f_n,h)| \leq \Lambda_0\|f_n\|_{L^2}\|h\|_{L^2}.
+\end{equation}
+
+Thus:
+\begin{equation}
+|\mathcal{E}(f_n, h)| \leq \|\nabla_{\min} f_n\|_{L^2}\|\nabla_{\min} h\|_{L^2} + \Lambda_0\|f_n\|_{L^2}\|h\|_{L^2}.
+\end{equation}
+
+Since $f_n \to 0$ in both $H^{1,2}$ and $L^2$, there is:
+\begin{equation}
+\lim_{n \to \infty} \mathcal{E}(f_n, h) = 0 = \mathcal{E}(0, h).
+\end{equation}
+
+This completes the proof of closability.
+
+\item \textbf{Markov Property.} For real-valued $\psi \in \mathcal{D}(\mathcal{E})$, the truncation $\tilde{\psi} := \max(0, \min(\psi, 1))$ satisfies $\tilde{\psi} \in \mathcal{D}(\mathcal{E})$ and:
+\begin{equation}
+\mathcal{E}(\tilde{\psi}, \tilde{\psi}) \leq \mathcal{E}(\psi, \psi).
+\end{equation}
+
+This property ensures that the form is compatible with order structure on the domain.
+\end{enumerate}
+
+\begin{proof}
+\input{proofCTheoremDirichletCoercivity}
+\end{proof}
+\end{theorem}
+
+\begin{remark}[Closure of Dirichlet Form]
+\label{rem:closureofdirichletform}
+By closability (Theorem \ref{thm:dirichletCoercivity}(3)), the form $\mathcal{E}$ extends uniquely to a closed form $\overline{\mathcal{E}}$ on a larger domain $\mathcal{D}(\overline{\mathcal{E}}) \supseteq \mathcal{D}(\mathcal{E})$. For metric measure spaces satisfying Axiom \ref{ax:polishSpace}, it is known that:
+\begin{equation}
+\mathcal{D}(\overline{\mathcal{E}}) = H^{1,2}(X) \otimes \mathbb{C}^n.
+\end{equation}
+
+Thus the closure adds no new elements: $\mathcal{D}(\mathcal{E})$ is already dense in its natural domain. This simplifies the spectral analysis in subsequent sections.
+\end{remark}
+
+\begin{lemma}[Core Property of the Dirichlet Form]
+\label{lem:dirichletFormCore}
+The set $\mathcal{C} := \mathrm{Dom}(D\Phi) \cap H^{1,2}(X) \otimes \mathbb{C}^n$ is a core for the Dirichlet form $(\mathcal{E}, \mathcal{D}(\mathcal{E}))$.
+
+\begin{proof}
+\input{proofCLemmaDirichletFormCore}
+\end{proof}
+\end{lemma}

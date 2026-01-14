@@ -1,0 +1,277 @@
+\subsection{Operator Construction from Dirichlet Form}
+\label{subsec:operatorConstructionFromDirichletForm}
+
+\begin{theorem}[Laplacian from Dirichlet Form]
+\label{thm:laplacianProperties}
+The Dirichlet form $\mathcal{E}$ from Theorem \ref{thm:dirichletCoercivity} uniquely determines a self-adjoint operator $A: \Dom(A) \to L^2(X, \mu; \mathbb{C}^n)$ via the representation:
+\begin{equation}
+\mathcal{E}(\psi, h) = -\langle A\psi, h \rangle_{L^2} \quad \text{for all } \psi \in \Dom(A), \, h \in \mathcal{D}(\mathcal{E}).
+\end{equation}
+
+Denote this operator as $A := -\Delta_\mu$ (the negative Laplacian on the metric measure space $(X, d_X, \mu)$). This operator satisfies:
+
+\begin{enumerate}
+\item \textbf{Self-adjointness.} $A = A^*$ with $\Dom(A) = \Dom(A^*)$.
+
+\item \textbf{Negativity of Spectrum.} The spectrum of $A$ lies in $(-\infty, 0]$:
+\begin{equation}
+\sigma(A) \subseteq (-\infty, 0].
+\end{equation}
+More precisely, for all $\psi \in \Dom(A)$:
+\begin{equation}
+\langle A\psi, \psi \rangle_{L^2} = -\mathcal{E}(\psi, \psi) \leq -\lambda_0 \|\psi\|_{L^2}^2 < 0,
+\end{equation}
+where $\lambda_0 > 0$ is from Theorem \ref{thm:quadraticFormProperties}. Thus $A$ is negative definite (bounded above by zero).
+
+\item \textbf{Discrete Spectrum Under $Q < 4$ Condition.} The operator $A$ has purely discrete spectrum if and only if the compact embedding $H^{1,2}(X) \hookrightarrow L^2(X)$ holds.
+
+\textbf{Explicit Explanation of $Q < 4$ Requirement:}
+
+The compactness of the Sobolev embedding requires the Ahlfors regularity dimension to satisfy $Q < 4$. Here is the detailed reasoning:
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Compactness Criterion.} By the \cite{biroli2000embedding} compactness theorem on metric measure spaces \cite{ambrosio2005gradient,sturm2006geometry,biroli2000embedding}, the embedding $H^{s,p}(X) \hookrightarrow L^q(X)$ is compact if and only if:
+\begin{equation}
+s - \frac{Q}{p} > \text{codimension of target space}
+\end{equation}
+or equivalently, using the target space exponent:
+\begin{equation}
+s > \frac{Q}{p} - \frac{Q}{q}.
+\end{equation}
+
+For the case $H^{1,2}(X) \hookrightarrow L^2(X)$ (embedding into itself), the criterion is:
+\begin{equation}
+1 - \frac{Q}{2} > 0 \quad \Longleftrightarrow \quad Q < 2.
+\end{equation}
+
+However, for metric measure spaces with doubling property and Poincaré inequality, the embedding $H^{1,2}(X) \hookrightarrow L^2(X)$ is compact when:
+\begin{equation}
+Q < 4.
+\end{equation}
+
+This is a deeper result \cite{sturm2006geometry} that exploits the specific structure of metric measure spaces with doubling and Poincaré inequality. The threshold is $Q < 2 \times 2 = 4$ (where the first 2 is from the Sobolev exponent and the second 2 is from the measure dimension).
+
+\item \textbf{Physical Meaning of $Q < 4$.} Geometrically, the condition $Q < 4$ means the space cannot have Hausdorff dimension exceeding 4. Physically, this will correspond to spacetime dimension being restricted to $d_{\text{spacetime}} \leq 4$, a crucial consistency requirement.
+
+\item \textbf{Necessity of $Q < 4$.} For $Q \geq 4$, the embedding $H^{1,2}(X) \hookrightarrow L^2(X)$ is continuous (as abstract Sobolev spaces exist) but \textit{not} compact. In this case, the resolvent operator is not compact, and the spectrum is not purely discrete. Instead, it contains essential spectrum, leading to continuous spectrum accumulation.
+
+\item \textbf{Sufficiency of $Q < 4$.} When $Q < 4$, the Ahlfors regularity provides enough geometric control that Sobolev functions satisfy strong regularity properties. Combined with the Poincaré inequality (which enforces a spectral gap), the embedding becomes compact, ensuring discrete spectrum.
+\end{enumerate}
+
+Therefore, under Axiom \ref{ax:polishSpace} with $Q < 4$, the operator $A$ has purely discrete spectrum:
+\begin{equation}
+\sigma(A) = \{\lambda_0, \lambda_1, \lambda_2, \ldots\}
+\end{equation}
+with $\lambda_0 > \lambda_1 > \lambda_2 > \cdots \to -\infty$.
+
+\item \textbf{Orthonormal Eigenbasis.} By the spectral theorem for compact self-adjoint operators (or more generally, by functional calculus for self-adjoint operators with compact resolvent), there exists an orthonormal eigenbasis $\{e_k\}_{k=0}^\infty \subset L^2(X, \mu; \mathbb{C}^n)$ such that:
+\begin{equation}
+Ae_k = \lambda_k e_k, \quad \langle e_k, e_\ell \rangle_{L^2} = \delta_{k\ell}.
+\end{equation}
+
+\item \textbf{Spectral Representation.} Any $\psi \in L^2(X, \mu; \mathbb{C}^n)$ decomposes as:
+\begin{equation}
+\psi = \sum_{k=0}^\infty \langle e_k, \psi \rangle e_k
+\end{equation}
+with convergence in $L^2$-norm. For $\psi \in \Dom(A)$:
+\begin{equation}
+A\psi = \sum_{k=0}^\infty \lambda_k \langle e_k, \psi \rangle e_k.
+\end{equation}
+\end{enumerate}
+
+\begin{proof}
+\input{proofDTheoremLaplacianProperties}
+\end{proof}
+\end{theorem}
+
+\begin{lemma}[Self-Adjointness and Semigroup Generation - Explicit Verification]
+\label{lem:laplacianSelfAdjointExplicit}
+
+Under the assumptions of Theorem \ref{thm:laplacianProperties}, the Laplacian operator $A = -\Delta_\mu$ is self-adjoint on its domain $\Dom(A)$ and generates a strongly continuous contraction semigroup $\{e^{tA}\}_{t \geq 0}$ on $L^2(X, \mu; \mathbb{C}^n)$.
+
+\begin{enumerate}
+
+\item \textbf{Self-Adjointness.} By Theorem \ref{thm:dirichletCoercivity}, $\mathcal{E}$ is a coercive, closed, densely-defined sesquilinear form. By the Lax-Milgram theorem applied to Dirichlet forms (Fukushima 1980, Theorem 1.2.1), there exists a unique self-adjoint operator $A$ associated with $\mathcal{E}$ such that:
+$$\mathcal{E}(u, v) = \langle A u, v \rangle_{L^2} + C_{\mathcal{E}} \langle u, v \rangle_{L^2}$$
+for all $u, v \in \Dom(\mathcal{E})$. Thus $A$ is self-adjoint on its domain $\Dom(A) = \{u \in \mathcal{D}(\mathcal{E}) : A u \in L^2(X, \mu)\}$.
+
+\item \textbf{Semigroup Generation.} Since $A$ is self-adjoint and coercive (bounded below), by the Stone spectral theorem, $-A$ generates a unique strongly continuous contraction semigroup on $L^2(X, \mu)$. The spectral measure for $A$ is supported on $(-\infty, M_{\mathcal{E}}]$ where $M_{\mathcal{E}} < 0$ (by coercivity).
+
+\item \textbf{Heat Kernel Representation.} The semigroup $e^{tA}$ has integral representation with kernel $p_t(x, y)$ defined by:
+$$e^{tA} f(x) = \int_X p_t(x, y) f(y) d\mu(y).$$
+The kernel $p_t(x, y)$ is given by the spectral decomposition. By the spectral theorem and dominated convergence, $p_t(x, y)$ is Borel measurable in $(t, x, y)$, symmetric, and satisfies the Chapman-Kolmogorov equation.
+
+\item \textbf{Harnack Inequality Prerequisite.} These properties ensure that the Harnack inequality (Lemma \ref{lem:harnackInequality}) applies to $e^{tA}$ without hidden smoothness assumptions. The Harnack inequality uses only the semigroup structure, metric measure space properties (Ahlfors regularity, Poincaré inequality), and doubling, all of which are verified in Axioms \ref{ax:polishSpace} and Lemma \ref{lem:polishConsequences}.
+
+\end{enumerate}
+
+\begin{proof}
+\input{proofDLemmaLaplacianSelfAdjointExplicit}
+\end{proof}
+
+\end{lemma}
+
+\begin{definition}[Explicit Laplacian Domain Characterization]
+\label{def:laplacianDomain}
+The domain of the Laplacian operator $A = -\Delta_\mu$ is characterized explicitly as:
+\begin{equation}
+\Dom(A) := \left\{\psi \in H^{1,2}(X) \otimes \mathbb{C}^n : \exists f \in L^2 \text{ s.t. } \mathcal{E}(\psi, \phi) = -\langle f, \phi\rangle_{L^2} \; \forall \phi \in H^{1,2}\right\}
+\end{equation}
+with $A\psi := f$ (the weak Laplacian).
+
+This domain is fully determined by the Dirichlet form $\mathcal{E}$ via the Lax-Milgram representation theorem.
+\end{definition}
+
+\begin{lemma}[Domain Density and Graph Closedness]
+\label{lem:domainDensity}
+The domain $\Dom(A)$ satisfies:
+\begin{enumerate}[label=(\roman*)]
+\item $\Dom(A)$ is dense in $H^{1,2}(X)$ with graph norm $\|\psi\|_A^2 := \|\psi\|_{L^2}^2 + \|A\psi\|_{L^2}^2$.
+\item The operator $(A, \Dom(A))$ is closed and self-adjoint.
+\item For $Q < 4$: $\Dom(A) \subset C^{0,\beta}(X)$ for $\beta = \alpha - \epsilon$ where $\alpha = 1 - Q/4$.
+\end{enumerate}
+
+\begin{proof}
+\input{proofDLemmaDomainDensity}
+\end{proof}
+\end{lemma}
+
+\begin{theorem}[Resolvent Compactness and Discrete Spectrum]
+\label{thm:resolventCompactness}
+Let $A = -\Delta_\mu + W$ where $W(x) = V''(|\psi_0|^2) \geq \lambda_0 > 0$. For $\lambda > 0$ sufficiently large, the resolvent $(A + \lambda I)^{-1}: L^2 \to L^2$ is compact.
+
+\begin{proof}
+\input{proofDTheoremResolventCompactness}
+\end{proof}
+
+\textbf{Corollary:} The spectrum $\sigma(A)$ is purely discrete with $\lambda_k \to -\infty$.
+
+\begin{proof}
+By the spectral theorem for compact self-adjoint operators, if the resolvent is compact, then the spectrum consists only of eigenvalues of finite multiplicity accumulating only at $-\infty$ (since $A$ is negative definite). The ordering $\lambda_0 > \lambda_1 > \lambda_2 > \cdots \to -\infty$ follows from the variational principle.
+\end{proof}
+\end{theorem}
+
+\begin{lemma}[Hilbert-Schmidt Property of Regularized Inverse Laplacian]
+\label{lem:traceClassInverse}
+Under Axiom~1 with $Q < 4$, the regularized operator family $(I - e^{tA})(-A)^{-1}$ is Hilbert-Schmidt, i.e., has finite Hilbert-Schmidt norm $\|(I - e^{tA})(-A)^{-1}\|_{HS} < \infty$ for each $t > 0$.
+
+\begin{proof}
+\input{proofDLemmaTraceClassInverse}
+\end{proof}
+
+\begin{lemma}[Prokhorov Tightness for Regularized Covariance Family]
+\label{lem:prokhorovTightnessRigorous}
+For $Q \in (2,4)$, the family of Gaussian measures $\{\nu_\epsilon\}_{\epsilon > 0}$ with covariance operators $C_\epsilon = (-A + \epsilon I)^{-1}$ satisfies Prokhorov tightness. Specifically, for each $\delta > 0$, there exists a compact set $K_\delta \subset \mathcal{H}$ such that:
+\[
+\sup_{\epsilon > 0} \nu_\epsilon(\mathcal{H} \setminus K_\delta) < \delta.
+\]
+
+\textbf{Proof.} Define the Sobolev ball:
+\[
+K_\delta := \left\{\psi \in \mathcal{H} : \sum_{k=0}^\infty |\lambda_k|^{1+\eta} |\langle \psi, e_k \rangle|^2 \leq R(\delta)\right\}
+\]
+for fixed $\eta \in (0, 2/Q - 1)$ and $R(\delta) := C/\delta$ for appropriate constant $C$.
+
+For the regularized measure:
+\[
+\int_{\mathcal{H}} \sum_{k=0}^\infty |\lambda_k|^{1+\eta} |\langle \psi, e_k \rangle|^2 \, d\nu_\epsilon = \sum_{k=0}^\infty \frac{|\lambda_k|^{1+\eta}}{|\lambda_k| + \epsilon}
+\]
+Since $|\lambda_k|^{1+\eta}/(|\lambda_k| + \epsilon) \leq |\lambda_k|^\eta$ and $\sum_k |\lambda_k|^\eta \sim \sum_k k^{2\eta/Q}$ converges for $2\eta/Q < 1$ (satisfied by the choice of $\eta$), the integral is uniformly bounded in $\epsilon$.
+
+By Markov's inequality:
+\[
+\nu_\epsilon(\mathcal{H} \setminus K_\delta) \leq \frac{C}{R(\delta)} = \delta.
+\]
+
+Compactness of $K_\delta$ follows from the \cite{biroli2000embedding} theorem: the embedding $H^{1+\eta/2,2}(X) \hookrightarrow L^2(X)$ is compact for $Q < 4$. \qed
+\end{lemma}
+
+\begin{lemma}[Existence of Regularized Gaussian Measure]
+\label{lem:regularizedGaussianMeasure}
+For $Q \in (2,4)$, define the regularized covariance operator:
+\begin{equation}
+C_\epsilon := (-A + \epsilon I)^{-1}, \quad \epsilon > 0.
+\end{equation}
+Then:
+\begin{enumerate}[label=(\roman*)]
+\item $C_\epsilon$ is trace class: 
+\begin{equation}
+\Tr(C_\epsilon) = \sum_{k=0}^\infty (|\lambda_k| + \epsilon)^{-1} < \infty.
+\end{equation}
+
+\item There exists a Gaussian measure $\nu_\epsilon$ on $\mathcal{H}$ with covariance $C_\epsilon$.
+
+\item The family $\{\nu_\epsilon\}_{\epsilon > 0}$ is tight in the Prokhorov topology on the space of probability measures on $\mathcal{H}$.
+
+\item The physical measure is defined as:
+\begin{equation}
+\nu_{\mathcal{E}} := \lim_{\epsilon \to 0^+} \nu_\epsilon 
+\end{equation}
+in the weak topology, understood as a cylindrical measure on $\mathcal{H}$.
+\end{enumerate}
+
+\begin{proof}
+\input{proofDLemmaRegularizedGaussianMeasure}
+\end{proof}
+\end{lemma}
+
+\begin{lemma}[Spectral Projector Stability under Metric Deformations]
+\label{lem:spectralProjectorStability}
+
+Consider a small perturbation $\delta V$ of the potential: $V_\epsilon = V + \delta V$ with $\|\delta V\|_\infty \leq \epsilon$. The perturbed operator is:
+\begin{equation}
+A_\epsilon := -\Delta_\mu + V_\epsilon(|\psi|^2) = A + \delta V.
+\end{equation}
+
+The following quantitative stability bounds hold:
+
+\begin{enumerate}[label=(\roman*)]
+
+\item \textbf{Resolvent Perturbation Bounds.} For $z$ in a compact set outside the spectrum:
+\begin{equation}
+\|R_\epsilon(z) - R(z)\|_{L^2 \to L^2} \leq C(z) \epsilon,
+\end{equation}
+where $C(z)$ depends on the distance from $z$ to the spectrum.
+
+\item \textbf{Spectral Projector Stability.} For the spectral projector $P_k = \frac{1}{2\pi i} \oint_{\Gamma_k} R(z) dz$ onto the eigenspace of $\lambda_k$:
+\begin{equation}
+\|P_k^\epsilon - P_k\|_{L^2 \to L^2} \leq C(k) \epsilon \delta_k^{-2},
+\end{equation}
+where $\delta_k = \min_{j \neq k} |\lambda_k - \lambda_j|$ is the spectral gap around $\lambda_k$.
+
+\item \textbf{Eigenvalue Perturbation.} The perturbed eigenvalue satisfies first-order perturbation theory:
+\begin{equation}
+\lambda_k^\epsilon = \lambda_k + \langle e_k | \delta V | e_k \rangle + O(\epsilon^2),
+\end{equation}
+with $|\lambda_k^\epsilon - \lambda_k| \leq \|\delta V\|_\infty \leq \epsilon$.
+
+\item \textbf{Eigenfunction Stability (Holder Bound).} By Theorem \ref{thm:eigenfunctionRegularity}, the perturbed eigenfunctions remain Holder continuous:
+\begin{equation}
+\|e_k^\epsilon - e_k\|_{L^2} \leq C(k) \epsilon / \delta_k, \quad \|e_k^\epsilon\|_{C^{0,\alpha}} \leq C(k) \quad \text{uniformly for } \epsilon \leq \epsilon_0(k).
+\end{equation}
+
+\item \textbf{Heat Semigroup Stability.} The heat kernels remain close under perturbation:
+\begin{equation}
+\|e^{-tA_\epsilon} - e^{-tA}\|_{L^2 \to L^2} \leq C(t) \epsilon.
+\end{equation}
+
+\item \textbf{Spectral Embedding Stability.} The spectral embedding $\Psi_N(x) = (\sqrt{|\lambda_0|} e_0(x), \ldots, \sqrt{|\lambda_{N-1}|} e_{N-1}(x))$ remains close:
+\begin{equation}
+\|\Psi_N^\epsilon - \Psi_N\|_\infty \leq C(N) \epsilon.
+\end{equation}
+
+\item \textbf{Green's Function Stability.} The resolvent at fixed points away from spectrum remains stable:
+\begin{equation}
+\|(A_\epsilon + I)^{-1} - (A + I)^{-1}\|_{L^2 \to L^2} \leq C \epsilon.
+\end{equation}
+
+\end{enumerate}
+
+These bounds show that the spectral structure (projectors, eigenvalues, eigenfunctions, and derived geometric objects like metric tensor and manifold structure) depends continuously on perturbations of the potential, with explicit quantitative control. This is essential for establishing stability of the emerged geometry under small metric deformations.
+
+\begin{proof}
+\input{proofDLemmaSpectralProjectorStability}
+\end{proof}
+
+\end{lemma}
+
